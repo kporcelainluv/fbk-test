@@ -16,10 +16,25 @@ const theme = {
     heading: "28px",
     form: "13px",
     medium: "17px"
+  },
+  visuallyHidden: {
+    position: "absolute",
+    overflow: "hidden",
+    clip: "rect(0 0 0 0)",
+    height: "1px",
+    width: "1px",
+    margin: "-1px",
+    padding: "0",
+    border: "0"
+  },
+  breakPoints: {
+    mobile: "320px",
+    tablet: "768px",
+    smallDesktop: '968px',
+    desktop: "1200px"
   }
 };
 
-// eslint-disable-next-line react/prop-types
 export const Theme = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
