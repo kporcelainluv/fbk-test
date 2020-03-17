@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="link"  fill="none">
+        <path d="M7 9.94799L10 8.24963L13 6.55127M7 13.3447L10 15.0431L13 16.7414" stroke="#FF384B" stroke-width="2"/>
+        <path d="M7 11.6461C7 13.2098 5.6853 14.5281 4 14.5281C2.3147 14.5281 1 13.2098 1 11.6461C1 10.0825 2.3147 8.76416 4 8.76416C5.6853 8.76416 7 10.0825 7 11.6461Z" stroke="#FF384B" stroke-width="2"/>
+        <path d="M19 4.85267C19 6.41631 17.6853 7.73464 16 7.73464C14.3147 7.73464 13 6.41631 13 4.85267C13 3.28903 14.3147 1.9707 16 1.9707C17.6853 1.9707 19 3.28903 19 4.85267Z" stroke="#FF384B" stroke-width="2"/>
+        <path d="M19 18.4396C19 20.0032 17.6853 21.3215 16 21.3215C14.3147 21.3215 13 20.0032 13 18.4396C13 16.8759 14.3147 15.5576 16 15.5576C17.6853 15.5576 19 16.8759 19 18.4396Z" stroke="#FF384B" stroke-width="2"/>
+    </symbol>
+
+    <symbol id="rouble" fill="none">
+        <rect x="1" y="1" width="22" height="22" rx="11" stroke="#FF384B" stroke-width="2"/>
+        <rect x="9" y="6" width="2" height="12" fill="#FF384B"/>
+        <path d="M10 7H13.5C14.8807 7 16 8.11929 16 9.5C16 10.8807 14.8807 12 13.5 12H10V7Z" stroke="#FF384B" stroke-width="2"/>
+        <rect x="7" y="14" width="9" height="2" fill="#FF384B"/>
+    </symbol>
+
+    <symbol id="burger">
+        <rect y="0.705078" width="20" height="1.94098" fill="#000B42"/>
+        <rect y="6.52783" width="20" height="1.94098" fill="#000B42"/>
+        <rect y="12.3511" width="20" height="1.94098" fill="#000B42"/>
+    </symbol>
+</svg>
