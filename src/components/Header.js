@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 
 import { Navigation } from "./Navigation";
@@ -74,23 +74,34 @@ const Nav = styled.nav`
   -webkit-box-shadow: -3px 20px 15px 20px rgba(245, 246, 255, 0.49);
   -moz-box-shadow: -3px 20px 10px 17px rgba(245, 246, 255, 0.49);
   box-shadow: -3px 20px 10px 17px rgba(245, 246, 255, 0.49);
-  display: none;
+
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin-left: 5%;
     width: 207px;
-    display: block;
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
     margin-left: 24%;
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
-    display: flex;
     flex-direction: row-reverse;
     margin-left: 0;
     width: 600px;
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
+  }
+  ${props => props.menuState} {
+    display: block;
+  }
+  ${props => !props.menuState} {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
   }
 `;
 
@@ -115,10 +126,16 @@ const EmptyDiv = styled.div`
 `;
 
 export const Header = () => {
+  const [menuState, updateMenuState] = useState(true);
+  console.log(menuState);
   return (
     <Fragment>
       <HeaderBar>
-        <Button>
+        <Button
+          onClick={() => {
+            updateMenuState(!menuState);
+          }}
+        >
           <Text>Меню</Text>
         </Button>
         <EmptyDiv />
@@ -133,7 +150,7 @@ export const Header = () => {
           </li>
         </IconContainer>
 
-        <Nav>
+        <Nav menuState={menuState}>
           <Navigation elements={navigation} />
         </Nav>
       </HeaderBar>
