@@ -57,6 +57,7 @@ const IconContainer = styled.ul`
   line-height: 32px;
   li {
     display: flex;
+    margin: 0 10px;
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin-top: 21px;
