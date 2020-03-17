@@ -15,7 +15,8 @@ const theme = {
     nav: "16px",
     heading: "28px",
     form: "13px",
-    medium: "17px"
+    medium: "17px",
+    large: "42px"
   },
   visuallyHidden: {
     position: "absolute",
@@ -30,7 +31,7 @@ const theme = {
   breakPoints: {
     mobile: "320px",
     tablet: "768px",
-    smallDesktop: '968px',
+    smallDesktop: "968px",
     desktop: "1200px"
   }
 };
