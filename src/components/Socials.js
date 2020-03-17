@@ -11,6 +11,13 @@ const SocialList = styled.ul`
     list-style-type: none;
     margin-right: 12px;
   }
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin-top: 25px;
+  }
+  li {
+    margin-right: 16px;
+  }
 `;
 
 export const Socials = () => {
