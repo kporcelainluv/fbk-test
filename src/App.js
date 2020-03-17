@@ -5,6 +5,8 @@ import { Theme } from "./Theme";
 import GlobalStyle from "./GlobalStyle";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
+import { Reasons } from "./components/Reasons";
+
 const Container = styled.div`
   box-sizing: border-box;
   max-width: 768px;
@@ -29,6 +31,7 @@ export const App = () => {
         </header>
         <main>
           <Hero />
+          <Reasons />
         </main>
       </Container>
     </Theme>
