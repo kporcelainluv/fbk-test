@@ -75,6 +75,8 @@ const Nav = styled.nav`
   -webkit-box-shadow: -3px 20px 15px 20px rgba(245, 246, 255, 0.49);
   -moz-box-shadow: -3px 20px 10px 17px rgba(245, 246, 255, 0.49);
   box-shadow: -3px 20px 10px 17px rgba(245, 246, 255, 0.49);
+  background-color: ${props => props.theme.colors.background};
+  z-index: 2;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin-left: 5%;
