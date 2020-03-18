@@ -16,13 +16,13 @@ const SocialList = styled.ul`
     margin-top: 25px;
   }
   li {
-    margin-right: 16px;
+    margin-right: ${props => (props.margin === "small" ? "12px" : "16px")};
   }
 `;
 
-export const Socials = () => {
+export const Socials = ({ margin = "regular" }) => {
   return (
-    <SocialList>
+    <SocialList margin={margin}>
       <li>
         <Icon name="odnoklassniki" width="32" height="33" viewBox="0 0 32 33" />
       </li>
