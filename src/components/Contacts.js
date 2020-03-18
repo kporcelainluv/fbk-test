@@ -38,6 +38,42 @@ const BreakingLine = styled.div`
   border: 1px dashed ${props => props.theme.colors.lightGrey};
 `;
 
+const Container = styled.div`
+  margin: 33px 15px 10px 19px;
+`;
+
+const Heading = styled.h2`
+  font-family: "CoFo Sans Bold";
+  font-weight: bold;
+  font-size: ${props => props.theme.fontSizes.heading};
+  line-height: 28px;
+  max-width: 200px;
+  margin: 0 0 16px;
+`;
+
+const ContactsBlock = styled.div`
+  padding: 16px;
+  border: 3px solid ${props => props.theme.colors.red};
+`;
+
+const Paragraph = styled.p`
+  font-size: ${props => props.theme.fontSizes.small};
+  line-height: 24px;
+  max-width: 255px;
+  padding: 0;
+  margin: 0 0 16px;
+`;
+
+const ActionBlock = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  a {
+    color: ${props => props.theme.colors.red};
+    padding-left: 10px;
+  }
+`;
+
 const ContactPerson = ({ img, title, name, canCall }) => {
   return (
     <div>
@@ -47,12 +83,12 @@ const ContactPerson = ({ img, title, name, canCall }) => {
           <Position>{title}</Position>
           <Name>{name}</Name>
 
-          <a href="">
+          <a href="#">
             <span className="visually-hidden">Написать письмо</span>
             <Icon height="24" width="24" name="mail" />
           </a>
           {canCall && (
-            <a href="">
+            <a href="#">
               <span className="visually-hidden">Позвонить</span>
               <Icon height="25" width="25" name="tel" />
             </a>
@@ -64,79 +100,53 @@ const ContactPerson = ({ img, title, name, canCall }) => {
   );
 };
 
-const Container = styled.div`
-  margin: 33px 15px 10px 19px;
-`;
+const ContactCTA = () => {
+  return (
+    <ContactsBlock>
+      <Heading>Контакты</Heading>
+      <Paragraph>
+        Свяжитесь с нами, если у вас остались вопросы или есть предложение для
+        нас.
+      </Paragraph>
+      <ActionBlock>
+        <Icon height="24" width="24" name="mail" />
+        <span className="visually-hidden">Написать письмо</span>
+        <a href="mailto: help@alyansvrachey.org">help@alyansvrachey.org</a>
+      </ActionBlock>
+      <ActionBlock>
+        <Icon height="25" width="25" name="tel" />
+        <span className="visually-hidden">Позвонить</span>
+        <a href="tel: +7 (999) 249-24-43">+7 (999) 249-24-43</a>
+      </ActionBlock>
+      <Socials />
+    </ContactsBlock>
+  );
+};
 
-const Heading = styled.h2`
-  font-family: "CoFo Sans Bold";
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 0;
-  font-size: ${props => props.theme.fontSizes.heading};
-  line-height: 28px;
-  max-width: 200px;
-  padding-top: 9px;
-  padding-left: 12px;
-`;
-const ContactsBlock = styled.div`
-  border: 3px solid ${props => props.theme.colors.red};
-`;
+const ContactList = () => {
+  return (
+    <List>
+      {pointsOfContact.map(contact => {
+        return (
+          <li key={contact.name}>
+            <ContactPerson
+              img={contact.img}
+              title={contact.title}
+              name={contact.name}
+              canCall={contact.call}
+            />
+          </li>
+        );
+      })}
+    </List>
+  );
+};
 
-const Paragraph = styled.p`
-  font-size: ${props => props.theme.fontSizes.small};
-  line-height: 24px;
-  margin: 13px 0 5px;
-  max-width: 255px;
-  padding-left: 10px;
-`;
-
-const ActionBlock = styled.div`
-  padding: 10px 0 7px 12px;
-  display: flex;
-  a {
-    color: ${props => props.theme.colors.red};
-    padding-left: 10px;
-  }
-`;
 export const Contacts = () => {
   return (
     <Container>
-      <ContactsBlock>
-        <Heading>Контакты</Heading>
-        <Paragraph>
-          Свяжитесь с нами, если у вас остались вопросы или есть предложение для
-          нас.
-        </Paragraph>
-        <ActionBlock>
-          <Icon height="24" width="24" name="mail" />
-          <span className="visually-hidden">Написать письмо</span>
-          <a href="mailto: help@alyansvrachey.org">help@alyansvrachey.org</a>
-        </ActionBlock>
-        <ActionBlock>
-          <Icon height="25" width="25" name="tel" />
-          <span className="visually-hidden">Позвонить</span>
-          <a href="tel: +7 (999) 249-24-43">+7 (999) 249-24-43</a>
-        </ActionBlock>
-
-        <Socials margin={"small"} />
-      </ContactsBlock>
-      <div>
-        <List>
-          {pointsOfContact.map(contact => {
-            return (
-              <li key={contact.name}>
-                <ContactPerson
-                  img={contact.img}
-                  title={contact.title}
-                  name={contact.name}
-                  canCall={contact.call}
-                />
-              </li>
-            );
-          })}
-        </List>
-      </div>
+      <ContactCTA />
+      <ContactList />
     </Container>
   );
 };
