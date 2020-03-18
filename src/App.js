@@ -7,6 +7,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Reasons } from "./components/Reasons";
 import { JoinAlliance } from "./components/JoinAlliance";
+import { FAQ } from "./components/FAQ";
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -34,6 +35,7 @@ export const App = () => {
           <Hero />
           <Reasons />
           <JoinAlliance />
+          <FAQ />
         </main>
       </Container>
     </Theme>

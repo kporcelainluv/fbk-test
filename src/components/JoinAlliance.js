@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 50px 16px;
+  margin: 50px 16px 20px;
 `;
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
