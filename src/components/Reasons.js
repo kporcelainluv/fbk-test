@@ -8,63 +8,60 @@ const reasons = [
 ];
 
 const Container = styled.div`
-  margin-top: 20px;
-
-  padding-top: 15px;
   background-color: ${props => props.theme.colors.background2};
+  padding: 30px 0;
 `;
 const Block = styled.div`
-  margin: 0 13px 0 20px;
-  padding-top: 6px;
-  padding-left: 13px;
+  margin: 0 16px 20px;
+  padding: 0 16px;
+
   border: 3px solid ${props => props.theme.colors.red};
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
-    margin-top: 19px;
-    margin-right: 65px;
-    padding-top: 22px;
-    padding-left: 27px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin: 0 40px 20px;
+    padding: 30px;
   }
 `;
 
 const Heading = styled.h2`
   font-family: "CoFo Sans Bold";
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 0;
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
-  display: flex;
-  flex-direction: column;
+  margin-top: 12px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    flex-direction: row;
     font-size: ${props => props.theme.fontSizes.large};
+    font-family: "CoFo Sans";
     line-height: 44px;
-    margin-top: 15px;
     span:last-of-type {
       padding-left: 6px;
     }
   }
 `;
 
+const JoinParagraph = styled.p`
+  margin-top: 0;
+  line-height: 24px;
+  font-size: ${props => props.theme.fontSizes.small};
+  max-width: 288px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 310px;
+  }
+`;
 const Paragraph = styled.p`
   line-height: 24px;
-  margin-top: 12px;
   font-size: ${props => props.theme.fontSizes.small};
   max-width: 258px;
-  margin-bottom: 0;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 600px;
-    margin-bottom: 10px;
   }
 `;
 
 const List = styled.ul`
-  padding-left: 0px;
-  margin-top: 24px;
   line-height: 24px;
   font-size: ${props => props.theme.fontSizes.small};
-
+  padding-left: 0;
   li:first-of-type {
     max-width: 230px;
   }
@@ -72,95 +69,109 @@ const List = styled.ul`
   li {
     max-width: 255px;
     list-style-type: none;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
-  li:last-of-type {
-    margin-bottom: 15px;
-  }
+
   span {
+    font-family: "CoFo Sans Bold";
     padding-right: 5px;
+  }
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    li,
+    li:first-of-type {
+      max-width: 620px;
+    }
   }
 `;
 
 const JoinBlock = styled.div`
-  margin: 0 13px 0 20px;
+  padding: 30px;
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin: 0 40px 20px;
+    padding: 0;
+  }
 `;
 
 const Slogan = styled.h3`
-  margin: 15px 0;
   font-family: "CoFo Sans Bold";
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
+  margin-top: 0;
   color: ${props => props.theme.colors.main};
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-size: ${props => props.theme.fontSizes.large2};
+    font-family: "CoFo Sans";
+    font-size: ${props => props.theme.fontSizes.large};
+    letter-spacing: -0.02em;
+    line-height: 44px;
+    max-width: 585px;
+    position: relative;
+  }
 `;
-const BreakingText = styled.span`
-  display: inline-block;
-`;
-const Red = styled.span`
+
+const RedText = styled.span`
   color: ${props => props.theme.colors.red};
-`;
-
-const BreakingLine = styled.div`
-  border: 2px dashed ${props => props.theme.colors.lightGrey};
-`;
-
-const JoinText = styled.p`
-  margin: 18px 0 8px;
-  font-size: ${props => props.theme.fontSizes.small};
-  line-height: 24px;
 `;
 
 const Button = styled.button`
   width: 243px;
   height: 60px;
-  margin: 10px auto 15px;
   color: ${props => props.theme.colors.background};
   background-color: ${props => props.theme.colors.red};
   border: none;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 24px auto;
     width: 249px;
   }
 `;
 
+const JoinCTABlock = () => {
+  return (
+    <JoinBlock>
+      <Slogan>
+        Профсоюз — это ваша <RedText>защита</RedText> и ваша{" "}
+        <RedText>возможность улучшить условия</RedText> работы
+      </Slogan>
+      <JoinParagraph>
+        Вступайте в независимый профсоюз медицинских работников «Альянс врачей»!
+      </JoinParagraph>
+      <Button>Вступить в Альянс врачей</Button>
+    </JoinBlock>
+  );
+};
+
+const ReasonsBlock = () => {
+  return (
+    <Block>
+      <Heading>Зачем нужен профсоюз?</Heading>
+      <Paragraph>
+        Объединившись, вы сможете эффективно сопротивляться любому произволу
+        работодателя. Согласно Федеральному закону о профсоюзах:
+      </Paragraph>
+      <List>
+        {reasons.map((reason, index) => {
+          return (
+            <li key={reason}>
+              <span>{index + 1}.</span>
+              {reason}
+            </li>
+          );
+        })}
+      </List>
+    </Block>
+  );
+};
+
 export const Reasons = () => {
   return (
     <Container>
-      <Block>
-        <Heading>Зачем нужен профсоюз?</Heading>
-        <Paragraph>
-          Объединившись, вы сможете эффективно сопротивляться любому произволу
-          работодателя. Согласно Федеральному закону о профсоюзах:
-        </Paragraph>
-        <List>
-          {reasons.map((reason, index) => {
-            return (
-              <li key={index}>
-                <span>{index + 1}.</span>
-                {reason}
-              </li>
-            );
-          })}
-        </List>
-      </Block>
-      <JoinBlock>
-        <Slogan>
-          Профсоюз —{" "}
-          <BreakingText>
-            это ваша <Red>защита</Red>{" "}
-            <BreakingText>
-              {" "}
-              и ваша <Red>возможность улучшить условия</Red> работы
-            </BreakingText>
-          </BreakingText>
-        </Slogan>
-        <BreakingLine></BreakingLine>
-        <JoinText>
-          Вступайте в независимый профсоюз медицинских работников «Альянс
-          врачей»!
-        </JoinText>
-        <Button>Вступить в Альянс врачей</Button>
-      </JoinBlock>
+      <ReasonsBlock />
+      <JoinCTABlock />
     </Container>
   );
 };

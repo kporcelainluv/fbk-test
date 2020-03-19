@@ -9,11 +9,13 @@ import { Reasons } from "./components/Reasons";
 import { JoinAlliance } from "./components/JoinAlliance";
 import { FAQ } from "./components/FAQ";
 import { Contacts } from "./components/Contacts";
+import { Regions } from "./components/Regions";
 
 const Container = styled.div`
   box-sizing: border-box;
   max-width: 768px;
   font-family: "Cofo Sans";
+  background-color: #fff;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 992px;
@@ -29,16 +31,18 @@ export const App = () => {
       <GlobalStyle />
 
       <Container>
-        <header>
-          <Header />
-        </header>
-        <main>
-          <Hero />
-          <Reasons />
-          <JoinAlliance />
-          <FAQ />
-          <Contacts />
-        </main>
+        {/*<header>*/}
+        {/*  <Header />*/}
+        {/*</header>*/}
+        {/*<main>*/}
+        {/*  <h1 className="visually-hidden">Альянс врачей</h1>*/}
+        {/*  <Hero />*/}
+        {/*  <Reasons />*/}
+        {/*  <JoinAlliance />*/}
+        {/*  <FAQ />*/}
+        {/*  <Contacts />*/}
+        {/*</main>*/}
+        <Regions />
       </Container>
     </Theme>
   );

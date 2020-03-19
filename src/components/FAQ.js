@@ -3,43 +3,60 @@ import styled from "styled-components";
 
 import { Help } from "./Help";
 
+const questions = [
+  "Почему нельзя просто вступить в профсоюз, а важно создать ППО?",
+  "Как я найду людей для регионального отделения, если моих коллег всё устраивает?",
+  "А меня не уволят?",
+  "Кто стоит за «Альянсом врачей»?",
+  "На что идут профсоюзные взносы?",
+  " В моей больнице уже есть профсоюз, можно ли создать ещё один?",
+  "Я уже состою в профсоюзе, и он никак мне не помогает. Чем вы лучше?",
+  "Как устроен профсоюз?"
+];
+
 const Container = styled.div`
   background-color: ${props => props.theme.colors.background2};
-  padding: 30px 0;
+  padding: 0 15px 20px;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    padding: 30px 40px;
   }
 `;
+
 const Heading = styled.h2`
   font-family: "CoFo Sans Bold";
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 0;
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-size: ${props => props.theme.fontSizes.large};
+    line-height: 44px;
+    font-family: "CoFo Sans";
+  }
 `;
 
 const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
-  margin: 12px 0 15px;
   max-width: 248px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 624px;
+    padding-bottom: 30px;
+  }
 `;
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
-  margin: 0 16px;
-  padding-top: 6px;
-  padding-left: 13px;
+  padding-left: 15px;
+
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
   }
 `;
 
 const List = styled.ul`
-  padding-left: 30px;
   list-style-type: none;
+  padding-left: 15px;
 `;
-const Element = styled.li`
+const Question = styled.li`
   line-height: 24px;
   font-size: ${props => props.theme.fontSizes.small};
   margin-bottom: 24px;
@@ -54,10 +71,9 @@ const Element = styled.li`
   a {
     color: ${props => props.theme.colors.main};
   }
-`;
-
-const BreakingText = styled.span`
-  display: block;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const FAQ = () => {
@@ -73,41 +89,13 @@ export const FAQ = () => {
         </Paragraph>
       </Block>
       <List>
-        <Element>
-          <a href="">
-            Почему нельзя просто вступить{" "}
-            <BreakingText> в профсоюз, а важно создать ППО?</BreakingText>
-          </a>
-        </Element>
-        <Element>
-          <a href="">
-            Как я найду людей для регионального отделения, если моих коллег всё
-            устраивает?
-          </a>
-        </Element>
-        <Element>
-          <a href="">А меня не уволят?</a>
-        </Element>
-        <Element>
-          <a href="">Кто стоит за «Альянсом врачей»?</a>
-        </Element>
-        <Element>
-          <a href="">На что идут профсоюзные взносы?</a>
-        </Element>
-        <Element>
-          <a href="">
-            {" "}
-            В моей больнице уже есть профсоюз, можно ли создать ещё один?
-          </a>
-        </Element>
-        <Element>
-          <a href="">
-            Я уже состою в профсоюзе, и он никак мне не помогает. Чем вы лучше?
-          </a>
-        </Element>
-        <Element>
-          <a href="">Как устроен профсоюз?</a>
-        </Element>
+        {questions.map(question => {
+          return (
+            <Question key={question}>
+              <a href="">{question}</a>
+            </Question>
+          );
+        })}
       </List>
       <Help />
     </Container>

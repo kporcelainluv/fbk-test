@@ -1,60 +1,92 @@
 import React from "react";
 import styled from "styled-components";
 
+const problems = [
+  "— по несколько недель ждать записи к нужному специалисту;",
+  "— стоять в многочасовых очередях;",
+  "— покупать лекарства за свой счёт;",
+  " — страдать от непрофессионального поведения некоторых специалистов;",
+  "— становиться жертвами врачебных ошибок."
+];
+
 const Container = styled.div`
   background-color: ${props => props.theme.colors.background};
-  margin: 33px 15px 10px 19px;
+  padding: 0 16px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    padding: 30px;
+  }
 `;
 
 const Heading = styled.h2`
   font-family: "CoFo Sans Bold";
   font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 0;
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
   max-width: 200px;
-  padding-top: 16px;
-  padding-left: 15px;
+  padding-top: 10px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-size: ${props => props.theme.fontSizes.large};
+    line-height: 44px;
+    font-family: "CoFo Sans";
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
 `;
 
 const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
-
-  max-width: 270px;
-  padding-left: 15px;
-  margin: 13px 0 0 0;
+  max-width: 256px;
+  margin-bottom: 0;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 624px;
+  }
 `;
 
 const Problems = styled.ul`
-  padding-left: 13px;
+  padding-left: 0;
   list-style-type: none;
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
   margin: 0;
+  max-width: 256px;
 
   li {
     margin: 0;
     padding: 0;
     max-width: 261px;
   }
-`;
-const BreakingLine = styled.div`
-  border: 1px dashed ${props => props.theme.colors.lightGrey};
-  margin: 20px;
+
+  li:last-child {
+    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+    padding-bottom: 20px;
+  }
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 624px;
+    li {
+      max-width: 624px;
+    }
+  }
 `;
 
 const Subheading = styled.h3`
   line-height: 22px;
   font-family: "CoFo Sans Bold";
   font-size: ${props => props.theme.fontSizes.medium};
-  margin-left: 16px;
   max-width: 235px;
+  padding-bottom: 16px;
 
   a {
     color: ${props => props.theme.colors.red};
     padding-left: 3px;
+  }
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-size: ${props => props.theme.fontSizes.subheading};
+    font-family: "CoFo Sans";
+    max-width: 624px;
+    line-height: 26px;
   }
 `;
 
@@ -67,15 +99,10 @@ export const Help = () => {
         и пациенты. Многим из них приходится:
       </Paragraph>
       <Problems>
-        <li>— по несколько недель ждать записи к нужному специалисту;</li>
-        <li>— стоять в многочасовых очередях; </li>
-        <li>— покупать лекарства за свой счёт; </li>
-        <li>
-          — страдать от непрофессионального поведения некоторых специалистов;{" "}
-        </li>
-        <li>— становиться жертвами врачебных ошибок.</li>
+        {problems.map(problem => {
+          return <li key={problem}>{problem}</li>;
+        })}
       </Problems>
-      <BreakingLine></BreakingLine>
       <Subheading>
         Если вы или ваши близкие столкнулись с проблемами при получении
         медицинской помощи, пишите нам на

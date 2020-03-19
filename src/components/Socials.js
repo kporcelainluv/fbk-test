@@ -12,11 +12,15 @@ const SocialList = styled.ul`
     list-style-type: none;
     margin-right: 12px;
     display: inline-flex;
+    height: 32px;
+    width: 32px;
   }
-  //
-  // @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-  //   margin-top: 25px;
-  // }
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    li {
+      margin-right: 16px;
+    }
+  }
 `;
 
 export const socials = [
@@ -33,8 +37,10 @@ export const Socials = () => {
       {socials.map(social => {
         return (
           <li key={social}>
-            <Icon name={social} width="32" height="32" viewBox="0 0 32 32" />
-            <span className="visually-hidden">{social}</span>
+            <a href="">
+              <Icon name={social} width="32" height="32" viewBox="0 0 32 32" />
+              <span className="visually-hidden">{social}</span>
+            </a>
           </li>
         );
       })}

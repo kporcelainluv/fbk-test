@@ -4,33 +4,22 @@ import styled from "styled-components";
 import { Socials } from "./Socials";
 
 const Container = styled.div`
-  margin: 0 16px;
-  padding-top: 6px;
-  padding-left: 13px;
   border: 3px solid ${props => props.theme.colors.red};
+  margin: 0 16px 20px;
+  padding: 0 16px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin: 0 40px 20px;
+    padding: 30px;
     border: 4px solid ${props => props.theme.colors.red};
-    margin-top: 19px;
-    margin-right: 65px;
-    padding-top: 22px;
-    padding-left: 27px;
   }
 `;
 
 const Heading = styled.h2`
   font-family: "CoFo Sans Bold";
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 0;
+  margin-top: 10px;
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
-  display: flex;
-  flex-direction: column;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    flex-direction: row;
-    font-size: ${props => props.theme.fontSizes.large};
-    line-height: 44px;
-    margin-top: 15px;
     span:last-of-type {
       padding-left: 6px;
     }
@@ -39,32 +28,31 @@ const Heading = styled.h2`
 
 const Paragraph = styled.p`
   line-height: 24px;
+  margin-top: 0;
   font-size: ${props => props.theme.fontSizes.small};
   max-width: 242px;
-  margin-bottom: 0;
+
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 600px;
-    margin-bottom: 10px;
   }
 `;
 
 const Link = styled.a`
-  margin: 0;
+  display: block;
+  margin: 0 0 20px;
   line-height: 32px;
   font-size: ${props => props.theme.fontSizes.small};
   color: ${props => props.theme.colors.red};
-  border-bottom: 1px solid ${props => props.theme.colors.red};
 `;
 
 const Button = styled.button`
   width: 256px;
   height: 60px;
-  margin: 10px auto 15px;
   color: ${props => props.theme.colors.background};
   background-color: ${props => props.theme.colors.red};
   border: none;
+  margin: 20px 0;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 27px auto;
     width: 249px;
   }
 `;
@@ -73,8 +61,9 @@ export const Hero = () => {
   return (
     <Container>
       <div>
-        <img src="/icons/label.svg" height="60" width={"160"} alt="" />
-        <h1 className="visually-hidden">Альянс врачей</h1>
+        <a href="#">
+          <img src="/icons/label.svg" height="60" width={"160"} alt="" />
+        </a>
         <Heading>
           <span>Наша сила</span>
           <span>в объединении!</span>
@@ -85,7 +74,9 @@ export const Hero = () => {
           условия труда, высокие надбавки и оплачиваемые переработки для всех
           медиков России.
         </Paragraph>
-        <Link>Узнать больше о нас и о профсоюзах</Link>
+
+        <Link href="#">Узнать больше о нас и о профсоюзах</Link>
+
         <Socials />
         <Button>Вступить в Альянс врачей</Button>
       </div>

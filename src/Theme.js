@@ -14,9 +14,11 @@ const theme = {
     small: "15px",
     nav: "16px",
     heading: "28px",
+    subheading: "24px",
     form: "13px",
     medium: "17px",
-    large: "42px"
+    large: "42px",
+    large2: "44px"
   },
   visuallyHidden: {
     position: "absolute",
