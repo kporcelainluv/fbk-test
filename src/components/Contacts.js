@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import { Socials } from "./Socials";
 import { Icon } from "./Icon";
-import { pointsOfContact } from "../consts";
 
 const Image = styled.img`
   height: 76px;
   width: 76px;
+  margin-right: 16px;
 `;
 
 const Position = styled.span`
@@ -18,24 +18,27 @@ const Position = styled.span`
 
 const List = styled.ul`
   list-style-type: none;
-  padding-left: 0;
-  li {
-    margin-bottom: 20px;
-  }
+  padding: 0;
+  margin: 0 0 16px;
 `;
 
 const Name = styled.h3`
   font-size: ${props => props.theme.fontSizes.medium};
   line-height: 22px;
-  margin: 0;
+  margin: 0 0 12px;
 `;
 
-const ContactContainer = styled.div`
+const ContactContainer = styled.li`
   display: flex;
-`;
+  padding: 24px 0;
 
-const BreakingLine = styled.div`
-  border: 1px dashed ${props => props.theme.colors.lightGrey};
+  &:not(:last-of-type) {
+    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+  }
+
+  a:not(:last-of-type) {
+    margin-right: 18px;
+  }
 `;
 
 const Container = styled.div`
@@ -74,29 +77,27 @@ const ActionBlock = styled.div`
   }
 `;
 
-const ContactPerson = ({ img, title, name, canCall }) => {
-  return (
-    <div>
-      <ContactContainer>
-        <Image src={img} alt="" />
-        <div>
-          <Position>{title}</Position>
-          <Name>{name}</Name>
+const Contact = ({ contact }) => {
+  const { img, title, name, tel } = contact;
 
+  return (
+    <ContactContainer>
+      <Image src={img} alt="" />
+      <div>
+        <Position>{title}</Position>
+        <Name>{name}</Name>
+        <a href="#">
+          <span className="visually-hidden">Написать письмо</span>
+          <Icon height="24" width="24" name="mail" />
+        </a>
+        {tel && (
           <a href="#">
-            <span className="visually-hidden">Написать письмо</span>
-            <Icon height="24" width="24" name="mail" />
+            <span className="visually-hidden">Позвонить</span>
+            <Icon height="25" width="25" name="tel" />
           </a>
-          {canCall && (
-            <a href="#">
-              <span className="visually-hidden">Позвонить</span>
-              <Icon height="25" width="25" name="tel" />
-            </a>
-          )}
-        </div>
-      </ContactContainer>
-      <BreakingLine />
-    </div>
+        )}
+      </div>
+    </ContactContainer>
   );
 };
 
@@ -123,20 +124,37 @@ const ContactCTA = () => {
   );
 };
 
+const contacts = [
+  {
+    name: "Анастасия Васильева",
+    title: "Председатель профсоюза",
+    img: "./imgs/anastasia1.png"
+  },
+  {
+    name: "Анастасия Тарабрина",
+    title: "Заместитель председателя",
+    img: "./imgs/anastasia2.png",
+    tel: "+799999999999"
+  },
+  {
+    name: "Иван Коновалов",
+    title: "Пресс-секретарь",
+    img: "./imgs/ivan.png",
+    tel: "+799999999999"
+  },
+  {
+    name: "Ирина Кваско",
+    title: "Руководитель пациентского проекта",
+    img: "./imgs/irina.png",
+    tel: "+799999999999"
+  }
+];
+
 const ContactList = () => {
   return (
     <List>
-      {pointsOfContact.map(contact => {
-        return (
-          <li key={contact.name}>
-            <ContactPerson
-              img={contact.img}
-              title={contact.title}
-              name={contact.name}
-              canCall={contact.call}
-            />
-          </li>
-        );
+      {contacts.map(contact => {
+        return <Contact key={contact.name} contact={contact} />;
       })}
     </List>
   );

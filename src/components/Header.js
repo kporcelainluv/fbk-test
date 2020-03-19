@@ -2,8 +2,30 @@ import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 
 import { Navigation } from "./Navigation";
-import { navigation } from "../consts";
 import { Icon } from "./Icon";
+
+export const navigation = [
+  {
+    name: "Новости",
+    link: "#"
+  },
+  {
+    name: "Вступить в Альянс",
+    link: "#"
+  },
+  {
+    name: "Частые вопросы",
+    link: "#"
+  },
+  {
+    name: "Помощь пациетам",
+    link: "#"
+  },
+  {
+    name: "Контакты",
+    link: "#"
+  }
+];
 
 const HeaderBar = styled.div`
   height: 60px;
