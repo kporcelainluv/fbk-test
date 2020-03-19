@@ -10,7 +10,7 @@ const Image = styled.img`
   margin-right: 16px;
 `;
 
-const Position = styled.span`
+const JobTitle = styled.span`
   font-size: ${props => props.theme.fontSizes.small};
   color: ${props => props.theme.colors.lightGrey};
   line-height: 20px;
@@ -84,7 +84,7 @@ const Contact = ({ contact }) => {
     <ContactContainer>
       <Image src={img} alt="" />
       <div>
-        <Position>{title}</Position>
+        <JobTitle>{title}</JobTitle>
         <Name>{name}</Name>
         <a href="#">
           <span className="visually-hidden">Написать письмо</span>
