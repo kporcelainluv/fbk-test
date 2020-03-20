@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const regions = [
@@ -84,9 +84,11 @@ const RegionsList = styled.ul`
     line-height: 24px;
     color: ${props => props.theme.colors.lightGrey};
   }
-  }
 
- 
+  &:last-of-type {
+    display: ${props => (props.displayed ? "none" : "block")};
+    opacity: ${props => (props.displayed ? "0" : "1")};
+  }
 `;
 
 const Region = styled.ul`
@@ -103,12 +105,48 @@ const Region = styled.ul`
   }
 `;
 
-export const RegionsBlock = ({ regions }) => {
+const Block = styled.div``;
+
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  margin-left: 30px;
+  padding: 10px;
+  position: relative;
+
+  span {
+    line-height: 32px;
+    color: ${props => props.theme.colors.red};
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: -16px;
+    height: 16px;
+    width: 15px;
+  }
+  &:first-of-type {
+    display: ${props => (props.displayed ? "block" : "none")};
+    &:before {
+      background-image: url("./icons/arrow-down.svg");
+    }
+  }
+  &:last-of-type {
+    display: ${props => (props.displayed ? "none" : "block")};
+    &:before {
+      background-image: url("./icons/arrow-up.svg");
+    }
+  }
+`;
+
+export const RegionsBlock = ({ regions, displayed }) => {
   return (
-    <RegionsList>
-      {regions.map(region => {
+    <RegionsList displayed={displayed}>
+      {regions.map((region, index) => {
         return (
-          <li key={region.letter}>
+          <li key={region.letter + index}>
             <h3>{region.letter}</h3>
             <Region>
               {region.regions.map(r => {
@@ -126,69 +164,6 @@ export const RegionsBlock = ({ regions }) => {
   );
 };
 
-const Block = styled.div`
-  label {
-    color: ${props => props.theme.colors.red};
-    line-height: 32px;
-    padding: 20px;
-    margin-left: 20px;
-    position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: 25px;
-      left: -10px;
-      height: 16px;
-      width: 15px;
-    }
-  }
-
-  input {
-    opacity: 0;
-    outline: none;
-  }
-  input:focus {
-    label[for="1"] {
-      color: green;
-    }
-    color: yellow;
-  }
-
-  label:first-of-type {
-    &:before {
-      background-image: url("/icons/arrow-down.svg");
-    }
-  }
-  label:last-of-type {
-    &:before {
-      background-image: url("/icons/arrow-up.svg");
-    }
-  }
-  label:last-of-type {
-    display: none;
-  }
-
-  input:not(:checked) ~ ul:last-of-type {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    opacity: 0;
-  }
-  input:checked ~ ul:last-of-type {
-    display: block;
-    transition: opacity 1s;
-  }
-  input:checked ~ ul:last-of-type ~ label:last-of-type {
-    display: block;
-  }
-`;
-
 const RegionsDescription = () => {
   return (
     <IntroBlock>
@@ -203,19 +178,27 @@ const RegionsDescription = () => {
 };
 
 const RegionsContainer = () => {
+  const [state, changeState] = useState({ show: true });
   const regionsBefore = regions.filter((elm, index) => index < 6);
   const regionsAfter = regions.filter((elm, index) => index > 5);
   return (
     <Block>
-      <RegionsBlock regions={regionsBefore} />
-      <label htmlFor="1">
+      <RegionsBlock regions={regionsBefore} displayed={state.show} />
+      <Button
+        type="button"
+        displayed={state.show}
+        onClick={() => changeState(s => ({ show: !s.show }))}
+      >
         <span>Показать все отделения</span>
-      </label>
-      <input type="checkbox" id={"1"} name={"1"} />
-      <RegionsBlock regions={regionsAfter} />
-      <label htmlFor="1">
+      </Button>
+      <RegionsBlock regions={regionsAfter} displayed={state.show} />
+      <Button
+        type="button"
+        displayed={state.show}
+        onClick={() => changeState(s => ({ show: !s.show }))}
+      >
         <span>Скрыть</span>
-      </label>
+      </Button>
     </Block>
   );
 };
