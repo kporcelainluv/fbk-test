@@ -52,7 +52,7 @@ const Heading = styled.h2`
 const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
-  max-width: 255px;
+  max-width: 95%;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 624px;
   }
