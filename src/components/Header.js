@@ -15,6 +15,10 @@ const HeaderWrap = styled.div`
     rgba(245, 246, 255, 1) 0%,
     rgba(255, 255, 255, 1) 20%
   );
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    background: none;
+  }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     flex-direction: row-reverse;
   }
@@ -39,6 +43,9 @@ const Menu = styled.button`
     top: 21px;
     left: -24px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin-left: 70px;
+  }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
     margin-left: 27%;
   }
@@ -60,6 +67,7 @@ const IconContainer = styled.ul`
     padding: 20px 10px;
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin-right: 40px;
     li:first-of-type {
       margin-right: 23px;
     }
