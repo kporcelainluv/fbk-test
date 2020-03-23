@@ -15,6 +15,12 @@ const Container = styled.div`
   padding: 30px 17px;
   display: flex;
   flex-direction: column;
+  margin-top: 50px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    padding: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 const Share = styled.div`
@@ -57,6 +63,9 @@ const SignUp = styled.div`
     line-height: 24px;
     margin-bottom: 10px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin-left: 66px;
+  }
 `;
 
 const Documents = styled.div`
@@ -80,12 +89,36 @@ const Documents = styled.div`
   a {
     color: ${props => props.theme.colors.red};
   }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    width: 530px;
+    ul {
+      display: flex;
+      flex-direction: column;
+      height: 80px;
+      flex-wrap: wrap;
+    }
+    li:nth-of-type(3),
+    li:nth-of-type(4) {
+      padding-left: 40px;
+    }
+  }
 `;
 
 const Name = styled.span`
   opacity: 0.4;
   line-height: 26px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    display: flex;
+    align-items: center;
+  }
 `;
+
+const EmptyBlock = styled.div`
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    width: 100px;
+  }
+`;
+
 export const Footer = () => {
   return (
     <Container>
@@ -102,6 +135,7 @@ export const Footer = () => {
         <span>Подписывайтесь:</span>
         <Socials />
       </SignUp>
+      <EmptyBlock></EmptyBlock>
       <Documents>
         <h2>Документы:</h2>
         <ul>
