@@ -32,18 +32,18 @@ export const App = () => {
       <GlobalStyle />
 
       <Container>
-        {/*<header>*/}
-        {/*  <Header />*/}
-        {/*</header>*/}
-        {/*<main>*/}
-        {/*  <h1 className="visually-hidden">Альянс врачей</h1>*/}
-        {/*  <Hero />*/}
-        {/*  <Reasons />*/}
-        {/*  <JoinAlliance />*/}
-        {/*  <FAQ />*/}
-        {/*  <Contacts />*/}
-        {/*<Regions />*/}
-        {/*</main>*/}
+        <header>
+          <Header />
+        </header>
+        <main>
+          <h1 className="visually-hidden">Альянс врачей</h1>
+          <Hero />
+          <Reasons />
+          <JoinAlliance />
+          <FAQ />
+          <Contacts />
+          <Regions />
+        </main>
 
         <Footer />
       </Container>

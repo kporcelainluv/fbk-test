@@ -33,8 +33,8 @@ const Block = styled.div`
   padding: 0 16px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
-    padding: 30px;
-    margin-bottom: 30px;
+    max-width: 688px;
+    margin: 20px auto;
   }
 `;
 
@@ -216,7 +216,7 @@ const Button = styled.input`
 
 const PersonalWrap = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin-left: 90px;
+    margin: auto;
   }
 `;
 

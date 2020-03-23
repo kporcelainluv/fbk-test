@@ -8,7 +8,8 @@ const Container = styled.div`
   margin: 0 16px 20px;
   padding: 0 16px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 0 40px 20px;
+    max-width: 688px;
+    margin: auto;
     padding: 30px;
     border: 4px solid ${props => props.theme.colors.red};
   }

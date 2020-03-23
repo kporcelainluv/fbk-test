@@ -49,6 +49,10 @@ const Container = styled.div`
 const IntroBlock = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
   padding: 6px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 688px;
+    margin: 0 auto 30px;
+  }
 `;
 
 const Heading = styled.h2`
@@ -114,6 +118,8 @@ const Block = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    max-width: 688px;
+    margin: 0 auto 30px;
   }
 `;
 
@@ -212,10 +218,7 @@ const RegionsDescription = () => {
 
 const RegionsContainer = () => {
   const [state, changeState] = useState({ hide: true });
-  // console.log(window.innerWidth > 767);
-  console.log(state.hide);
-  // const regionsBefore = regions.filter((elm, index) => index < 6);
-  // const regionsAfter = regions.filter((elm, index) => index > 5);
+
   return (
     <Block>
       <RegionsBlock regions={regions} displayed={state.hide} />
@@ -226,7 +229,6 @@ const RegionsContainer = () => {
       >
         <span>Показать все отделения</span>
       </Button>
-      {/*<RegionsBlock regions={regionsAfter} displayed={state.hide} />*/}
       <Button
         type="button"
         displayed={state.hide}

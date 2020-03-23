@@ -20,8 +20,9 @@ const Block = styled.div`
     border: 4px solid ${props => props.theme.colors.red};
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 0 40px 20px;
     padding: 30px;
+    max-width: 688px;
+    margin: auto;
   }
 `;
 
@@ -98,7 +99,8 @@ const JoinBlock = styled.div`
   }
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 0 40px 20px;
+    max-width: 688px;
+    margin: auto;
     padding: 0;
     &:after {
       top: 150px;

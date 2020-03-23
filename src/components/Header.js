@@ -17,7 +17,8 @@ const HeaderWrap = styled.div`
   );
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    background: none;
+    max-width: 688px;
+    margin: auto;
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     flex-direction: row-reverse;
@@ -47,7 +48,7 @@ const Menu = styled.button`
     margin-left: 70px;
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
-    margin-left: 27%;
+    margin-left: 7%;
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     display: none;
@@ -119,8 +120,13 @@ const Icons = () => {
 
 export const Header = () => {
   const [menu, updateMenu] = useState({ hidden: true });
+  const handleKeyDown = function(e) {
+    if (e.keyCode === 27) {
+      updateMenu(m => ({ hidden: !m.hidden }));
+    }
+  };
   return (
-    <HeaderWrap>
+    <HeaderWrap onKeyDown={handleKeyDown}>
       <Menu onClick={() => updateMenu(m => ({ hidden: !m.hidden }))}>Меню</Menu>
       <EmptyDiv />
       <Icons />

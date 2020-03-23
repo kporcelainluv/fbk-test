@@ -49,6 +49,8 @@ const Block = styled.div`
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
+    max-width: 688px;
+    margin: 20px auto;
   }
 `;
 
@@ -72,7 +74,8 @@ const Question = styled.li`
     color: ${props => props.theme.colors.main};
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin-bottom: 30px;
+    max-width: 688px;
+    margin: 0 auto 30px;
   }
 `;
 

@@ -62,6 +62,8 @@ const ContactContainer = styled.li`
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     display: flex;
+    max-width: 688px;
+    margin: 0 auto 30px;
     svg {
       display: none;
     }
@@ -108,6 +110,8 @@ const ContactsBlock = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     padding: 30px;
+    max-width: 688px;
+    margin: 0 auto 30px;
   }
 `;
 

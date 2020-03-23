@@ -113,43 +113,48 @@ const Name = styled.span`
   }
 `;
 
-const EmptyBlock = styled.div`
+const Wrap = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    width: 100px;
+    max-width: 688px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
 export const Footer = () => {
   return (
     <Container>
-      <Share>
-        <span>Расскажите о нас:</span>
-        <a href="#">
-          <div>
-            <Icon name="link-white" height="23" width="24" />
-            <span>Поделиться</span>
-          </div>
-        </a>
-      </Share>
-      <SignUp>
-        <span>Подписывайтесь:</span>
-        <Socials />
-      </SignUp>
-      <EmptyBlock></EmptyBlock>
-      <Documents>
-        <h2>Документы:</h2>
-        <ul>
-          {documents.map(document => {
-            return (
-              <li key={document}>
-                <a href="#">{document}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </Documents>
+      <Wrap>
+        <Share>
+          <span>Расскажите о нас:</span>
+          <a href="#">
+            <div>
+              <Icon name="link-white" height="23" width="24" />
+              <span>Поделиться</span>
+            </div>
+          </a>
+        </Share>
+        <SignUp>
+          <span>Подписывайтесь:</span>
+          <Socials />
+        </SignUp>
+        <Documents>
+          <h2>Документы:</h2>
+          <ul>
+            {documents.map(document => {
+              return (
+                <li key={document}>
+                  <a href="#">{document}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </Documents>
 
-      <Name>Альянс Врачей, 2020</Name>
+        <Name>Альянс Врачей, 2020</Name>
+      </Wrap>
     </Container>
   );
 };

@@ -31,7 +31,7 @@ export default createGlobalStyle`
   }
   
   body {
-    max-width: 375px;
+    max-width: 992px;
     background-color: mistyrose;
     margin: 0 auto;
   }
