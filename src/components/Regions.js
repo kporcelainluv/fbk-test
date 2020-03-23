@@ -38,14 +38,6 @@ const regions = [
   { letter: "Я", regions: ["Ярославская область"] }
 ];
 
-const visuallyHidden = ` position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;`;
 const Container = styled.div`
   padding: 30px 16px;
   background-color: ${props => props.theme.colors.background2};
@@ -56,22 +48,32 @@ const Container = styled.div`
 
 const IntroBlock = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
-  padding: 16px;
+  padding: 6px;
 `;
 
 const Heading = styled.h2`
-  max-width: 256px;
+  max-width: 100%;
   font-family: "CoFo Sans Bold";
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 24px;
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-family: "CoFo Sans";
+    font-size: ${props => props.theme.fontSizes.large2};
+    line-height: 44px;
+    max-width: 100%;
+  }
 `;
 
 const Paragraph = styled.p`
-  max-width: 266px;
+  max-width: 100%;
   line-height: 24px;
 
   a {
     color: ${props => props.theme.colors.red};
+  }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 95%;
   }
 `;
 
@@ -88,6 +90,11 @@ const RegionsList = styled.ul`
   &:last-of-type {
     display: ${props => (props.displayed ? "none" : "block")};
     opacity: ${props => (props.displayed ? "0" : "1")};
+  }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 `;
 
@@ -178,24 +185,25 @@ const RegionsDescription = () => {
 };
 
 const RegionsContainer = () => {
-  const [state, changeState] = useState({ show: true });
+  const [state, changeState] = useState({ hide: true });
+  console.log(state.hide);
   const regionsBefore = regions.filter((elm, index) => index < 6);
   const regionsAfter = regions.filter((elm, index) => index > 5);
   return (
     <Block>
-      <RegionsBlock regions={regionsBefore} displayed={state.show} />
+      <RegionsBlock regions={regionsBefore} displayed={state.hide} />
       <Button
         type="button"
-        displayed={state.show}
-        onClick={() => changeState(s => ({ show: !s.show }))}
+        displayed={state.hide}
+        onClick={() => changeState(s => ({ show: !s.hide }))}
       >
         <span>Показать все отделения</span>
       </Button>
-      <RegionsBlock regions={regionsAfter} displayed={state.show} />
+      <RegionsBlock regions={regionsAfter} displayed={state.hide} />
       <Button
         type="button"
-        displayed={state.show}
-        onClick={() => changeState(s => ({ show: !s.show }))}
+        displayed={state.hide}
+        onClick={() => changeState(s => ({ show: !s.hide }))}
       >
         <span>Скрыть</span>
       </Button>
