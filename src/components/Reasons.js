@@ -44,7 +44,7 @@ const JoinParagraph = styled.p`
   margin-top: 0;
   line-height: 24px;
   font-size: ${props => props.theme.fontSizes.small};
-  max-width: 288px;
+  max-width: 100%;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 310px;
   }
@@ -52,7 +52,7 @@ const JoinParagraph = styled.p`
 const Paragraph = styled.p`
   line-height: 24px;
   font-size: ${props => props.theme.fontSizes.small};
-  max-width: 258px;
+  max-width: 100%;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 600px;
   }
@@ -63,11 +63,11 @@ const List = styled.ul`
   font-size: ${props => props.theme.fontSizes.small};
   padding-left: 0;
   li:first-of-type {
-    max-width: 230px;
+    max-width: 93%;
   }
 
   li {
-    max-width: 255px;
+    max-width: 95%;
     list-style-type: none;
     margin-bottom: 20px;
   }
@@ -87,10 +87,22 @@ const List = styled.ul`
 
 const JoinBlock = styled.div`
   padding: 30px;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+    top: 165px;
+    width: 100%;
+    left: 0;
+  }
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin: 0 40px 20px;
     padding: 0;
+    &:after {
+      top: 150px;
+    }
   }
 `;
 
@@ -102,7 +114,6 @@ const Slogan = styled.h3`
   color: ${props => props.theme.colors.main};
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     font-size: ${props => props.theme.fontSizes.large2};
