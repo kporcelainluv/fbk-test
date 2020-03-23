@@ -92,7 +92,7 @@ const Nav = styled.nav`
   z-index: 2;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin-left: 5%;
+    margin: -1% 0 0 5%;
     width: 207px;
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
