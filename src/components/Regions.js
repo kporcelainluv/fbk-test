@@ -95,6 +95,10 @@ const RegionsList = styled.ul`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    &:last-of-type {
+      display: flex;
+      opacity: 1;
+    }
   }
 `;
 
@@ -112,7 +116,14 @@ const Region = styled.ul`
   }
 `;
 
-const Block = styled.div``;
+const Block = styled.div`
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+`;
 
 const Button = styled.button`
   background-color: transparent;
@@ -146,6 +157,16 @@ const Button = styled.button`
       background-image: url("./icons/arrow-up.svg");
     }
   }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+   &:first-of-type, &:last-of-type {
+    display: none
+  }
+`;
+
+const RegionSegment = styled.li`
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const RegionsBlock = ({ regions, displayed }) => {
@@ -153,7 +174,7 @@ export const RegionsBlock = ({ regions, displayed }) => {
     <RegionsList displayed={displayed}>
       {regions.map((region, index) => {
         return (
-          <li key={region.letter + index}>
+          <RegionSegment key={region.letter + index}>
             <h3>{region.letter}</h3>
             <Region>
               {region.regions.map(r => {
@@ -164,7 +185,7 @@ export const RegionsBlock = ({ regions, displayed }) => {
                 );
               })}
             </Region>
-          </li>
+          </RegionSegment>
         );
       })}
     </RegionsList>
@@ -186,7 +207,7 @@ const RegionsDescription = () => {
 
 const RegionsContainer = () => {
   const [state, changeState] = useState({ hide: true });
-  console.log(state.hide);
+  console.log(window.innerWidth > 767);
   const regionsBefore = regions.filter((elm, index) => index < 6);
   const regionsAfter = regions.filter((elm, index) => index > 5);
   return (
@@ -195,7 +216,7 @@ const RegionsContainer = () => {
       <Button
         type="button"
         displayed={state.hide}
-        onClick={() => changeState(s => ({ show: !s.hide }))}
+        onClick={() => changeState(s => ({ hide: !s.hide }))}
       >
         <span>Показать все отделения</span>
       </Button>
@@ -203,7 +224,7 @@ const RegionsContainer = () => {
       <Button
         type="button"
         displayed={state.hide}
-        onClick={() => changeState(s => ({ show: !s.hide }))}
+        onClick={() => changeState(s => ({ hide: !s.hide }))}
       >
         <span>Скрыть</span>
       </Button>
