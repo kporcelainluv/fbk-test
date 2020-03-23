@@ -77,4 +77,11 @@
         <path d="M8 2.01611L8 14.1089" stroke="#FF384B" stroke-width="2"/>
     </symbol>
 
+    <symbol id="link-white" fill="none">
+        <path d="M9 10.25L12 8.5L15 6.75M9 13.75L12 15.5L15 17.25" stroke="white" stroke-width="2"/>
+        <circle cx="6" cy="12" r="3" stroke="white" stroke-width="2"/>
+        <circle cx="18" cy="5" r="3" stroke="white" stroke-width="2"/>
+        <circle cx="18" cy="19" r="3" stroke="white" stroke-width="2"/>
+    </symbol>
+
 </svg>

@@ -10,6 +10,7 @@ import { JoinAlliance } from "./components/JoinAlliance";
 import { FAQ } from "./components/FAQ";
 import { Contacts } from "./components/Contacts";
 import { Regions } from "./components/Regions";
+import { Footer } from "./components/Footer";
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -41,8 +42,10 @@ export const App = () => {
         {/*  <JoinAlliance />*/}
         {/*  <FAQ />*/}
         {/*  <Contacts />*/}
+        {/*<Regions />*/}
         {/*</main>*/}
-        <Regions />
+
+        <Footer />
       </Container>
     </Theme>
   );
