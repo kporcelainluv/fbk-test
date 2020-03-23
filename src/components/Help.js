@@ -17,6 +17,9 @@ const Container = styled.div`
     max-width: 688px;
     margin: 0 auto 30px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
+  }
 `;
 
 const Heading = styled.h2`
@@ -33,6 +36,9 @@ const Heading = styled.h2`
     max-width: 600px;
     margin-bottom: 20px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-size: ${props => props.theme.fontSizes.large2};
+  }
 `;
 
 const Paragraph = styled.p`
@@ -42,6 +48,9 @@ const Paragraph = styled.p`
   margin-bottom: 0;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 624px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 442px;
   }
 `;
 
@@ -68,6 +77,20 @@ const Problems = styled.ul`
     max-width: 624px;
     li {
       max-width: 624px;
+    }
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 200px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    height: 135px;
+    max-width: 422px;
+    li:nth-child(3) {
+      padding-bottom: 10px;
+    }
+    li:last-child {
+      border-bottom: none;
     }
   }
 `;
@@ -96,11 +119,11 @@ export const Help = () => {
   return (
     <Container>
       <Heading>Помощь пациентам</Heading>
-      <Paragraph>
-        От развала здравоохранения страдают не только медицинские работники, но
-        и пациенты. Многим из них приходится:
-      </Paragraph>
       <Problems>
+        <li>
+          От развала здравоохранения страдают не только медицинские работники,
+          но и пациенты. Многим из них приходится:
+        </li>
         {problems.map(problem => {
           return <li key={problem}>{problem}</li>;
         })}

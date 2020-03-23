@@ -79,6 +79,8 @@ const Link = styled.a`
   font-family: "CoFo Sans Bold";
   padding: 10px 15px;
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    font-family: "CoFo Sans";
+    padding: 0 0 0 15px;
     &:hover {
       color: ${props => props.theme.colors.red};
     }
@@ -96,9 +98,6 @@ const Nav = styled.nav`
     width: 207px;
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
-    margin-left: 24%;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
     flex-direction: row-reverse;
     margin-left: 0;
     width: 600px;
@@ -108,7 +107,13 @@ const Nav = styled.nav`
     display: block;
   }
   ${props => !props.menuState} {
-    ${visuallyHidden}
+    display: none;
+  }
+
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    display: block;
+    width: 595px;
+    background-color: transparent;
   }
 `;
 

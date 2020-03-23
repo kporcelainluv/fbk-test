@@ -19,9 +19,12 @@ const HeaderWrap = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 688px;
     margin: auto;
+    background: none;
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     flex-direction: row-reverse;
+    max-width: 1120px;
+    margin: auto;
   }
 `;
 
@@ -76,6 +79,8 @@ const IconContainer = styled.ul`
       padding: 15px 10px;
     }
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    margin-right: 0;
 `;
 
 const SvgDescription = styled.span`

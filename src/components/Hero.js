@@ -13,8 +13,27 @@ const Container = styled.div`
     padding: 30px;
     border: 4px solid ${props => props.theme.colors.red};
   }
+  @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
+    max-width: 540px;
+    margin: 0 0 30px;
+    padding: 30px;
+    border: 4px solid ${props => props.theme.colors.red};
+  }
+
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    position: relative;
+    margin-left: 50px;
+  }
 `;
 
+const Wrap = styled.div`
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    position: absolute;
+    left: 600px;
+    width: 83%;
+    top: 100px;
+  }
+`;
 const Heading = styled.h2`
   font-family: "CoFo Sans Bold";
   margin-top: 10px;
@@ -26,6 +45,19 @@ const Heading = styled.h2`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     span:last-child {
       padding-left: 6px;
+    }
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    font-size: ${props => props.theme.fontSizes.large2};
+    line-height: 44px;
+
+    span {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+    span:last-child {
+      padding: 0;
     }
   }
 `;
@@ -72,16 +104,18 @@ export const Hero = () => {
           <span>Наша сила</span>
           <span>в объединении!</span>
         </Heading>
-        <Paragraph>
-          Профсоюз «Альянс врачей» защищает права медицинских работников по всей
-          стране. Вместе мы боремся за справедливую заработную плату, достойные
-          условия труда, высокие надбавки и оплачиваемые переработки для всех
-          медиков России.
-        </Paragraph>
+        <Wrap>
+          <Paragraph>
+            Профсоюз «Альянс врачей» защищает права медицинских работников по
+            всей стране. Вместе мы боремся за справедливую заработную плату,
+            достойные условия труда, высокие надбавки и оплачиваемые переработки
+            для всех медиков России.
+          </Paragraph>
 
-        <Link href="#">Узнать больше о нас и о профсоюзах</Link>
+          <Link href="#">Узнать больше о нас и о профсоюзах</Link>
 
-        <Socials />
+          <Socials />
+        </Wrap>
         <Button>Вступить в Альянс врачей</Button>
       </div>
     </Container>

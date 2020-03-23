@@ -28,12 +28,23 @@ const JobTitle = styled.span`
   font-size: ${props => props.theme.fontSizes.small};
   color: ${props => props.theme.colors.lightGrey};
   line-height: 20px;
+
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 183px;
+    display: block;
+    margin-top: -200px;
+    margin-bottom: 200px;
+  }
 `;
 
 const List = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0 0 16px;
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 const Name = styled.h3`
@@ -79,12 +90,23 @@ const ContactContainer = styled.li`
       display: block;
     }
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-of-type) {
+      border-bottom: none;
+    }
+  }
 `;
 
 const Container = styled.div`
   margin: 33px 15px 10px 19px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin: 30px 40px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
   }
 `;
 
@@ -112,6 +134,10 @@ const ContactsBlock = styled.div`
     padding: 30px;
     max-width: 688px;
     margin: 0 auto 30px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 507px;
+    margin: 50px 0 100px;
   }
 `;
 
@@ -142,6 +168,9 @@ const ActionBlock = styled.div`
 const ActionWrap = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     display: flex;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    flex-direction: column;
   }
 `;
 

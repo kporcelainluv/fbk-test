@@ -21,6 +21,10 @@ const Container = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     padding: 30px 40px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
+    padding: 60px 0px;
+  }
 `;
 
 const Heading = styled.h2`
@@ -52,11 +56,23 @@ const Block = styled.div`
     max-width: 688px;
     margin: 20px auto;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    width: 507px;
+    margin: 0 150px;
+  }
 `;
 
 const List = styled.ul`
   list-style-type: none;
   padding-left: 15px;
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 250px;
+    margin: 50px 0 0 150px;
+  }
 `;
 const Question = styled.li`
   line-height: 24px;
@@ -76,6 +92,10 @@ const Question = styled.li`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 688px;
     margin: 0 auto 30px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    margin: 0 0 25px 0;
+    max-width: 470px;
   }
 `;
 

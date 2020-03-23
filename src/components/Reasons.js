@@ -10,6 +10,10 @@ const reasons = [
 const Container = styled.div`
   background-color: ${props => props.theme.colors.background2};
   padding: 30px 0;
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    display: flex;
+    justify-content: space-around;
+  }
 `;
 const Block = styled.div`
   margin: 0 16px 20px;
@@ -22,6 +26,11 @@ const Block = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     padding: 30px;
     max-width: 688px;
+    margin: auto;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    padding: 30px;
+    max-width: 507px;
     margin: auto;
   }
 `;
@@ -106,6 +115,12 @@ const JoinBlock = styled.div`
       top: 150px;
     }
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 540px;
+    &:after {
+      top: 200px;
+    }
+  }
 `;
 
 const Slogan = styled.h3`
@@ -120,7 +135,6 @@ const Slogan = styled.h3`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     font-size: ${props => props.theme.fontSizes.large2};
     font-family: "CoFo Sans";
-    font-size: ${props => props.theme.fontSizes.large};
     letter-spacing: -0.02em;
     line-height: 44px;
     max-width: 585px;

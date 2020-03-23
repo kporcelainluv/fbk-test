@@ -3,6 +3,15 @@ import styled from "styled-components";
 
 const fields = [
   { name: "ФИО", id: "name", type: "text", disabled: false },
+  { name: "Фамилия", id: "surname", type: "text", disabled: false },
+  { name: "Имя", id: "nameFull", type: "text", disabled: false },
+  { name: "Отчество", id: "secondName", type: "text", disabled: false },
+  {
+    name: "У меня нет отчества",
+    id: "secondNameAbsent",
+    type: "checkbox",
+    disabled: false
+  },
   { name: "E-mail", id: "email", type: "email", disabled: false },
   { name: "Телефон", id: "tel", type: "tel", disabled: false },
   {
@@ -26,6 +35,10 @@ const Container = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin: 30px 40px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
+    display: flex;
+  }
 `;
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
@@ -35,6 +48,10 @@ const Block = styled.div`
     border: 4px solid ${props => props.theme.colors.red};
     max-width: 688px;
     margin: 20px auto;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 507px;
+    height: 376px;
   }
 `;
 
@@ -68,15 +85,63 @@ const Link = styled.a`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 806px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
 `;
 
 const Label = styled.label`
   position: relative;
   width: 100%;
   margin-bottom: 16px;
+  &:nth-child(n + 2):nth-child(-n + 5) {
+    display: none;
+  }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin: 0 auto 16px;
-    width: 506px;
+    max-width: 506px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 539px;
+    &:nth-child(1) {
+      display: none;
+    }
+
+    &:nth-child(n + 2):nth-child(-n + 5) {
+      display: flex;
+      margin: 0;
+      max-width: 258px;
+      input {
+        max-width: 258px;
+      }
+      div {
+        &:before {
+          flex: 1 0 0;
+        }
+        &:after {
+          flex: 3 0 0;
+        }
+      }
+    }
+
+    &:nth-child(2n + 2):nth-child(-2n + 4) {
+      margin: 0 20px 20px 45px;
+    }
+
+    &:nth-child(5) {
+      div {
+        max-width: 258px;
+        top: 22px;
+        left: 26px;
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+    }
   }
 `;
 
@@ -101,7 +166,10 @@ const Input = styled.input`
   }
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    width: 506px;
+    max-width: 506px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 539px;
   }
 `;
 
@@ -139,7 +207,10 @@ const FieldBorder = styled.div`
     }
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    width: 506px;
+    max-width: 506px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 539px;
   }
 `;
 const Field = styled.span`
@@ -153,7 +224,8 @@ const Field = styled.span`
 `;
 
 const PersonalData = styled.div`
-  display: flex;
+  display: ${props => (props.form ? "none" : "flex")};
+  //display: flex;
   justify-content: flex-start;
   position: relative;
 
@@ -196,9 +268,13 @@ const PersonalData = styled.div`
     }
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    display: ${props => (props.form ? "none" : "flex")};
     label {
       max-width: 475px;
     }
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    display: flex;
   }
 `;
 
@@ -236,10 +312,23 @@ const JoinCTA = () => {
   );
 };
 
+const Checkbox = ({ children, form }) => {
+  return (
+    <PersonalData form={form}>
+      <input type="checkbox" id="personal-data" name="personal-data" />
+      <label htmlFor="personal-data">{children}</label>
+    </PersonalData>
+  );
+};
+
 const FormBlock = () => {
   return (
     <Form action="">
       {fields.map(field => {
+        if (field.id === "secondNameAbsent") {
+          return <Checkbox form={true}>У меня нет отчества</Checkbox>;
+        }
+
         return (
           <Label htmlFor={field.id} key={field.id}>
             <Input
@@ -255,14 +344,11 @@ const FormBlock = () => {
         );
       })}
       <PersonalWrap>
-        <PersonalData>
-          <input type="checkbox" id="personal-data" name="personal-data" />
-          <label htmlFor="personal-data">
-            Я даю согласие МПРЗ «Альянс врачей» на обработку моих персональных
-            данных в объёме и на условиях, определенных{" "}
-            <Link href="">офертой</Link>
-          </label>
-        </PersonalData>
+        <Checkbox>
+          Я даю согласие МПРЗ «Альянс врачей» на обработку моих персональных
+          данных в объёме и на условиях, определенных{" "}
+          <Link href="">офертой</Link>
+        </Checkbox>
         <Button type="submit" value="Отправить контакты" />
       </PersonalWrap>
     </Form>

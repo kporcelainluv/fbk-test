@@ -21,6 +21,9 @@ const Container = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
+  }
 `;
 
 const Share = styled.div`
@@ -102,6 +105,13 @@ const Documents = styled.div`
       padding-left: 40px;
     }
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    li:nth-of-type(3),
+    li:nth-of-type(4) {
+      padding-left: 20px;
+    }
+    margin-left: 24px;
+  }
 `;
 
 const Name = styled.span`
@@ -117,6 +127,13 @@ const Wrap = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 688px;
     margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
+    margin: 20px 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

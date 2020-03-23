@@ -53,6 +53,10 @@ const IntroBlock = styled.div`
     max-width: 688px;
     margin: 0 auto 30px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 507px;
+    margin: 0;
+  }
 `;
 
 const Heading = styled.h2`
@@ -97,6 +101,9 @@ const RegionsList = styled.ul`
     flex-wrap: wrap;
     height: 920px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    height: 690px;
+  }
 `;
 
 const Region = styled.ul`
@@ -120,6 +127,9 @@ const Block = styled.div`
     flex-wrap: wrap;
     max-width: 688px;
     margin: 0 auto 30px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 1120px;
   }
 `;
 
