@@ -19,8 +19,11 @@ const Heading = styled.h2`
   margin-top: 10px;
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
+  span:last-child {
+    padding-left: 6px;
+  }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    span:last-of-type {
+    span:last-child {
       padding-left: 6px;
     }
   }
@@ -30,7 +33,7 @@ const Paragraph = styled.p`
   line-height: 24px;
   margin-top: 0;
   font-size: ${props => props.theme.fontSizes.small};
-  max-width: 242px;
+  max-width: 98%;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 600px;
