@@ -87,18 +87,11 @@ const RegionsList = styled.ul`
     color: ${props => props.theme.colors.lightGrey};
   }
 
-  &:last-of-type {
-    display: ${props => (props.displayed ? "none" : "block")};
-    opacity: ${props => (props.displayed ? "0" : "1")};
-  }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    &:last-of-type {
-      display: flex;
-      opacity: 1;
-    }
+    height: 920px;
   }
 `;
 
@@ -119,9 +112,8 @@ const Region = styled.ul`
 const Block = styled.div`
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
   }
 `;
 
@@ -164,17 +156,30 @@ const Button = styled.button`
 `;
 
 const RegionSegment = styled.li`
+  &:nth-child(-n + 6) {
+    display: block;
+  }
+  &:nth-child(n + 7) {
+    display: ${props => (props.displayed ? "none" : "block")};
+  }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    line-height: 24px;
     margin-bottom: 40px;
+    &:nth-child(-n + 6) {
+      display: block;
+    }
+    &:nth-child(n + 7) {
+      display: block;
+    }
   }
 `;
 
 export const RegionsBlock = ({ regions, displayed }) => {
   return (
-    <RegionsList displayed={displayed}>
+    <RegionsList>
       {regions.map((region, index) => {
         return (
-          <RegionSegment key={region.letter + index}>
+          <RegionSegment displayed={displayed} key={region.letter + index}>
             <h3>{region.letter}</h3>
             <Region>
               {region.regions.map(r => {
@@ -207,12 +212,13 @@ const RegionsDescription = () => {
 
 const RegionsContainer = () => {
   const [state, changeState] = useState({ hide: true });
-  console.log(window.innerWidth > 767);
-  const regionsBefore = regions.filter((elm, index) => index < 6);
-  const regionsAfter = regions.filter((elm, index) => index > 5);
+  // console.log(window.innerWidth > 767);
+  console.log(state.hide);
+  // const regionsBefore = regions.filter((elm, index) => index < 6);
+  // const regionsAfter = regions.filter((elm, index) => index > 5);
   return (
     <Block>
-      <RegionsBlock regions={regionsBefore} displayed={state.hide} />
+      <RegionsBlock regions={regions} displayed={state.hide} />
       <Button
         type="button"
         displayed={state.hide}
@@ -220,7 +226,7 @@ const RegionsContainer = () => {
       >
         <span>Показать все отделения</span>
       </Button>
-      <RegionsBlock regions={regionsAfter} displayed={state.hide} />
+      {/*<RegionsBlock regions={regionsAfter} displayed={state.hide} />*/}
       <Button
         type="button"
         displayed={state.hide}
