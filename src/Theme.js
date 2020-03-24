@@ -33,7 +33,7 @@ const theme = {
   breakPoints: {
     mobile: "320px",
     tablet: "768px",
-    smallDesktop: "968px",
+    smallDesktop: "992px",
     desktop: "1200px"
   }
 };
