@@ -7,6 +7,7 @@ const SocialList = styled.ul`
   display: flex;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 
   li {
     list-style-type: none;

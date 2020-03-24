@@ -63,6 +63,7 @@ const CTAContainer = styled.ul`
   list-style-type: none;
   line-height: 32px;
   margin: 0 9px;
+  padding: 0;
 
   a {
     display: flex;
