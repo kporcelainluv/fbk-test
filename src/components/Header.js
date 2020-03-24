@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { Icon } from "./Icon";
 import { Navigation } from "./Navigation";
 
-const HeaderWrap = styled.div`
+const ESC_KEY_CODE = 27;
+
+const Container = styled.section`
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -48,17 +50,15 @@ const Menu = styled.button`
     left: -24px;
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin-left: 70px;
+    margin-left: 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
-    margin-left: 7%;
-  }
+
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     display: none;
   }
 `;
 
-const IconContainer = styled.ul`
+const CTAContainer = styled.ul`
   display: flex;
   list-style-type: none;
   line-height: 32px;
@@ -71,7 +71,7 @@ const IconContainer = styled.ul`
     padding: 20px 10px;
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin-right: 40px;
+    margin-right: 0;
     li:first-of-type {
       margin-right: 23px;
     }
@@ -81,9 +81,35 @@ const IconContainer = styled.ul`
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     margin-right: 0;
+    display: flex;
+
+    li:first-child {
+      a {
+        color: orange;
+        display: flex;
+        user-focus: 5;
+      }
+      span {
+        color: orange;
+        display: flex;
+        user-focus: 5;
+      }
+    }
+    li:last-child {
+      a {
+        display: flex;
+        user-focus: 6;
+      }
+      span {
+        color: pink;
+        display: flex;
+        user-focus: 6;
+      }
+    }
+  }
 `;
 
-const SvgDescription = styled.span`
+const Description = styled.span`
   display: none;
   color: ${props => props.theme.colors.red};
   font-size: ${props => props.theme.fontSizes.nav};
@@ -104,38 +130,40 @@ const EmptyDiv = styled.div`
   }
 `;
 
-const Icons = () => {
+const CTABlock = () => {
   return (
-    <IconContainer>
+    <CTAContainer>
       <li>
         <a href="#">
           <Icon name="link" height="23" width="22" />
-          <SvgDescription>Поделиться</SvgDescription>
+          <Description>Поделиться</Description>
         </a>
       </li>
       <li>
         <a href="#">
           <Icon name="rouble" height="24" width="24" />
-          <SvgDescription>Поддержать</SvgDescription>
+          <Description>Поддержать</Description>
         </a>
       </li>
-    </IconContainer>
+    </CTAContainer>
   );
 };
 
 export const Header = () => {
   const [menu, updateMenu] = useState({ hidden: true });
-  const handleKeyDown = function(e) {
-    if (e.keyCode === 27) {
+
+  const handleKeyDown = e => {
+    if (e.keyCode === ESC_KEY_CODE) {
       updateMenu(m => ({ hidden: !m.hidden }));
     }
   };
+
   return (
-    <HeaderWrap onKeyDown={handleKeyDown}>
+    <Container onKeyDown={handleKeyDown}>
       <Menu onClick={() => updateMenu(m => ({ hidden: !m.hidden }))}>Меню</Menu>
       <EmptyDiv />
-      <Icons />
+      <CTABlock />
       <Navigation menuState={menu.hidden} />
-    </HeaderWrap>
+    </Container>
   );
 };

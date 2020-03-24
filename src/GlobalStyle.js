@@ -30,9 +30,5 @@ export default createGlobalStyle`
     border: 0;
   }
   
-  body {
-    max-width: 1120px;
-    background-color: mistyrose;
-    margin: 0 auto;
-  }
+  
 `;

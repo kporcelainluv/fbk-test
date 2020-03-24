@@ -24,19 +24,41 @@ const navigation = [
   }
 ];
 
-const visuallyHidden = `
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;`;
+const Nav = styled.nav`
+  width: 100%;
+  box-shadow: 0px 16px 60px rgba(157, 167, 217, 0.2);
+  background-color: ${props => props.theme.colors.background};
+  z-index: 2;
+  margin-top: -2%;
+
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    margin: -1% 0 0 0%;
+    width: 207px;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
+    flex-direction: row-reverse;
+    margin-left: 0;
+    width: 600px;
+    box-shadow: none;
+  }
+  ${props => props.menuState} {
+    display: block;
+  }
+  ${props => !props.menuState} {
+    display: none;
+  }
+
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    display: block;
+
+    width: 595px;
+    background-color: transparent;
+  }
+`;
 
 const List = styled.ul`
   list-style-type: none;
-  padding: 0;
+  padding: 10px 0 0;
   width: 100%;
   margin-top: 0;
   margin-bottom: 0;
@@ -52,6 +74,42 @@ const List = styled.ul`
     display: flex;
     flex-direction: row;
     margin-top: 20px;
+    padding: 0;
+    li:first-child {
+      a {
+        color: yellow;
+        display: flex;
+        user-focus: 0;
+      }
+    }
+    li:nth-child(2) {
+      a {
+        color: green;
+        display: flex;
+        order: 1;
+      }
+    }
+    li:nth-child(3) {
+      a {
+        color: red;
+        display: flex;
+        order: 2;
+      }
+    }
+    li:nth-child(4) {
+      a {
+        color: blue;
+        display: flex;
+        order: 3;
+      }
+    }
+    li:nth-child(5) {
+      a {
+        color: violet;
+        display: flex;
+        order: 4;
+      }
+    }
   }
 `;
 
@@ -84,36 +142,6 @@ const Link = styled.a`
     &:hover {
       color: ${props => props.theme.colors.red};
     }
-  }
-`;
-
-const Nav = styled.nav`
-  width: 100%;
-  box-shadow: -3px 20px 10px 17px rgba(245, 246, 255, 0.49);
-  background-color: ${props => props.theme.colors.background};
-  z-index: 2;
-
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: -1% 0 0 5%;
-    width: 207px;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
-    flex-direction: row-reverse;
-    margin-left: 0;
-    width: 600px;
-    box-shadow: none;
-  }
-  ${props => props.menuState} {
-    display: block;
-  }
-  ${props => !props.menuState} {
-    display: none;
-  }
-
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    display: block;
-    width: 595px;
-    background-color: transparent;
   }
 `;
 
