@@ -10,7 +10,7 @@ const documents = [
   "Федеральный закон о профсоюзах"
 ];
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: ${props => props.theme.colors.background2};
   padding: 30px 17px;
   display: flex;
@@ -20,9 +20,6 @@ const Container = styled.div`
     padding: 40px;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    max-width: 1120px;
   }
 `;
 
@@ -37,7 +34,7 @@ const Share = styled.div`
   }
   a {
     display: flex;
-    width: 177px;
+    max-width: 177px;
     height: 60px;
     background-color: ${props => props.theme.colors.red};
     color: ${props => props.theme.colors.background};
@@ -114,7 +111,7 @@ const Documents = styled.div`
   }
 `;
 
-const Name = styled.span`
+const Organization = styled.span`
   opacity: 0.4;
   line-height: 26px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
@@ -133,7 +130,7 @@ const Wrap = styled.div`
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     max-width: 1120px;
-    margin: 20px 0;
+    margin: 20px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -170,7 +167,7 @@ export const Footer = () => {
           </ul>
         </Documents>
 
-        <Name>Альянс Врачей, 2020</Name>
+        <Organization>Альянс Врачей, 2020</Organization>
       </Wrap>
     </Container>
   );
