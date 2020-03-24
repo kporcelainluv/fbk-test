@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 const Block = styled.div`
   margin: 0 16px 20px;
-  padding: 0 16px;
+  padding: 0 12px;
 
   border: 3px solid ${props => props.theme.colors.red};
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
@@ -48,6 +48,9 @@ const Heading = styled.h2`
       padding-left: 6px;
     }
   }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    font-family: "CoFo Sans Bold";
+  }
 `;
 
 const JoinParagraph = styled.p`
@@ -73,11 +76,11 @@ const List = styled.ul`
   font-size: ${props => props.theme.fontSizes.small};
   padding-left: 0;
   li:first-of-type {
-    max-width: 93%;
+    max-width: 89%;
   }
 
   li {
-    max-width: 95%;
+    max-width: 99%;
     list-style-type: none;
     margin-bottom: 20px;
   }
@@ -93,10 +96,20 @@ const List = styled.ul`
       max-width: 620px;
     }
   }
+
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    li,
+    li:first-of-type {
+      max-width: 414px;
+    }
+    li:nth-of-type(2) {
+      max-width: 389px;
+    }
+  }
 `;
 
 const JoinBlock = styled.div`
-  padding: 30px;
+  margin: 0 16px 20px;
   position: relative;
   &:after {
     content: "";
@@ -109,7 +122,7 @@ const JoinBlock = styled.div`
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 688px;
-    margin: auto;
+    margin: 20px auto;
     padding: 0;
     &:after {
       top: 150px;
@@ -122,7 +135,11 @@ const JoinBlock = styled.div`
     }
   }
 `;
-
+const SplitText = styled.br`
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    display: none;
+  }
+`;
 const Slogan = styled.h3`
   font-family: "CoFo Sans Bold";
   font-size: ${props => props.theme.fontSizes.heading};
@@ -137,8 +154,8 @@ const Slogan = styled.h3`
     font-family: "CoFo Sans";
     letter-spacing: -0.02em;
     line-height: 44px;
-    max-width: 585px;
-    position: relative;
+    max-width: 590px;
+    mtposition: relative;
   }
 `;
 
@@ -147,13 +164,13 @@ const RedText = styled.span`
 `;
 
 const Button = styled.button`
-  width: 243px;
+  max-width: 243px;
   height: 60px;
   color: ${props => props.theme.colors.background};
   background-color: ${props => props.theme.colors.red};
   border: none;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    width: 249px;
+    max-width: 249px;
   }
 `;
 
@@ -161,8 +178,9 @@ const JoinCTABlock = () => {
   return (
     <JoinBlock>
       <Slogan>
-        Профсоюз — это ваша <RedText>защита</RedText> и ваша{" "}
-        <RedText>возможность улучшить условия</RedText> работы
+        Профсоюз — <SplitText /> это ваша <RedText>защита</RedText>{" "}
+        <SplitText /> и ваша <RedText>возможность улучшить условия</RedText>{" "}
+        работы
       </Slogan>
       <JoinParagraph>
         Вступайте в независимый профсоюз медицинских работников «Альянс врачей»!

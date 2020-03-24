@@ -14,15 +14,12 @@ import { Footer } from "./components/Footer";
 
 const Container = styled.div`
   box-sizing: border-box;
-  max-width: 768px;
   font-family: "Cofo Sans";
   background-color: #fff;
+  max-width: 100%;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    max-width: 992px;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    max-width: 1200px;
+    margin: auto;
   }
 `;
 
