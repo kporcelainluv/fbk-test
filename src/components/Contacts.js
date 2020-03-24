@@ -4,16 +4,6 @@ import styled from "styled-components";
 import { Socials } from "./Socials";
 import { Icon } from "./Icon";
 
-const visuallyHidden = `
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;`;
-
 const Image = styled.img`
   height: 76px;
   width: 76px;
@@ -104,9 +94,6 @@ const Container = styled.div`
   margin: 33px 15px 10px 19px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin: 30px 40px;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    max-width: 1120px;
   }
 `;
 
