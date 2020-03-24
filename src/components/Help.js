@@ -12,6 +12,7 @@ const problems = [
 const Container = styled.div`
   background-color: ${props => props.theme.colors.background};
   padding: 0 16px;
+  max-width: 96%;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     padding: 30px;
     max-width: 688px;
@@ -19,6 +20,7 @@ const Container = styled.div`
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     max-width: 1120px;
+    margin-left: 7%;
   }
 `;
 
@@ -38,19 +40,6 @@ const Heading = styled.h2`
   }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     font-size: ${props => props.theme.fontSizes.large2};
-  }
-`;
-
-const Paragraph = styled.p`
-  font-size: ${props => props.theme.fontSizes.small};
-  line-height: 24px;
-  max-width: 256px;
-  margin-bottom: 0;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    max-width: 624px;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    max-width: 442px;
   }
 `;
 
@@ -84,10 +73,21 @@ const Problems = styled.ul`
     height: 200px;
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    height: 135px;
-    max-width: 422px;
+    height: 140px;
+    max-width: 561px;
+    li:first-child {
+      max-width: 430px;
+    }
+
     li:nth-child(3) {
       padding-bottom: 10px;
+    }
+
+    li:nth-child(4),
+    li:nth-child(5),
+    li:nth-child(6) {
+      margin-left: 50px;
+      color: red;
     }
     li:last-child {
       border-bottom: none;

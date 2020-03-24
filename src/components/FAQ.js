@@ -22,7 +22,6 @@ const Container = styled.div`
     padding: 30px 40px;
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    max-width: 1120px;
     padding: 60px 0px;
   }
 `;
@@ -46,10 +45,14 @@ const Paragraph = styled.p`
     max-width: 624px;
     padding-bottom: 30px;
   }
+  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+    max-width: 420px;
+  }
 `;
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
   padding-left: 15px;
+  max-width: 96%;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
@@ -58,20 +61,44 @@ const Block = styled.div`
   }
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     width: 507px;
-    margin: 0 150px;
+    margin: 0 7%;
+  }
+`;
+
+const SplitText = styled.br`
+  ${props => !props.first} {
+    display: block;
+  }
+  ${props => !props.second} {
+    display: none;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    ${props => !props.first} {
+      display: none;
+    }
+
+    ${props => !props.second} {
+      display: block;
+    }
   }
 `;
 
 const List = styled.ul`
   list-style-type: none;
   padding-left: 15px;
+  max-width: 288px;
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    max-width: 678px;
+    margin: 0 auto;
+  }
+
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     max-width: 1120px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     height: 250px;
-    margin: 50px 0 0 150px;
+    margin: 50px 0 0 7%;
   }
 `;
 const Question = styled.li`
@@ -106,9 +133,10 @@ export const FAQ = () => {
         <Heading>Частые вопросы</Heading>
         <Paragraph>
           Независимые профсоюзы — новое явление для нашей страны. С ним связано
-          множество тонкостей и нюансов, в которых трудно разобраться. Ниже мы
-          постарались ответить на самые частые вопросы о профсоюзах в целом и
-          «Альянсе врачей» в частности.
+          множество тонкостей <SplitText first /> и нюансов, в которых трудно
+          разобраться. Ниже мы постарались ответить <SplitText second /> на
+          самые частые вопросы о профсоюзах в целом и «Альянсе врачей» в
+          частности.
         </Paragraph>
       </Block>
       <List>
