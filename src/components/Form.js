@@ -43,7 +43,7 @@ const Container = styled.div`
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
   margin-bottom: 20px;
-  padding: 0 16px;
+  padding: 0 12px;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
     max-width: 688px;
@@ -69,7 +69,7 @@ const Heading = styled.h2`
 const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
-  max-width: 95%;
+  max-width: 100%;
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     max-width: 624px;
   }
@@ -82,7 +82,7 @@ const Link = styled.a`
   margin-bottom: 16px;
 `;
 
-const Form = styled.form`
+const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
@@ -128,7 +128,7 @@ const Label = styled.label`
     }
 
     &:nth-child(2n + 2):nth-child(-2n + 4) {
-      margin: 0 20px 20px 45px;
+      margin: 0 20px 20px 70px;
     }
 
     &:nth-child(5) {
@@ -225,7 +225,6 @@ const Field = styled.span`
 
 const PersonalData = styled.div`
   display: ${props => (props.form ? "none" : "flex")};
-  //display: flex;
   justify-content: flex-start;
   position: relative;
 
@@ -296,37 +295,56 @@ const PersonalWrap = styled.div`
   }
 `;
 
+const SplitText = styled.br`
+  &:last-of-type {
+    display: none;
+  }
+  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+    &:first-of-type {
+      display: none;
+    }
+    &:last-of-type {
+      display: block;
+    }
+  }
+`;
+
 const JoinCTA = () => {
   return (
     <Block>
       <Heading>Вступайте в Альянс врачей</Heading>
       <Paragraph>
-        По закону мы можем принять вас в профсоюз, только если у нас есть
-        отделение в вашем регионе. Если его нет, мы поможем его создать. Если в
-        профсоюз вступит более половины сотрудников учреждения, вы сможете
-        менять условия коллективного договора, а также участвовать в
-        распределении оплаты труда и премий.
+        По закону мы можем принять вас <SplitText /> в профсоюз, только если у
+        нас есть отделение в вашем регионе. Если его нет, мы поможем его
+        создать.
+        <SplitText /> Если в профсоюз вступит более половины сотрудников
+        учреждения, вы сможете менять условия коллективного договора, а также
+        участвовать в распределении оплаты труда <SplitText /> и премий.
       </Paragraph>
       <Link href="">Как устроен профсоюз?</Link>
     </Block>
   );
 };
 
-const Checkbox = ({ children, form }) => {
+const Checkbox = ({ children, form, name }) => {
   return (
     <PersonalData form={form}>
-      <input type="checkbox" id="personal-data" name="personal-data" />
-      <label htmlFor="personal-data">{children}</label>
+      <input type="checkbox" id={name} name={name} />
+      <label htmlFor={name}>{children}</label>
     </PersonalData>
   );
 };
 
-const FormBlock = () => {
+const FormComponent = () => {
   return (
-    <Form action="">
+    <FormBlock action="">
       {fields.map(field => {
         if (field.id === "secondNameAbsent") {
-          return <Checkbox form={true}>У меня нет отчества</Checkbox>;
+          return (
+            <Checkbox form={true} name="secondNameAbsent">
+              У меня нет отчества
+            </Checkbox>
+          );
         }
 
         return (
@@ -344,22 +362,22 @@ const FormBlock = () => {
         );
       })}
       <PersonalWrap>
-        <Checkbox>
+        <Checkbox name="personal-data">
           Я даю согласие МПРЗ «Альянс врачей» на обработку моих персональных
           данных в объёме и на условиях, определенных{" "}
           <Link href="">офертой</Link>
         </Checkbox>
         <Button type="submit" value="Отправить контакты" />
       </PersonalWrap>
-    </Form>
+    </FormBlock>
   );
 };
 
-export const JoinAlliance = () => {
+export const Form = () => {
   return (
     <Container>
       <JoinCTA />
-      <FormBlock />
+      <FormComponent />
     </Container>
   );
 };

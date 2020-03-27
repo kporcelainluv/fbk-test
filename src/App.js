@@ -6,7 +6,7 @@ import GlobalStyle from "./GlobalStyle";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Reasons } from "./components/Reasons";
-import { JoinAlliance } from "./components/JoinAlliance";
+import { Form } from "./components/Form";
 import { FAQ } from "./components/FAQ";
 import { Contacts } from "./components/Contacts";
 import { Regions } from "./components/Regions";
@@ -16,7 +16,6 @@ const Container = styled.div`
   box-sizing: border-box;
   font-family: "Cofo Sans";
   background-color: #fff;
-  max-width: 100%;
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
     margin: auto;
@@ -36,7 +35,7 @@ export const App = () => {
           <h1 className="visually-hidden">Альянс врачей</h1>
           <Hero />
           <Reasons />
-          <JoinAlliance />
+          <Form />
           <FAQ />
           <Contacts />
           <Regions />
