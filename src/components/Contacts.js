@@ -3,12 +3,69 @@ import styled from "styled-components";
 
 import { Socials } from "./Socials";
 import { Icon } from "./Icon";
+import { breakpoint, fontFamily } from "../core/sc";
+
+const contacts = [
+  {
+    name: "Анастасия Васильева",
+    title: "Председатель профсоюза",
+    additionalTitle: ", врач-офтальмолог",
+    img: "./imgs/anastasia1.png",
+    email: "help@alyansvrachey.org"
+  },
+  {
+    name: "Анастасия Тарабрина",
+    title: "Заместитель председателя",
+    additionalTitle: " профсоюза",
+    img: "./imgs/anastasia2.png",
+    tel: "+7 (919) 464-11-56",
+    email: "tarabrina@alyansvrachey.org"
+  },
+  {
+    name: "Иван Коновалов",
+    title: "Пресс-секретарь",
+    additionalTitle: " профсоюза",
+    img: "./imgs/ivan.png",
+    tel: "+7 (929) 673-00-31",
+    email: "press@alyansvrachey.org"
+  },
+  {
+    name: "Ирина Кваско",
+    title: "Руководитель пациентского проекта",
+    img: "./imgs/irina.png",
+    tel: "+7 (909) 342-54-53",
+    email: "patients@alyansvrachey.org"
+  }
+];
+
+const Container = styled.section`
+  max-width: 90%;
+  margin: 0 auto 28px;
+  @media (min-width: ${breakpoint.tablet}) {
+    margin: 30px 40px;
+  }
+`;
+const Heading = styled.h2`
+  font-family: ${fontFamily.bold};
+  font-size: ${props => props.theme.fontSizes.heading};
+  line-height: 28px;
+  max-width: 200px;
+  margin: 0 0 10px;
+
+  @media (min-width: ${breakpoint.tablet}) {
+    font-size: ${props => props.theme.fontSizes.large};
+    line-height: 44px;
+    font-family: ${fontFamily.regular};
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+`;
 
 const Image = styled.img`
   height: 76px;
   width: 76px;
   margin-right: 16px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     height: 142px;
     width: 142px;
   }
@@ -19,7 +76,11 @@ const JobTitle = styled.span`
   color: ${props => props.theme.colors.lightGrey};
   line-height: 20px;
 
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  span {
+    display: none;
+  }
+
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 183px;
     display: block;
     margin-top: -200px;
@@ -30,8 +91,8 @@ const JobTitle = styled.span`
 const List = styled.ul`
   list-style-type: none;
   padding: 0;
-  margin: 0 0 16px;
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  margin: 0;
+  @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     flex-direction: row;
   }
@@ -40,19 +101,22 @@ const List = styled.ul`
 const Name = styled.h3`
   font-size: ${props => props.theme.fontSizes.medium};
   line-height: 22px;
-  margin: 0 0 12px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    font-family: "CoFo Sans";
+  margin: 0 0 6px;
+  @media (min-width: ${breakpoint.tablet}) {
+    font-family: ${fontFamily.regular};
     font-size: ${props => props.theme.fontSizes.subheading};
   }
 `;
 
 const ContactContainer = styled.li`
   display: flex;
-  padding: 24px 0;
+  padding: 23px 0;
 
   &:not(:last-of-type) {
     border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+  }
+  &:last-of-type {
+    padding-bottom: 0;
   }
 
   a:not(:last-of-type) {
@@ -61,7 +125,7 @@ const ContactContainer = styled.li`
   a span:nth-child(2) {
     display: none;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     display: flex;
     max-width: 688px;
     margin: 0 auto 30px;
@@ -80,7 +144,7 @@ const ContactContainer = styled.li`
       display: block;
     }
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     flex-direction: column;
 
@@ -90,39 +154,15 @@ const ContactContainer = styled.li`
   }
 `;
 
-const Container = styled.div`
-  margin: 33px 15px 10px 19px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 30px 40px;
-  }
-`;
-
-const Heading = styled.h2`
-  font-family: "CoFo Sans Bold";
-  font-weight: bold;
-  font-size: ${props => props.theme.fontSizes.heading};
-  line-height: 28px;
-  max-width: 200px;
-  margin: 0 0 16px;
-
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    font-size: ${props => props.theme.fontSizes.large};
-    line-height: 44px;
-    font-family: "CoFo Sans";
-    max-width: 600px;
-    margin-bottom: 20px;
-  }
-`;
-
 const ContactsBlock = styled.div`
   padding: 16px;
   border: 3px solid ${props => props.theme.colors.red};
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     padding: 30px;
     max-width: 688px;
     margin: 0 auto 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
     margin: 50px 0 100px;
   }
@@ -131,32 +171,32 @@ const ContactsBlock = styled.div`
 const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
-  max-width: 255px;
+  max-width: 100%;
   padding: 0;
-  margin: 0 0 16px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  margin: 0 0 14px;
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 410px;
   }
 `;
 
 const ActionBlock = styled.div`
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: 17px;
   align-items: center;
   a {
     color: ${props => props.theme.colors.red};
     padding-left: 10px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     margin-right: 20px;
   }
 `;
 
 const ActionWrap = styled.div`
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     display: flex;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     flex-direction: column;
   }
 `;
@@ -214,39 +254,6 @@ const ContactCTA = () => {
     </ContactsBlock>
   );
 };
-
-const contacts = [
-  {
-    name: "Анастасия Васильева",
-    title: "Председатель профсоюза",
-    additionalTitle: ", врач-офтальмолог",
-    img: "./imgs/anastasia1.png",
-    email: "help@alyansvrachey.org"
-  },
-  {
-    name: "Анастасия Тарабрина",
-    title: "Заместитель председателя",
-    additionalTitle: " профсоюза",
-    img: "./imgs/anastasia2.png",
-    tel: "+7 (919) 464-11-56",
-    email: "tarabrina@alyansvrachey.org"
-  },
-  {
-    name: "Иван Коновалов",
-    title: "Пресс-секретарь",
-    additionalTitle: " профсоюза",
-    img: "./imgs/ivan.png",
-    tel: "+7 (929) 673-00-31",
-    email: "press@alyansvrachey.org"
-  },
-  {
-    name: "Ирина Кваско",
-    title: "Руководитель пациентского проекта",
-    img: "./imgs/irina.png",
-    tel: "+7 (909) 342-54-53",
-    email: "patients@alyansvrachey.org"
-  }
-];
 
 const ContactList = () => {
   return (

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { breakpoint, fontFamily } from "../core/sc";
+
 const regions = [
   { letter: " ", regions: ["Москва", "Московская область", "Санкт-Петербург"] },
   { letter: "А", regions: ["Архангельская область", "Астраханская область"] },
-  { letter: "Е", regions: ["Еврейская АО "] },
   { letter: "Е", regions: ["Еврейская АО "] },
   { letter: "И", regions: ["Ивановская область"] },
   {
@@ -39,35 +40,36 @@ const regions = [
 ];
 
 const Container = styled.section`
-  padding: 30px 16px;
+  padding: 30px 0;
   background-color: ${props => props.theme.colors.background2};
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     padding: 30px;
   }
 `;
 
 const IntroBlock = styled.div`
+  max-width: 90%;
+  margin: 0 auto;
   border: 3px solid ${props => props.theme.colors.red};
-  padding: 6px;
-  max-width: 288px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  padding: 0 14px;
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
     margin: 0 auto 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
     margin: 0 0 0 45px;
   }
 `;
 
 const Heading = styled.h2`
-  max-width: 100%;
-  font-family: "CoFo Sans Bold";
+  margin: 17px 0 0;
+  font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.heading};
-  line-height: 24px;
+  line-height: 28px;
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    font-family: "CoFo Sans Bold";
+  @media (min-width: ${breakpoint.tablet}) {
+    font-family: ${fontFamily.bold};
     font-size: ${props => props.theme.fontSizes.large2};
     line-height: 44px;
     max-width: 100%;
@@ -75,16 +77,16 @@ const Heading = styled.h2`
 `;
 
 const Paragraph = styled.p`
-  max-width: 100%;
+  margin-top: 7px;
   line-height: 24px;
-
+  font-size: ${props => props.theme.fontSizes.small};
   a {
     color: ${props => props.theme.colors.red};
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 95%;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 94%;
   }
 `;
@@ -92,20 +94,20 @@ const Paragraph = styled.p`
 const RegionsList = styled.ul`
   padding-left: 0;
   list-style-type: none;
-
+  margin-bottom: 15px;
   h3 {
     font-size: ${props => props.theme.fontSizes.small};
     line-height: 24px;
     color: ${props => props.theme.colors.lightGrey};
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     height: 920px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     height: 690px;
   }
 `;
@@ -117,23 +119,26 @@ const Region = styled.ul`
   font-size: ${props => props.theme.fontSizes.small};
 
   li {
-    padding-bottom: 8px;
+    padding-bottom: 9px;
   }
   a {
+    line-height: 24px;
+    font-size: 15px;
     color: ${props => props.theme.colors.main};
   }
 `;
 
 const Wrap = styled.div`
-  max-width: 288px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  max-width: 90%;
+  margin: 0 auto;
+  @media (min-width: ${breakpoint.tablet}) {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     max-width: 688px;
     margin: 0 auto 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
   }
 `;
@@ -141,8 +146,7 @@ const Wrap = styled.div`
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  margin-left: 10px;
-  padding: 10px;
+  margin-left: 18px;
   position: relative;
 
   span {
@@ -153,7 +157,7 @@ const Button = styled.button`
   &:before {
     content: "";
     position: absolute;
-    top: 17px;
+    top: 8px;
     left: -16px;
     height: 16px;
     width: 15px;
@@ -168,9 +172,10 @@ const Button = styled.button`
     display: ${props => (props.displayed ? "none" : "block")};
     &:before {
       background-image: url("./icons/arrow-up.svg");
+      top: 10px;
     }
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
    &:first-of-type, &:last-of-type {
     display: none
   }
@@ -180,10 +185,13 @@ const RegionSegment = styled.li`
   &:nth-child(-n + 6) {
     display: block;
   }
-  &:nth-child(n + 7) {
+  &:nth-child(n + 6) {
     display: ${props => (props.displayed ? "none" : "block")};
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  h3 {
+    margin: 15px 0 7px;
+  }
+  @media (min-width: ${breakpoint.tablet}) {
     line-height: 24px;
     margin-bottom: 40px;
     &:nth-child(-n + 6) {
@@ -195,7 +203,7 @@ const RegionSegment = styled.li`
   }
 `;
 const SplitText = styled.br`
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     display: none;
   }
 `;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Icon } from "./Icon";
 import { Navigation } from "./Navigation";
+import { breakpoint } from "../core/sc";
 
 const ESC_KEY_CODE = 27;
 
@@ -12,18 +13,13 @@ const Container = styled.section`
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
-  background: linear-gradient(
-    0deg,
-    rgba(245, 246, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 20%
-  );
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
     margin: auto;
     background: none;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     flex-direction: row-reverse;
     max-width: 1120px;
     margin: auto;
@@ -47,13 +43,13 @@ const Menu = styled.button`
     width: 20px;
     background-image: url("/icons/burger.svg");
     top: 21px;
-    left: -24px;
+    left: -27px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     margin-left: 30px;
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     display: none;
   }
 `;
@@ -71,7 +67,7 @@ const CTAContainer = styled.ul`
     align-items: center;
     padding: 20px 10px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     margin-right: 0;
     li:first-of-type {
       margin-right: 23px;
@@ -80,7 +76,7 @@ const CTAContainer = styled.ul`
       padding: 15px 10px;
     }
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     margin-right: 0;
     display: flex;
 
@@ -115,7 +111,7 @@ const Description = styled.span`
   color: ${props => props.theme.colors.red};
   font-size: ${props => props.theme.fontSizes.nav};
   line-height: 32px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     display: inline-block;
     margin-left: 10px;
   }
@@ -123,10 +119,10 @@ const Description = styled.span`
 
 const EmptyDiv = styled.div`
   width: 1px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     width: 100px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     display: none;
   }
 `;

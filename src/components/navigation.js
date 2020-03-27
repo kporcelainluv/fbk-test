@@ -27,6 +27,7 @@ const navigation = [
 const Nav = styled.nav`
   width: 100%;
   box-shadow: 0px 16px 60px rgba(157, 167, 217, 0.2);
+
   background-color: ${props => props.theme.colors.background};
   z-index: 2;
   margin-top: -2%;
@@ -47,6 +48,13 @@ const Nav = styled.nav`
   ${props => !props.menuState} {
     display: none;
   }
+  li:first-child {
+    background: linear-gradient(
+      180deg,
+      rgba(245, 246, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 20%
+    );
+  }
 
   @media (min-width: ${props => props.theme.breakPoints.desktop}) {
     display: block;
@@ -58,13 +66,19 @@ const Nav = styled.nav`
 
 const List = styled.ul`
   list-style-type: none;
-  padding: 10px 0 0;
+  padding: 0 0 0;
   width: 100%;
   margin-top: 0;
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
-
+  li:first-child {
+    background: linear-gradient(
+      180deg,
+      rgba(245, 246, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 20%
+    );
+  }
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {

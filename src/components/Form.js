@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { breakpoint, fontFamily } from "../core/sc";
+
 const fields = [
   { name: "ФИО", id: "name", type: "text", disabled: false },
   { name: "Фамилия", id: "surname", type: "text", disabled: false },
@@ -29,40 +31,44 @@ const fields = [
   }
 ];
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: ${props => props.theme.colors.background};
-  margin: 30px 16px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: 30px 40px;
+  margin-bottom: 30px;
+
+  @media (min-width: ${breakpoint.tablet}) {
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
     display: flex;
   }
 `;
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
-  margin-bottom: 20px;
   padding: 0 12px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  max-width: 90%;
+  margin: 0 auto 33px;
+  @media (min-width: ${breakpoint.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
     max-width: 688px;
     margin: 20px auto;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
     height: 376px;
   }
 `;
 
 const Heading = styled.h2`
-  font-family: "CoFo Sans Bold";
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: "CoFo Sans";
+    font-family: ${fontFamily.regular};
   }
 `;
 
@@ -70,7 +76,8 @@ const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
   max-width: 100%;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  margin-bottom: 5px;
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 624px;
   }
 `;
@@ -85,7 +92,9 @@ const Link = styled.a`
 const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  max-width: 90%;
+  margin: 0 auto;
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 806px;
     display: flex;
     flex-wrap: wrap;
@@ -96,15 +105,18 @@ const FormBlock = styled.form`
 const Label = styled.label`
   position: relative;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 40px;
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
   &:nth-child(n + 2):nth-child(-n + 5) {
     display: none;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     margin: 0 auto 16px;
     max-width: 506px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 539px;
     &:nth-child(1) {
       display: none;
@@ -165,10 +177,10 @@ const Input = styled.input`
     background-color: ${props => props.theme.colors.background2};
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 506px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 539px;
   }
 `;
@@ -193,7 +205,7 @@ const FieldBorder = styled.div`
   &:after {
     display: block;
     content: "";
-    flex: 10 0 0;
+    flex: 15 0 0;
     height: 1px;
     border-top: 3px solid ${props => props.theme.colors.active};
     border-color: inherit;
@@ -206,15 +218,15 @@ const FieldBorder = styled.div`
       color: ${props => props.theme.colors.lightGrey};
     }
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 506px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 539px;
   }
 `;
 const Field = styled.span`
-  font-family: "CoFo Sans Bold";
+  font-family: ${fontFamily.bold};
   line-height: 18px;
   margin-top: -6px;
   font-size: ${props => props.theme.fontSizes.form};
@@ -227,6 +239,7 @@ const PersonalData = styled.div`
   display: ${props => (props.form ? "none" : "flex")};
   justify-content: flex-start;
   position: relative;
+  margin-bottom: 20px;
 
   label {
     font-size: ${props => props.theme.fontSizes.small};
@@ -234,7 +247,7 @@ const PersonalData = styled.div`
     color: ${props => props.theme.colors.lightGrey};
     max-width: 227px;
     position: relative;
-    margin-left: 30px;
+    margin-left: 19px;
   }
 
   input {
@@ -243,8 +256,8 @@ const PersonalData = styled.div`
   label:before {
     content: "";
     position: absolute;
-    top: 5px;
-    left: -40px;
+    top: 2px;
+    left: -31px;
     height: 20px;
     width: 20px;
     background-image: url("icons/checkbox.svg");
@@ -266,31 +279,32 @@ const PersonalData = styled.div`
       background-image: url("icons/checkbox-on.svg");
     }
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     display: ${props => (props.form ? "none" : "flex")};
     label {
       max-width: 475px;
     }
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     display: flex;
   }
 `;
 
 const Button = styled.input`
   width: 210px;
+  max-width: 100%;
   height: 60px;
   color: ${props => props.theme.colors.background};
   background-color: ${props => props.theme.colors.red};
   border: none;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     margin: 24px 0;
     width: 249px;
   }
 `;
 
 const PersonalWrap = styled.div`
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     margin: auto;
   }
 `;
@@ -299,7 +313,7 @@ const SplitText = styled.br`
   &:last-of-type {
     display: none;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     &:first-of-type {
       display: none;
     }
@@ -312,7 +326,9 @@ const SplitText = styled.br`
 const JoinCTA = () => {
   return (
     <Block>
-      <Heading>Вступайте в Альянс врачей</Heading>
+      <Heading>
+        <span>Вступайте</span> <span>в Альянс врачей</span>
+      </Heading>
       <Paragraph>
         По закону мы можем принять вас <SplitText /> в профсоюз, только если у
         нас есть отделение в вашем регионе. Если его нет, мы поможем его

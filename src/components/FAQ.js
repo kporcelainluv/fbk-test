@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Help } from "./Help";
+import { breakpoint, fontFamily } from "../core/sc";
 
 const questions = [
   "Почему нельзя просто вступить в профсоюз, а важно создать ППО?",
@@ -14,54 +15,57 @@ const questions = [
   "Как устроен профсоюз?"
 ];
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: ${props => props.theme.colors.background2};
-  padding: 0 15px 20px;
+  padding: 33px 0 30px;
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     padding: 30px 40px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     padding: 60px 0px;
+  }
+`;
+const Block = styled.div`
+  border: 3px solid ${props => props.theme.colors.red};
+  padding: 0 0 15px 15px;
+  max-width: 90%;
+  margin: auto;
+
+  @media (min-width: ${breakpoint.tablet}) {
+    border: 4px solid ${props => props.theme.colors.red};
+    max-width: 688px;
+    margin: 20px auto;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    width: 507px;
+    margin: 0 7%;
   }
 `;
 
 const Heading = styled.h2`
-  font-family: "CoFo Sans Bold";
+  font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  margin: 13px 0 10px;
+  @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: "CoFo Sans";
+    font-family: ${fontFamily.regular};
   }
 `;
 
 const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
-  max-width: 248px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  max-width: 94%;
+  margin: 0;
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 624px;
     padding-bottom: 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 420px;
-  }
-`;
-const Block = styled.div`
-  border: 3px solid ${props => props.theme.colors.red};
-  padding-left: 15px;
-  max-width: 96%;
-
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    border: 4px solid ${props => props.theme.colors.red};
-    max-width: 688px;
-    margin: 20px auto;
-  }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    width: 507px;
-    margin: 0 7%;
   }
 `;
 
@@ -72,7 +76,7 @@ const SplitText = styled.br`
   ${props => !props.second} {
     display: none;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     ${props => !props.first} {
       display: none;
     }
@@ -86,13 +90,14 @@ const SplitText = styled.br`
 const List = styled.ul`
   list-style-type: none;
   padding-left: 15px;
-  max-width: 288px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  max-width: 92%;
+  margin: 15px auto 33px;
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 678px;
     margin: 0 auto;
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
     display: flex;
     flex-direction: column;
@@ -116,11 +121,11 @@ const Question = styled.li`
   a {
     color: ${props => props.theme.colors.main};
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
     margin: 0 auto 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     margin: 0 0 25px 0;
     max-width: 470px;
   }

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { breakpoint, fontFamily } from "../core/sc";
+
 const problems = [
   "— по несколько недель ждать записи к нужному специалисту;",
   "— стоять в многочасовых очередях;",
@@ -11,34 +13,36 @@ const problems = [
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.background};
-  padding: 0 16px;
-  max-width: 96%;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  padding: 6px 16px;
+  max-width: 90%;
+  margin: 0 auto 33px;
+  @media (min-width: ${breakpoint.tablet}) {
     padding: 30px;
     max-width: 688px;
     margin: 0 auto 30px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
     margin-left: 7%;
   }
 `;
 
 const Heading = styled.h2`
-  font-family: "CoFo Sans Bold";
+  margin: 0 0 15px 0;
+  font-family: ${fontFamily.bold};
   font-weight: bold;
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
   max-width: 200px;
   padding-top: 10px;
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: "CoFo Sans";
+    font-family: ${fontFamily.regular};
     max-width: 600px;
     margin-bottom: 20px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large2};
   }
 `;
@@ -49,12 +53,11 @@ const Problems = styled.ul`
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 24px;
   margin: 0;
-  max-width: 256px;
 
   li {
     margin: 0;
     padding: 0;
-    max-width: 261px;
+    max-width: 100%;
   }
 
   li:last-child {
@@ -62,7 +65,7 @@ const Problems = styled.ul`
     padding-bottom: 20px;
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     max-width: 624px;
     li {
       max-width: 624px;
@@ -72,7 +75,7 @@ const Problems = styled.ul`
     flex-wrap: wrap;
     height: 200px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     height: 140px;
     max-width: 561px;
     li:first-child {
@@ -97,19 +100,19 @@ const Problems = styled.ul`
 
 const Subheading = styled.h3`
   line-height: 22px;
-  font-family: "CoFo Sans Bold";
+  font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.medium};
-  max-width: 235px;
-  padding-bottom: 16px;
+  max-width: 98%;
+  margin-bottom: 13px;
 
   a {
     color: ${props => props.theme.colors.red};
     padding-left: 3px;
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.subheading};
-    font-family: "CoFo Sans";
+    font-family: ${fontFamily.regular};
     max-width: 624px;
     line-height: 26px;
   }
