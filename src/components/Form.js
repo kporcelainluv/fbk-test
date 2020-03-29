@@ -48,6 +48,7 @@ const Container = styled.section`
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
     display: flex;
+    margin-bottom: 45px;
   }
 `;
 const Block = styled.div`
@@ -62,8 +63,11 @@ const Block = styled.div`
     max-width: 100%;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    max-width: 507px;
+    width: 507px;
+    margin: 0;
+    max-width: 100%;
     height: 376px;
+    padding: 25px 20px 30px 40px;
   }
 `;
 
@@ -83,6 +87,13 @@ const Heading = styled.h2`
       padding-left: 6px;
     }
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    font-family: ${fontFamily.regular};
+    flex-direction: column;
+    span:last-of-type {
+      padding-left: 0;
+    }
+  }
 `;
 
 const Paragraph = styled.p`
@@ -93,6 +104,9 @@ const Paragraph = styled.p`
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 98%;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin-bottom: 0;
+  }
 `;
 
 const Link = styled.a`
@@ -100,6 +114,9 @@ const Link = styled.a`
   color: ${props => props.theme.colors.red};
   display: block;
   margin-bottom: 16px;
+  @media (min-width: ${breakpoint.desktop}) {
+    display: inline-block;
+  }
 `;
 
 const FormBlock = styled.form`
@@ -111,10 +128,11 @@ const FormBlock = styled.form`
     max-width: 100%;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    max-width: 806px;
+    max-width: 540px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    margin: 7px 0 0 75px;
   }
 `;
 
@@ -134,13 +152,13 @@ const Label = styled.label`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 539px;
+
     &:nth-child(1) {
       display: none;
     }
 
     &:nth-child(n + 2):nth-child(-n + 5) {
       display: flex;
-      margin: 0;
       max-width: 258px;
       input {
         max-width: 258px;
@@ -150,13 +168,14 @@ const Label = styled.label`
           flex: 1 0 0;
         }
         &:after {
-          flex: 3 0 0;
+          flex: 13 0 0;
         }
       }
     }
 
-    &:nth-child(2n + 2):nth-child(-2n + 4) {
-      margin: 0 20px 20px 70px;
+    &:nth-child(3),
+    &:nth-child(5) {
+      margin-left: 20px;
     }
 
     &:nth-child(5) {
@@ -170,6 +189,8 @@ const Label = styled.label`
         }
       }
     }
+    margin: 0 0 40px 0;
+    padding: 0;
   }
 `;
 
@@ -307,6 +328,11 @@ const PersonalData = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     display: flex;
+    margin-left: ${props => (props.form ? "22px" : "0")};
+    margin-top: ${props => (props.form ? "10px" : "0")};
+    label {
+      max-width: 540px;
+    }
   }
 `;
 
@@ -321,11 +347,19 @@ const Button = styled.input`
     margin: 20px 0;
     width: 207px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin: 17px 0;
+    width: 244px;
+    font-size: ${props => props.theme.fontSizes.medium};
+  }
 `;
 
 const PersonalWrap = styled.div`
   @media (min-width: ${breakpoint.tablet}) {
     margin: auto;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin: 0;
   }
 `;
 
@@ -333,11 +367,20 @@ const SplitText = styled.br`
   &:last-of-type {
     display: none;
   }
+  &:nth-of-type(2) {
+    display: none;
+  }
   @media (min-width: ${breakpoint.tablet}) {
     &:first-of-type {
       display: none;
     }
+
     &:last-of-type {
+      display: block;
+    }
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    &:nth-of-type(2) {
       display: block;
     }
   }
@@ -350,9 +393,9 @@ const JoinCTA = () => {
         <span>Вступайте</span> <span>в Альянс врачей</span>
       </Heading>
       <Paragraph>
-        По закону мы можем принять вас <SplitText /> в профсоюз, только если у
-        нас есть отделение в вашем регионе. Если его нет, мы поможем его
-        создать.
+        По закону мы можем принять вас <SplitText /> в профсоюз, только если{" "}
+        <SplitText /> у нас есть отделение в вашем регионе. Если его нет, мы
+        поможем его создать.
         <SplitText /> Если в профсоюз вступит более половины сотрудников
         учреждения, вы сможете менять условия коллективного договора, а также
         участвовать в распределении оплаты труда <SplitText /> и премий.
@@ -377,7 +420,7 @@ const FormComponent = () => {
       {fields.map(field => {
         if (field.id === "secondNameAbsent") {
           return (
-            <Checkbox form={true} name="secondNameAbsent">
+            <Checkbox key={field.id} form="true" name="secondNameAbsent">
               У меня нет отчества
             </Checkbox>
           );

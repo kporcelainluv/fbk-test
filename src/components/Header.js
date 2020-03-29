@@ -22,14 +22,14 @@ const Container = styled.section`
   @media (min-width: ${breakpoint.desktop}) {
     flex-direction: row-reverse;
     max-width: 1120px;
-    margin: auto;
+    margin: auto auto 60px;
   }
 `;
 
 const Menu = styled.button`
   border: none;
   background-color: transparent;
-  margin-left: 45px;
+  margin-left: 36px;
   color: ${props => props.theme.colors.main};
   font-size: ${props => props.theme.fontSizes.nav};
   line-height: 32px;
@@ -58,7 +58,7 @@ const CTAContainer = styled.ul`
   display: flex;
   list-style-type: none;
   line-height: 32px;
-  margin: 0 9px;
+  margin: -5px -4px;
   padding: 0;
 
   a {
@@ -79,30 +79,6 @@ const CTAContainer = styled.ul`
   @media (min-width: ${breakpoint.desktop}) {
     margin-right: 0;
     display: flex;
-
-    li:first-child {
-      a {
-        color: orange;
-        display: flex;
-        user-focus: 5;
-      }
-      span {
-        color: orange;
-        display: flex;
-        user-focus: 5;
-      }
-    }
-    li:last-child {
-      a {
-        display: flex;
-        user-focus: 6;
-      }
-      span {
-        color: pink;
-        display: flex;
-        user-focus: 6;
-      }
-    }
   }
 `;
 

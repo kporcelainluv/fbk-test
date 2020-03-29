@@ -59,7 +59,8 @@ const IntroBlock = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
-    margin: 0 0 0 45px;
+    margin: 20px 0 0;
+    padding: 26px 33px;
   }
 `;
 
@@ -75,6 +76,9 @@ const Heading = styled.h2`
     line-height: 44px;
     max-width: 100%;
     margin-bottom: 12px;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin-bottom: 16px;
   }
 `;
 
@@ -111,7 +115,8 @@ const RegionsList = styled.ul`
     height: 700px;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    height: 690px;
+    height: 550px;
+    margin-top: 23px;
   }
 `;
 
@@ -205,10 +210,23 @@ const RegionSegment = styled.li`
       margin-left: 35px;
     }
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    &:nth-child(n + 5) {
+      display: block;
+      margin-left: 35px;
+    }
+  }
 `;
 const SplitText = styled.br`
   @media (min-width: ${breakpoint.tablet}) {
     display: none;
+  }
+`;
+
+const RegionsWrap = styled.div`
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 1120px;
+    margin: 0 auto;
   }
 `;
 
@@ -281,8 +299,10 @@ const RegionsContainer = () => {
 export const Regions = () => {
   return (
     <Container>
-      <RegionsDescription />
-      <RegionsContainer />
+      <RegionsWrap>
+        <RegionsDescription />
+        <RegionsContainer />
+      </RegionsWrap>
     </Container>
   );
 };

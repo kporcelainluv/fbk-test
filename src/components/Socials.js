@@ -15,6 +15,8 @@ const SocialList = styled.ul`
     display: inline-flex;
     height: 32px;
     width: 32px;
+    line-height: 0;
+}
   }
 
   @media (min-width: ${props => props.theme.breakPoints.tablet}) {
@@ -24,13 +26,7 @@ const SocialList = styled.ul`
   }
 `;
 
-export const socials = [
-  "odnoklassniki",
-  "facebook",
-  "twitter",
-  "youtube",
-  "vk"
-];
+const socials = ["odnoklassniki", "facebook", "twitter", "youtube", "vk"];
 
 export const Socials = () => {
   return (
@@ -38,7 +34,7 @@ export const Socials = () => {
       {socials.map(social => {
         return (
           <li key={social}>
-            <a href="">
+            <a href="#">
               <Icon name={social} width="32" height="32" viewBox="0 0 32 32" />
               <span className="visually-hidden">{social}</span>
             </a>

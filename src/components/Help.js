@@ -13,7 +13,7 @@ const problems = [
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.background};
-  padding: 6px 16px;
+  padding: 6px 15px;
   max-width: 90%;
   margin: 0 auto 33px;
   @media (min-width: ${breakpoint.tablet}) {
@@ -23,7 +23,7 @@ const Container = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
-    margin-left: 7%;
+    padding: 28px 40px 20px;
   }
 `;
 
@@ -80,6 +80,7 @@ const Problems = styled.ul`
   @media (min-width: ${breakpoint.desktop}) {
     height: 140px;
     max-width: 561px;
+    margin-bottom: 13px;
     li:first-child {
       max-width: 430px;
     }
@@ -88,11 +89,8 @@ const Problems = styled.ul`
       padding-bottom: 10px;
     }
 
-    li:nth-child(4),
-    li:nth-child(5),
-    li:nth-child(6) {
-      margin-left: 50px;
-      color: red;
+    li:nth-child(n + 4):nth-child(-n + 6) {
+      margin-left: 110px;
     }
     li:last-child {
       border-bottom: none;
@@ -118,8 +116,19 @@ const Subheading = styled.h3`
     line-height: 26px;
     margin: 16px 0 18px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    font-family: ${fontFamily.regular};
+    max-width: 624px;
+    line-height: 26px;
+    margin: 30px 0 18px;
+  }
 `;
 
+const DottedLine = styled.div`
+  @media (min-width: ${breakpoint.desktop}) {
+    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+  }
+`;
 export const Help = () => {
   return (
     <Container>
@@ -133,6 +142,7 @@ export const Help = () => {
           return <li key={problem}>{problem}</li>;
         })}
       </Problems>
+      <DottedLine />
       <Subheading>
         Если вы или ваши близкие столкнулись с проблемами при получении
         медицинской помощи, пишите нам на

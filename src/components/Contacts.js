@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
 import { Socials } from "./Socials";
@@ -11,7 +11,8 @@ const contacts = [
     title: "Председатель профсоюза",
     additionalTitle: ", врач-офтальмолог",
     img: "./imgs/anastasia1.png",
-    email: "help@alyansvrachey.org"
+    email: "help@alyansvrachey.org",
+    fullTitle: "Председатель профсоюза, врач-офтальмолог"
   },
   {
     name: "Анастасия Тарабрина",
@@ -19,7 +20,8 @@ const contacts = [
     additionalTitle: " профсоюза",
     img: "./imgs/anastasia2.png",
     tel: "+7 (919) 464-11-56",
-    email: "tarabrina@alyansvrachey.org"
+    email: "tarabrina@alyansvrachey.org",
+    fullTitle: "Заместитель \n председателя профсоюза"
   },
   {
     name: "Иван Коновалов",
@@ -45,6 +47,10 @@ const Container = styled.section`
     margin: 30px auto 40px;
     max-width: 688px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 1120px;
+    margin-bottom: 28px;
+  }
 `;
 const Heading = styled.h2`
   font-family: ${fontFamily.bold};
@@ -69,6 +75,10 @@ const Image = styled.img`
     height: 142px;
     width: 142px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    height: 100px;
+    width: 100px;
+  }
 `;
 
 const JobTitle = styled.span`
@@ -86,10 +96,16 @@ const JobTitle = styled.span`
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
-    max-width: 183px;
-    display: block;
-    margin-top: -200px;
-    margin-bottom: 200px;
+    margin: -160px 0 135px 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 187px;
+    white-space: pre-line;
+
+    span {
+      display: inline-block;
+      padding-left: 0;
+    }
   }
 `;
 
@@ -100,6 +116,8 @@ const List = styled.ul`
   @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-right: 40px;
   }
 `;
 
@@ -111,6 +129,10 @@ const Name = styled.h3`
     margin: 4px 0 18px;
     font-family: ${fontFamily.regular};
     font-size: ${props => props.theme.fontSizes.subheading};
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    font-size: 20px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -152,23 +174,30 @@ const ContactContainer = styled.li`
     div {
       margin: 8px 0 0 10px;
     }
-    &:first-of-type {
-      div {
-        margin: 24px 0 0 10px;
-        span {
-          padding-left: 0;
-        }
+    &:first-of-type{
+      div{
+        margin: 25px 0 0 10px;
       }
+  
+  }
+    
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     flex-direction: column;
-
+    max-width: 100%;
     &:not(:last-of-type) {
       border-bottom: none;
     }
-  }
+    div{
+    margin: 0;
+    }
+    &:nth-of-type(2){
+    margin-left: 10px;
+    }
+    
+ 
 `;
 
 const ContactsBlock = styled.div`
@@ -179,7 +208,8 @@ const ContactsBlock = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
-    margin: 50px 0 100px;
+    margin: 63px 0 67px;
+    padding: 38px 40px 35px;
   }
 `;
 
@@ -191,6 +221,9 @@ const Paragraph = styled.p`
   margin: 0 0 14px;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 410px;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin: 0 0 19px;
   }
 `;
 
@@ -220,16 +253,26 @@ const ActionWrap = styled.div`
 const AboutWrap = styled.div``;
 
 const Contact = ({ contact }) => {
-  const { img, title, name, tel, email, additionalTitle } = contact;
+  const { img, title, name, tel, email, additionalTitle, fullTitle } = contact;
+  const jobTitle = (title, additionalTitle, fullTitle) => {
+    if (fullTitle && window.innerWidth >= 1200) {
+      return fullTitle;
+    } else if (additionalTitle) {
+      return (
+        <Fragment>
+          {title}
+          <span>{additionalTitle}</span>
+        </Fragment>
+      );
+    }
+    return title;
+  };
 
   return (
     <ContactContainer>
       <Image src={img} alt="" />
       <AboutWrap>
-        <JobTitle>
-          {title}
-          {additionalTitle && <span>{additionalTitle}</span>}
-        </JobTitle>
+        <JobTitle>{jobTitle(title, additionalTitle, fullTitle)}</JobTitle>
         <Name>{name}</Name>
         <a href={"mailto: " + email}>
           <span className="visually-hidden">Написать письмо</span>

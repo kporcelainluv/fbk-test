@@ -17,10 +17,11 @@ const Container = styled.section`
     padding: 30px 0 40px;
     margin-bottom: 43px;
   }
-
   @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     justify-content: space-around;
+    padding: 30px 0 60px;
+    margin-bottom: 60px;
   }
 `;
 const Block = styled.div`
@@ -38,9 +39,9 @@ const Block = styled.div`
     max-width: 688px;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    padding: 30px;
     max-width: 507px;
-    margin: auto;
+    padding: 26px 36px;
+    margin: 0 auto;
   }
 `;
 
@@ -48,7 +49,7 @@ const Heading = styled.h2`
   font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
-  margin: 10px auto 0;
+  margin: 18px auto 0;
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     font-family: ${fontFamily.regular};
@@ -71,6 +72,9 @@ const JoinParagraph = styled.p`
     max-width: 310px;
     margin: 0 0 27px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 360px;
+  }
 `;
 const Paragraph = styled.p`
   line-height: 24px;
@@ -80,12 +84,18 @@ const Paragraph = styled.p`
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 90%;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 100%;
+  }
 `;
 
 const DottedLine = styled.div`
   border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
   width: 100%;
   margin-bottom: 17px;
+  @media (min-width: ${breakpoint.desktop}) {
+    margin-bottom: 30px;
+  }
 `;
 
 const List = styled.ul`
@@ -93,11 +103,11 @@ const List = styled.ul`
   font-size: ${props => props.theme.fontSizes.small};
   padding-left: 0;
   li:first-of-type {
-    max-width: 89%;
+    max-width: 90%;
   }
 
   li {
-    max-width: 99%;
+    max-width: 100%;
     list-style-type: none;
     margin-bottom: 23px;
   }
@@ -120,10 +130,10 @@ const List = styled.ul`
   @media (min-width: ${breakpoint.desktop}) {
     li,
     li:first-of-type {
-      max-width: 414px;
+      max-width: 420px;
     }
     li:nth-of-type(2) {
-      max-width: 389px;
+      max-width: 410px;
     }
   }
 `;
@@ -136,14 +146,18 @@ const JoinBlock = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 540px;
+    margin: 40px 0 0 75px;
     &:after {
       top: 200px;
     }
   }
 `;
 const SplitText = styled.br`
+
   @media (min-width: ${breakpoint.tablet}) {
     display: none;
+  }
+
   }
 `;
 const Slogan = styled.h3`
@@ -164,6 +178,9 @@ const Slogan = styled.h3`
     max-width: 590px;
     position: relative;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    padding-bottom: 31px;
+  }
 `;
 
 const RedText = styled.span`
@@ -178,7 +195,19 @@ const Button = styled.button`
   background-color: ${props => props.theme.colors.red};
   border: none;
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 249px;
+    width: 249px;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    width: 275px;
+    font-size: ${props => props.theme.fontSizes.medium};
+  }
+`;
+
+const Wrap = styled.div`
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
   }
 `;
 
@@ -209,6 +238,17 @@ const ReasonsBlock = () => {
       </Paragraph>
       <List>
         {reasons.map((reason, index) => {
+          if (window.innerWidth >= 1200 && index === 1) {
+            return (
+              <li key={reason}>
+                <span>{index + 1}.</span>
+                Представители профсоюза вправе приходить <br /> в учреждение,
+                контролировать соблюдение законодательства и прав работников,
+                оказывать всестороннюю поддержку членам профсоюза и заставлять
+                администрацию устранять нарушения.
+              </li>
+            );
+          }
           return (
             <li key={reason}>
               <span>{index + 1}.</span>
@@ -224,8 +264,10 @@ const ReasonsBlock = () => {
 export const Reasons = () => {
   return (
     <Container>
-      <ReasonsBlock />
-      <JoinCTABlock />
+      <Wrap>
+        <ReasonsBlock />
+        <JoinCTABlock />
+      </Wrap>
     </Container>
   );
 };

@@ -35,6 +35,9 @@ const Organization = styled.span`
     align-items: center;
     margin-top: 10px;
   }
+  @media (min-width: ${breakpoint.tablet}) {
+    margin-top: 0;
+  }
 `;
 
 const Wrap = styled.div`
@@ -49,10 +52,11 @@ const Wrap = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
-    margin: 20px auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 `;
 
@@ -90,6 +94,12 @@ const BlockWrap = styled.div`
 
     @media (min-width: ${breakpoint.tablet}) {
       margin-bottom: 28px;
+    }
+    @media (min-width: ${breakpoint.tablet}) {
+      margin-bottom: 34px;
+      a {
+        width: 188px;
+      }
     }
   }
 
@@ -139,19 +149,20 @@ const BlockWrap = styled.div`
       }
     }
     @media (min-width: ${breakpoint.desktop}) {
+      margin-bottom: 0;
       li:nth-of-type(3),
       li:nth-of-type(4) {
-        padding-left: 20px;
+        padding-left: 66px;
       }
       margin-left: 24px;
     }
   }
 `;
 
-const Block = ({ text, children }) => {
+const Block = ({ heading, children }) => {
   return (
     <BlockWrap>
-      <span>{text}</span>
+      <span>{heading}</span>
       {children}
     </BlockWrap>
   );
@@ -161,7 +172,7 @@ export const Footer = () => {
   return (
     <Container>
       <Wrap>
-        <Block text="Расскажите о нас:">
+        <Block heading="Расскажите о нас:">
           <a href="#">
             <div>
               <Icon name="link-white" height="23" width="24" />
@@ -169,10 +180,10 @@ export const Footer = () => {
             </div>
           </a>
         </Block>
-        <Block text="Подписывайтесь:">
+        <Block heading="Подписывайтесь:">
           <Socials />
         </Block>
-        <Block text="Документы:">
+        <Block heading="Документы:">
           <ul>
             {documents.map(document => {
               return (

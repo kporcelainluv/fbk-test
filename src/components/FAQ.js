@@ -17,14 +17,14 @@ const questions = [
 
 const Container = styled.section`
   background-color: ${props => props.theme.colors.background2};
-  padding: 33px 0 30px;
+  padding: 33px 0 25px;
 
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px 40px 7px;
+    padding: 30px 40px 40px;
     margin-bottom: 42px;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    padding: 60px 0px;
+    padding: 60px 0;
   }
 `;
 const Block = styled.div`
@@ -37,11 +37,12 @@ const Block = styled.div`
     border: 4px solid ${props => props.theme.colors.red};
     max-width: 688px;
     padding: 18px 28px 0;
-    margin: 10px auto 33px;
+    margin: 10px auto 28px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     width: 507px;
-    margin: 0 7%;
+    margin: 0 auto 40px 0;
+    padding: 24px 20px 5px 35px;
   }
 `;
 
@@ -53,6 +54,7 @@ const Heading = styled.h2`
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -66,23 +68,29 @@ const Paragraph = styled.p`
     padding-bottom: 30px;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    max-width: 420px;
+    max-width: 405px;
   }
 `;
 
 const SplitText = styled.br`
-  ${props => !props.first} {
+  &:first-of-type {
     display: block;
   }
-  ${props => !props.second} {
+  &:nth-of-type(2) {
+    display: none;
+  }
+  &:last-of-type {
     display: none;
   }
   @media (min-width: ${breakpoint.tablet}) {
-    ${props => !props.first} {
+    &:first-of-type {
+      display: none;
+    }
+    &:nth-of-type(2) {
       display: none;
     }
 
-    ${props => !props.second} {
+    &:last-of-type {
       display: block;
     }
   }
@@ -100,12 +108,11 @@ const List = styled.ul`
   }
 
   @media (min-width: ${breakpoint.desktop}) {
-    max-width: 1120px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 250px;
-    margin: 50px 0 0 7%;
+    height: 235px;
+    margin: 0 auto 0 0;
   }
 `;
 const Question = styled.li`
@@ -130,34 +137,45 @@ const Question = styled.li`
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
-    margin: 0 0 25px 0;
+    margin: 0 0 24px 0;
     max-width: 470px;
+    &:nth-of-type(n + 5):nth-of-type(-n + 8) {
+      margin-left: 112px;
+    }
+  }
+`;
+const Wrap = styled.div`
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 1120px;
+    margin: 0 auto;
   }
 `;
 
 export const FAQ = () => {
   return (
     <Container>
-      <Block>
-        <Heading>Частые вопросы</Heading>
-        <Paragraph>
-          Независимые профсоюзы — новое явление для нашей страны. С ним связано
-          множество тонкостей <SplitText first /> и нюансов, в которых трудно
-          разобраться. Ниже мы постарались ответить <SplitText second /> на
-          самые частые вопросы о профсоюзах в целом и «Альянсе врачей» в
-          частности.
-        </Paragraph>
-      </Block>
-      <List>
-        {questions.map(question => {
-          return (
-            <Question key={question}>
-              <a href="">{question}</a>
-            </Question>
-          );
-        })}
-      </List>
-      <Help />
+      <Wrap>
+        <Block>
+          <Heading>Частые вопросы</Heading>
+          <Paragraph>
+            Независимые профсоюзы — новое явление для нашей страны. С ним
+            связано множество тонкостей <SplitText /> и нюансов, <SplitText />в
+            которых трудно разобраться. Ниже мы постарались ответить
+            <SplitText /> на самые частые вопросы о профсоюзах в целом и
+            «Альянсе врачей» в частности.
+          </Paragraph>
+        </Block>
+        <List>
+          {questions.map(question => {
+            return (
+              <Question key={question}>
+                <a href="">{question}</a>
+              </Question>
+            );
+          })}
+        </List>
+        <Help />
+      </Wrap>
     </Container>
   );
 };

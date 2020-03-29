@@ -50,18 +50,10 @@ const Nav = styled.nav`
   ${props => !props.menuState} {
     display: none;
   }
-  li:first-child {
-    background: linear-gradient(
-      180deg,
-      rgba(245, 246, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 20%
-    );
-  }
 
   @media (min-width: ${breakpoint.desktop}) {
     display: block;
-
-    width: 595px;
+    width: 700px;
     background-color: transparent;
   }
 `;
@@ -91,40 +83,9 @@ const List = styled.ul`
     flex-direction: row;
     margin-top: 20px;
     padding: 0;
+
     li:first-child {
-      a {
-        color: yellow;
-        display: flex;
-        user-focus: 0;
-      }
-    }
-    li:nth-child(2) {
-      a {
-        color: green;
-        display: flex;
-        order: 1;
-      }
-    }
-    li:nth-child(3) {
-      a {
-        color: red;
-        display: flex;
-        order: 2;
-      }
-    }
-    li:nth-child(4) {
-      a {
-        color: blue;
-        display: flex;
-        order: 3;
-      }
-    }
-    li:nth-child(5) {
-      a {
-        color: violet;
-        display: flex;
-        order: 4;
-      }
+      background: none;
     }
   }
 `;
@@ -139,8 +100,14 @@ const ListElement = styled.li`
     background-color: ${props => props.theme.colors.background2};
   }
   @media (min-width: ${breakpoint.desktop}) {
+    background: none;
     &:hover {
       background-color: transparent;
+    }
+    &:first-child {
+      a {
+        padding: 0;
+      }
     }
   }
 `;
@@ -153,18 +120,21 @@ const Link = styled.a`
   font-family: ${fontFamily.bold};
   padding: 10px 15px;
   @media (min-width: ${breakpoint.desktop}) {
-    font-family: ${fontFamily.regular};
-    padding: 0 0 0 15px;
+    font-family: ${fontFamily.bold};
+    padding: 0 0 0 33px;
+
     &:hover {
       color: ${props => props.theme.colors.red};
     }
   }
 `;
 
-const NavigationElement = ({ link, text }) => {
+const NavigationElement = ({ link, text, index }) => {
   return (
     <ListElement>
-      <Link href={link}>{text}</Link>
+      <Link href={link} tabIndex={index + 1}>
+        {text}
+      </Link>
     </ListElement>
   );
 };
@@ -173,12 +143,13 @@ export const Navigation = ({ menuState }) => {
   return (
     <Nav menuState={menuState}>
       <List>
-        {navigation.map(element => {
+        {navigation.map((element, index) => {
           return (
             <NavigationElement
               key={element.name}
               link={element.link}
               text={element.name}
+              index={index}
             />
           );
         })}

@@ -5,6 +5,18 @@ import { Socials } from "./Socials";
 import { breakpoint, fontFamily } from "../core/sc";
 
 const Container = styled.section`
+  max-width: 100%;
+  @media (min-width: ${breakpoint.tablet}) {
+    max-width: 688px;
+    margin: 0 auto 30px;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    max-width: 1120px;
+    margin: 0 auto 30px;
+  }
+`;
+
+const ContainerWrap = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
   max-width: 90%;
   margin: 0 auto;
@@ -17,8 +29,9 @@ const Container = styled.section`
   }
   @media (min-width: ${breakpoint.desktop}) {
     position: relative;
-    margin-left: 50px;
+    margin: auto 0;
     max-width: 540px;
+    padding: 31px 34px 20px;
   }
 `;
 
@@ -28,9 +41,9 @@ const Wrap = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     position: absolute;
-    left: 600px;
-    width: 83%;
-    top: 100px;
+    left: 577px;
+    width: 84%;
+    top: 50px;
   }
 `;
 
@@ -54,6 +67,7 @@ const Heading = styled.h2`
   }
   @media (min-width: ${breakpoint.desktop}) {
     flex-direction: column;
+    margin-bottom: 19px;
     span:last-child {
       padding: 0;
     }
@@ -97,34 +111,49 @@ const Button = styled.button`
   @media (min-width: ${breakpoint.tablet}) {
     width: 249px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    width: 278px;
+    font-size: ${props => props.theme.fontSizes.medium};
+  }
 `;
 const SplitText = styled.br`
+  &:first-of-type {
+    display: none;
+  }
   @media (min-width: ${breakpoint.tablet}) {
     display: none;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    &:first-of-type {
+      display: block;
+    }
   }
 `;
 
 export const Hero = () => {
   return (
     <Container>
-      <a href="#">
-        <img src="/icons/label.svg" height="60" width={"160"} alt="" />
-      </a>
-      <Heading>
-        <span>Наша сила</span>
-        <span>в объединении!</span>
-      </Heading>
-      <Wrap>
-        <Paragraph>
-          Профсоюз «Альянс врачей» защищает права медицинских работников по всей
-          стране. Вместе мы боремся за справедливую заработную плату, достойные
-          условия труда, высокие надбавки <SplitText /> и оплачиваемые
-          переработки <SplitText /> для всех медиков России.
-        </Paragraph>
-        <Link href="#">Узнать больше о нас и о профсоюзах</Link>
-        <Socials />
-      </Wrap>
-      <Button>Вступить в Альянс врачей</Button>
+      <ContainerWrap>
+        <a href="#">
+          <img src="/icons/label.svg" height="60" width={"160"} alt="" />
+        </a>
+        <Heading>
+          <span>Наша сила</span>
+          <span>в объединении!</span>
+        </Heading>
+        <Wrap>
+          <Paragraph>
+            Профсоюз «Альянс врачей» защищает права медицинских работников по
+            всей стране. Вместе мы боремся <SplitText /> за справедливую
+            заработную плату, достойные условия труда, высокие надбавки{" "}
+            <SplitText /> и оплачиваемые переработки <SplitText /> для всех
+            медиков России.
+          </Paragraph>
+          <Link href="#">Узнать больше о нас и о профсоюзах</Link>
+          <Socials />
+        </Wrap>
+        <Button>Вступить в Альянс врачей</Button>
+      </ContainerWrap>
     </Container>
   );
 };
