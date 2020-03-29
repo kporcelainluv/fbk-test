@@ -42,7 +42,8 @@ const Container = styled.section`
   max-width: 90%;
   margin: 0 auto 28px;
   @media (min-width: ${breakpoint.tablet}) {
-    margin: 30px 40px;
+    margin: 30px auto 40px;
+    max-width: 688px;
   }
 `;
 const Heading = styled.h2`
@@ -55,9 +56,8 @@ const Heading = styled.h2`
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: ${fontFamily.regular};
     max-width: 600px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -79,7 +79,12 @@ const JobTitle = styled.span`
   span {
     display: none;
   }
-
+  @media (min-width: ${breakpoint.tablet}) {
+    span {
+      display: inline-block;
+      padding-left: 3px;
+    }
+  }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 183px;
     display: block;
@@ -103,6 +108,7 @@ const Name = styled.h3`
   line-height: 22px;
   margin: 0 0 6px;
   @media (min-width: ${breakpoint.tablet}) {
+    margin: 4px 0 18px;
     font-family: ${fontFamily.regular};
     font-size: ${props => props.theme.fontSizes.subheading};
   }
@@ -127,8 +133,7 @@ const ContactContainer = styled.li`
   }
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
-    max-width: 688px;
-    margin: 0 auto 30px;
+    padding: 32px 0 30px;
     svg {
       display: none;
     }
@@ -142,6 +147,18 @@ const ContactContainer = styled.li`
     }
     a span:nth-child(2) {
       display: block;
+    }
+
+    div {
+      margin: 8px 0 0 10px;
+    }
+    &:first-of-type {
+      div {
+        margin: 24px 0 0 10px;
+        span {
+          padding-left: 0;
+        }
+      }
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -158,9 +175,7 @@ const ContactsBlock = styled.div`
   padding: 16px;
   border: 3px solid ${props => props.theme.colors.red};
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px;
-    max-width: 688px;
-    margin: 0 auto 30px;
+    padding: 22px 30px 32px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
@@ -195,11 +210,14 @@ const ActionBlock = styled.div`
 const ActionWrap = styled.div`
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
+    margin-bottom: 8px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     flex-direction: column;
   }
 `;
+
+const AboutWrap = styled.div``;
 
 const Contact = ({ contact }) => {
   const { img, title, name, tel, email, additionalTitle } = contact;
@@ -207,7 +225,7 @@ const Contact = ({ contact }) => {
   return (
     <ContactContainer>
       <Image src={img} alt="" />
-      <div>
+      <AboutWrap>
         <JobTitle>
           {title}
           {additionalTitle && <span>{additionalTitle}</span>}
@@ -225,7 +243,7 @@ const Contact = ({ contact }) => {
             <Icon height="25" width="25" name="tel" />
           </a>
         )}
-      </div>
+      </AboutWrap>
     </ContactContainer>
   );
 };

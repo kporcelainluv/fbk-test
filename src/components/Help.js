@@ -17,9 +17,9 @@ const Container = styled.div`
   max-width: 90%;
   margin: 0 auto 33px;
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px;
+    padding: 14px 32px;
     max-width: 688px;
-    margin: 0 auto 30px;
+    margin: 0 auto;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
@@ -38,9 +38,8 @@ const Heading = styled.h2`
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: ${fontFamily.regular};
     max-width: 600px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large2};
@@ -66,9 +65,12 @@ const Problems = styled.ul`
   }
 
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 624px;
+    max-width: 100%;
     li {
-      max-width: 624px;
+      max-width: 100%;
+    }
+    li:last-child {
+      padding-bottom: 25px;
     }
     display: flex;
     flex-direction: column;
@@ -112,9 +114,9 @@ const Subheading = styled.h3`
 
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.subheading};
-    font-family: ${fontFamily.regular};
     max-width: 624px;
     line-height: 26px;
+    margin: 16px 0 18px;
   }
 `;
 

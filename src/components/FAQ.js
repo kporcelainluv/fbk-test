@@ -20,7 +20,8 @@ const Container = styled.section`
   padding: 33px 0 30px;
 
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px 40px;
+    padding: 30px 40px 7px;
+    margin-bottom: 42px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     padding: 60px 0px;
@@ -35,7 +36,8 @@ const Block = styled.div`
   @media (min-width: ${breakpoint.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
     max-width: 688px;
-    margin: 20px auto;
+    padding: 18px 28px 0;
+    margin: 10px auto 33px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     width: 507px;
@@ -51,7 +53,6 @@ const Heading = styled.h2`
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: ${fontFamily.regular};
   }
 `;
 
@@ -61,7 +62,7 @@ const Paragraph = styled.p`
   max-width: 94%;
   margin: 0;
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 624px;
+    max-width: 100%;
     padding-bottom: 30px;
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -93,8 +94,9 @@ const List = styled.ul`
   max-width: 92%;
   margin: 15px auto 33px;
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 678px;
+    max-width: 688px;
     margin: 0 auto;
+    padding-left: 10px;
   }
 
   @media (min-width: ${breakpoint.desktop}) {
@@ -122,8 +124,10 @@ const Question = styled.li`
     color: ${props => props.theme.colors.main};
   }
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 688px;
-    margin: 0 auto 30px;
+    margin: 0 auto 24px;
+    &:last-of-type {
+      margin-bottom: 35px;
+    }
   }
   @media (min-width: ${breakpoint.desktop}) {
     margin: 0 0 25px 0;

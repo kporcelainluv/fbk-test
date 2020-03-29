@@ -21,7 +21,7 @@ const Container = styled.footer`
   flex-direction: column;
   margin-top: 50px;
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 40px;
+    padding: 5%;
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -33,6 +33,7 @@ const Organization = styled.span`
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
     align-items: center;
+    margin-top: 10px;
   }
 `;
 
@@ -41,7 +42,7 @@ const Wrap = styled.div`
   margin: 0 0 0 5%;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
-    margin: 20px auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -85,6 +86,10 @@ const BlockWrap = styled.div`
     }
     div > span {
       padding-left: 10px;
+    }
+
+    @media (min-width: ${breakpoint.tablet}) {
+      margin-bottom: 28px;
     }
   }
 
@@ -131,10 +136,6 @@ const BlockWrap = styled.div`
         flex-direction: column;
         height: 80px;
         flex-wrap: wrap;
-      }
-      li:nth-of-type(3),
-      li:nth-of-type(4) {
-        padding-left: 40px;
       }
     }
     @media (min-width: ${breakpoint.desktop}) {

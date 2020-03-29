@@ -4,7 +4,13 @@ import styled from "styled-components";
 import { breakpoint, fontFamily } from "../core/sc";
 
 const fields = [
-  { name: "ФИО", id: "name", type: "text", disabled: false },
+  {
+    name: "ФИО",
+    id: "name",
+    type: "text",
+    disabled: false,
+    value: "Румянцев Е"
+  },
   { name: "Фамилия", id: "surname", type: "text", disabled: false },
   { name: "Имя", id: "nameFull", type: "text", disabled: false },
   { name: "Отчество", id: "secondName", type: "text", disabled: false },
@@ -15,7 +21,7 @@ const fields = [
     disabled: false
   },
   { name: "E-mail", id: "email", type: "email", disabled: false },
-  { name: "Телефон", id: "tel", type: "tel", disabled: false },
+  { name: "Телефон", id: "tel", type: "tel", disabled: false, value: "+7" },
   {
     name: "Введите свой регион",
     id: "region",
@@ -36,6 +42,8 @@ const Container = styled.section`
   margin-bottom: 30px;
 
   @media (min-width: ${breakpoint.tablet}) {
+    max-width: 688px;
+    margin: 0 auto 20px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
@@ -49,8 +57,9 @@ const Block = styled.div`
   margin: 0 auto 33px;
   @media (min-width: ${breakpoint.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
-    max-width: 688px;
-    margin: 20px auto;
+    padding: 11px 28px 17px;
+    margin: 0 auto 45px;
+    max-width: 100%;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
@@ -66,9 +75,13 @@ const Heading = styled.h2`
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
   @media (min-width: ${breakpoint.tablet}) {
+    display: flex;
+    flex-direction: row;
     font-size: ${props => props.theme.fontSizes.large};
     line-height: 44px;
-    font-family: ${fontFamily.regular};
+    span:last-of-type {
+      padding-left: 6px;
+    }
   }
 `;
 
@@ -78,7 +91,7 @@ const Paragraph = styled.p`
   max-width: 100%;
   margin-bottom: 5px;
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 624px;
+    max-width: 98%;
   }
 `;
 
@@ -94,6 +107,9 @@ const FormBlock = styled.form`
   flex-direction: column;
   max-width: 90%;
   margin: 0 auto;
+  @media (min-width: ${breakpoint.tablet}) {
+    max-width: 100%;
+  }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 806px;
     display: flex;
@@ -113,7 +129,7 @@ const Label = styled.label`
     display: none;
   }
   @media (min-width: ${breakpoint.tablet}) {
-    margin: 0 auto 16px;
+    margin: 0 auto 40px;
     max-width: 506px;
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -220,6 +236,9 @@ const FieldBorder = styled.div`
   }
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 506px;
+    &:after {
+      flex: 28 0 0;
+    }
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 539px;
@@ -245,7 +264,7 @@ const PersonalData = styled.div`
     font-size: ${props => props.theme.fontSizes.small};
     line-height: 24px;
     color: ${props => props.theme.colors.lightGrey};
-    max-width: 227px;
+    max-width: 78%;
     position: relative;
     margin-left: 19px;
   }
@@ -272,8 +291,8 @@ const PersonalData = styled.div`
     &:after {
       content: "";
       position: absolute;
-      top: 5px;
-      left: -40px;
+      top: 2px;
+      left: -31px;
       height: 20px;
       width: 20px;
       background-image: url("icons/checkbox-on.svg");
@@ -281,6 +300,7 @@ const PersonalData = styled.div`
   }
   @media (min-width: ${breakpoint.tablet}) {
     display: ${props => (props.form ? "none" : "flex")};
+    margin-bottom: 0;
     label {
       max-width: 475px;
     }
@@ -298,8 +318,8 @@ const Button = styled.input`
   background-color: ${props => props.theme.colors.red};
   border: none;
   @media (min-width: ${breakpoint.tablet}) {
-    margin: 24px 0;
-    width: 249px;
+    margin: 20px 0;
+    width: 207px;
   }
 `;
 
@@ -369,6 +389,7 @@ const FormComponent = () => {
               type={field.type}
               id={field.id}
               name={field.id}
+              value={field.value}
               disabled={field.disabled}
             />
             <FieldBorder>

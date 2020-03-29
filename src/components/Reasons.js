@@ -9,10 +9,15 @@ const reasons = [
   "Профсоюз может вносить изменения в коллективный договор, инициировать коллективные переговоры, изменять порядок начисления зарплаты, размер отпусков, условия труда."
 ];
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: ${props => props.theme.colors.background2};
   padding: 30px 0 12px;
   margin-bottom: 51px;
+  @media (min-width: ${breakpoint.tablet}) {
+    padding: 30px 0 40px;
+    margin-bottom: 43px;
+  }
+
   @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     justify-content: space-around;
@@ -28,9 +33,9 @@ const Block = styled.div`
     border: 4px solid ${props => props.theme.colors.red};
   }
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px;
+    padding: 18px 30px 17px;
+    margin: 0 auto 37px;
     max-width: 688px;
-    margin: auto;
   }
   @media (min-width: ${breakpoint.desktop}) {
     padding: 30px;
@@ -58,12 +63,13 @@ const Heading = styled.h2`
 `;
 
 const JoinParagraph = styled.p`
-  margin: 0 auto 17px;
+  margin: 0 0 17px;
   line-height: 24px;
   font-size: ${props => props.theme.fontSizes.small};
   max-width: 100%;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 310px;
+    margin: 0 0 27px;
   }
 `;
 const Paragraph = styled.p`
@@ -72,7 +78,7 @@ const Paragraph = styled.p`
   max-width: 100%;
   margin-bottom: 24px;
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 600px;
+    max-width: 90%;
   }
 `;
 
@@ -107,7 +113,7 @@ const List = styled.ul`
   @media (min-width: ${breakpoint.tablet}) {
     li,
     li:first-of-type {
-      max-width: 620px;
+      max-width: 98%;
     }
   }
 
@@ -127,11 +133,6 @@ const JoinBlock = styled.div`
   margin: 0 auto;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
-    margin: 20px auto;
-    padding: 0;
-    &:after {
-      top: 150px;
-    }
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 540px;
@@ -154,6 +155,8 @@ const Slogan = styled.h3`
   padding-bottom: 16px;
 
   @media (min-width: ${breakpoint.tablet}) {
+    margin: 0;
+    padding-bottom: 27px;
     font-size: ${props => props.theme.fontSizes.large2};
     font-family: ${fontFamily.regular};
     letter-spacing: -0.02em;

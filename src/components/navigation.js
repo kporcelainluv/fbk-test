@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { breakpoint, fontFamily } from "../core/sc";
+
 const navigation = [
   {
     name: "Новости",
@@ -32,8 +34,8 @@ const Nav = styled.nav`
   z-index: 2;
   margin-top: -2%;
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: -1% 0 0 0%;
+  @media (min-width: ${breakpoint.tablet}) {
+    margin: -1% 0 0 -1%;
     width: 207px;
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
@@ -56,7 +58,7 @@ const Nav = styled.nav`
     );
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     display: block;
 
     width: 595px;
@@ -79,12 +81,12 @@ const List = styled.ul`
       rgba(255, 255, 255, 1) 20%
     );
   }
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
   }
   @media (min-width: ${props => props.theme.breakPoints.smallDesktop}) {
     padding-left: 20px;
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     flex-direction: row;
     margin-top: 20px;
@@ -136,7 +138,7 @@ const ListElement = styled.li`
   &:hover {
     background-color: ${props => props.theme.colors.background2};
   }
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
+  @media (min-width: ${breakpoint.desktop}) {
     &:hover {
       background-color: transparent;
     }
@@ -148,10 +150,10 @@ const Link = styled.a`
   font-size: ${props => props.theme.fontSizes.small};
   text-decoration: none;
   width: 100%;
-  font-family: "CoFo Sans Bold";
+  font-family: ${fontFamily.bold};
   padding: 10px 15px;
-  @media (min-width: ${props => props.theme.breakPoints.desktop}) {
-    font-family: "CoFo Sans";
+  @media (min-width: ${breakpoint.desktop}) {
+    font-family: ${fontFamily.regular};
     padding: 0 0 0 15px;
     &:hover {
       color: ${props => props.theme.colors.red};

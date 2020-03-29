@@ -43,7 +43,7 @@ const Container = styled.section`
   padding: 30px 0;
   background-color: ${props => props.theme.colors.background2};
   @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px;
+    padding: 40px 0;
   }
 `;
 
@@ -54,7 +54,8 @@ const IntroBlock = styled.div`
   padding: 0 14px;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
-    margin: 0 auto 30px;
+    margin: 0 auto 0;
+    padding: 19px 27px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
@@ -63,7 +64,7 @@ const IntroBlock = styled.div`
 `;
 
 const Heading = styled.h2`
-  margin: 17px 0 0;
+  margin: 10px 0 0;
   font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.heading};
   line-height: 28px;
@@ -73,6 +74,7 @@ const Heading = styled.h2`
     font-size: ${props => props.theme.fontSizes.large2};
     line-height: 44px;
     max-width: 100%;
+    margin-bottom: 12px;
   }
 `;
 
@@ -85,6 +87,7 @@ const Paragraph = styled.p`
   }
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 95%;
+    margin-top: 0;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 94%;
@@ -105,7 +108,7 @@ const RegionsList = styled.ul`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 920px;
+    height: 700px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     height: 690px;
@@ -193,12 +196,13 @@ const RegionSegment = styled.li`
   }
   @media (min-width: ${breakpoint.tablet}) {
     line-height: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     &:nth-child(-n + 6) {
       display: block;
     }
-    &:nth-child(n + 7) {
+    &:nth-child(n + 6) {
       display: block;
+      margin-left: 35px;
     }
   }
 `;

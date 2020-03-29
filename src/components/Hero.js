@@ -11,8 +11,8 @@ const Container = styled.section`
   padding: 8px 12px 0;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
-    margin: 0 auto 40px;
-    padding: 30px;
+    margin-bottom: 30px;
+    padding: 25px 30px 15px;
     border: 4px solid ${props => props.theme.colors.red};
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -23,6 +23,9 @@ const Container = styled.section`
 `;
 
 const Wrap = styled.div`
+  @media (min-width: ${breakpoint.tablet}) {
+    margin-bottom: 15px;
+  }
   @media (min-width: ${breakpoint.desktop}) {
     position: absolute;
     left: 600px;
@@ -44,6 +47,7 @@ const Heading = styled.h2`
     font-family: ${fontFamily.regular};
     line-height: 44px;
     font-size: ${props => props.theme.fontSizes.large2};
+    margin-top: 12px;
     span:last-child {
       padding-left: 6px;
     }
@@ -64,8 +68,8 @@ const Paragraph = styled.p`
   display: flex;
   flex-direction: column;
   @media (min-width: ${breakpoint.tablet}) {
-    max-width: 600px;
     display: block;
+    margin-bottom: 15px;
   }
 `;
 
@@ -76,6 +80,10 @@ const Link = styled.a`
   font-size: ${props => props.theme.fontSizes.small};
   color: ${props => props.theme.colors.red};
   max-width: 258px;
+  @media (min-width: ${breakpoint.tablet}) {
+    display: block;
+    margin-bottom: 25px;
+  }
 `;
 
 const Button = styled.button`
@@ -90,7 +98,11 @@ const Button = styled.button`
     width: 249px;
   }
 `;
-const SplitText = styled.br``;
+const SplitText = styled.br`
+  @media (min-width: ${breakpoint.tablet}) {
+    display: none;
+  }
+`;
 
 export const Hero = () => {
   return (

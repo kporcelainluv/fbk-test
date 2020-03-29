@@ -11,13 +11,13 @@ const Container = styled.section`
   height: 60px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 94%;
+  margin: auto;
   flex-wrap: wrap;
 
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
-    margin: auto;
-    background: none;
+    margin: 0 auto 15px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     flex-direction: row-reverse;
@@ -68,12 +68,12 @@ const CTAContainer = styled.ul`
     padding: 20px 10px;
   }
   @media (min-width: ${breakpoint.tablet}) {
-    margin-right: 0;
-    li:first-of-type {
-      margin-right: 23px;
+    margin: 0 0 0 60px;
+    li:first-of-type a {
+      margin-right: 32px;
     }
     a {
-      padding: 15px 10px;
+      padding: 15px 0;
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
