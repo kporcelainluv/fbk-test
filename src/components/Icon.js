@@ -1,5 +1,4 @@
 import React from "react";
-import icons from "../img/icons/sprite.svg";
 
 export const Icon = ({ height, width, name, viewbox }) => {
   return (
@@ -10,7 +9,7 @@ export const Icon = ({ height, width, name, viewbox }) => {
       width={width}
       viewBox={viewbox ? viewbox : `0 0 ${height} ${width}`}
     >
-      <use xlinkHref={`${icons}#${name}`} />
+      <use xlinkHref={`./icons/sprite.svg#${name}`} />
     </svg>
   );
 };
