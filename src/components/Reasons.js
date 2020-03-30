@@ -47,7 +47,7 @@ const Block = styled.div`
 
 const Heading = styled.h2`
   font-family: ${fontFamily.bold};
-  font-size: ${props => props.theme.fontSizes.heading};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
   margin: 18px auto 0;
   @media (min-width: ${breakpoint.tablet}) {
@@ -66,7 +66,7 @@ const Heading = styled.h2`
 const JoinParagraph = styled.p`
   margin: 0 0 17px;
   line-height: 24px;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   max-width: 100%;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 310px;
@@ -78,7 +78,7 @@ const JoinParagraph = styled.p`
 `;
 const Paragraph = styled.p`
   line-height: 24px;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   max-width: 100%;
   margin-bottom: 24px;
   @media (min-width: ${breakpoint.tablet}) {
@@ -90,7 +90,7 @@ const Paragraph = styled.p`
 `;
 
 const DottedLine = styled.div`
-  border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+  border-bottom: 2px dashed ${props => props.theme.colors.grey};
   width: 100%;
   margin-bottom: 17px;
   @media (min-width: ${breakpoint.desktop}) {
@@ -100,7 +100,7 @@ const DottedLine = styled.div`
 
 const List = styled.ul`
   line-height: 24px;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   padding-left: 0;
   li:first-of-type {
     max-width: 90%;
@@ -162,16 +162,16 @@ const SplitText = styled.br`
 `;
 const Slogan = styled.h3`
   font-family: ${fontFamily.bold};
-  font-size: ${props => props.theme.fontSizes.heading};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
   margin: 0 auto;
-  color: ${props => props.theme.colors.main};
+  color: ${props => props.theme.colors.black};
   padding-bottom: 16px;
 
   @media (min-width: ${breakpoint.tablet}) {
     margin: 0;
     padding-bottom: 27px;
-    font-size: ${props => props.theme.fontSizes.large2};
+    font-size: ${props => props.theme.fontSizes.large1};
     font-family: ${fontFamily.regular};
     letter-spacing: -0.02em;
     line-height: 44px;
@@ -199,7 +199,7 @@ const Button = styled.button`
   }
   @media (min-width: ${breakpoint.desktop}) {
     width: 275px;
-    font-size: ${props => props.theme.fontSizes.medium};
+    font-size: ${props => props.theme.fontSizes.small3};
   }
 `;
 
@@ -238,17 +238,6 @@ const ReasonsBlock = () => {
       </Paragraph>
       <List>
         {reasons.map((reason, index) => {
-          if (window.innerWidth >= 1200 && index === 1) {
-            return (
-              <li key={reason}>
-                <span>{index + 1}.</span>
-                Представители профсоюза вправе приходить <br /> в учреждение,
-                контролировать соблюдение законодательства и прав работников,
-                оказывать всестороннюю поддержку членам профсоюза и заставлять
-                администрацию устранять нарушения.
-              </li>
-            );
-          }
           return (
             <li key={reason}>
               <span>{index + 1}.</span>

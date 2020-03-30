@@ -113,15 +113,16 @@ const ListElement = styled.li`
 `;
 
 const Link = styled.a`
-  color: ${props => props.theme.colors.main};
-  font-size: ${props => props.theme.fontSizes.small};
+  color: ${props => props.theme.colors.black};
+  font-size: ${props => props.theme.fontSizes.small1};
   text-decoration: none;
   width: 100%;
   font-family: ${fontFamily.bold};
   padding: 10px 15px;
   @media (min-width: ${breakpoint.desktop}) {
     font-family: ${fontFamily.bold};
-    padding: 0 0 0 33px;
+    padding: 0;
+    margin-right: 20px;
 
     &:hover {
       color: ${props => props.theme.colors.red};

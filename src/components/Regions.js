@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { breakpoint, fontFamily } from "../core/sc";
+import { Icon } from "./Icon";
 
 const regions = [
   { letter: " ", regions: ["Москва", "Московская область", "Санкт-Петербург"] },
@@ -67,12 +68,12 @@ const IntroBlock = styled.div`
 const Heading = styled.h2`
   margin: 10px 0 0;
   font-family: ${fontFamily.bold};
-  font-size: ${props => props.theme.fontSizes.heading};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
 
   @media (min-width: ${breakpoint.tablet}) {
     font-family: ${fontFamily.bold};
-    font-size: ${props => props.theme.fontSizes.large2};
+    font-size: ${props => props.theme.fontSizes.large1};
     line-height: 44px;
     max-width: 100%;
     margin-bottom: 12px;
@@ -85,7 +86,7 @@ const Heading = styled.h2`
 const Paragraph = styled.p`
   margin-top: 7px;
   line-height: 24px;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   a {
     color: ${props => props.theme.colors.red};
   }
@@ -103,9 +104,9 @@ const RegionsList = styled.ul`
   list-style-type: none;
   margin-bottom: 15px;
   h3 {
-    font-size: ${props => props.theme.fontSizes.small};
+    font-size: ${props => props.theme.fontSizes.small1};
     line-height: 24px;
-    color: ${props => props.theme.colors.lightGrey};
+    color: ${props => props.theme.colors.grey};
   }
 
   @media (min-width: ${breakpoint.tablet}) {
@@ -121,10 +122,10 @@ const RegionsList = styled.ul`
 `;
 
 const Region = styled.ul`
-  padding-left: 0px;
+  padding-left: 0;
   list-style-type: none;
   line-height: 24px;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
 
   li {
     padding-bottom: 9px;
@@ -132,7 +133,7 @@ const Region = styled.ul`
   a {
     line-height: 24px;
     font-size: 15px;
-    color: ${props => props.theme.colors.main};
+    color: ${props => props.theme.colors.black};
   }
 `;
 
@@ -154,46 +155,28 @@ const Wrap = styled.div`
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  margin-left: 18px;
-  position: relative;
-
-  span {
-    line-height: 32px;
-    color: ${props => props.theme.colors.red};
+  line-height: 32px;
+  color: ${props => props.theme.colors.red};
+  padding: 0;
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 10px;
   }
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: -16px;
-    height: 16px;
-    width: 15px;
-  }
-  &:first-of-type {
-    display: ${props => (props.displayed ? "block" : "none")};
-    &:before {
-      background-image: url("./icons/arrow-down.svg");
-    }
-  }
-  &:last-of-type {
-    display: ${props => (props.displayed ? "none" : "block")};
-    &:before {
-      background-image: url("./icons/arrow-up.svg");
-      top: 10px;
-    }
-  }
   @media (min-width: ${breakpoint.tablet}) {
-   &:first-of-type, &:last-of-type {
-    display: none
+    display: none;
   }
 `;
 
+const first6 = "-n + 6";
+const last = "n + 6";
+
 const RegionSegment = styled.li`
-  &:nth-child(-n + 6) {
+  &:nth-child(${first6}) {
     display: block;
   }
-  &:nth-child(n + 6) {
+  &:nth-child(${last}) {
     display: ${props => (props.displayed ? "none" : "block")};
   }
   h3 {
@@ -202,10 +185,7 @@ const RegionSegment = styled.li`
   @media (min-width: ${breakpoint.tablet}) {
     line-height: 24px;
     margin-bottom: 15px;
-    &:nth-child(-n + 6) {
-      display: block;
-    }
-    &:nth-child(n + 6) {
+    &:nth-child(${last}) {
       display: block;
       margin-left: 35px;
     }
@@ -230,29 +210,6 @@ const RegionsWrap = styled.div`
   }
 `;
 
-export const RegionsBlock = ({ regions, displayed }) => {
-  return (
-    <RegionsList>
-      {regions.map((region, index) => {
-        return (
-          <RegionSegment displayed={displayed} key={region.letter + index}>
-            <h3>{region.letter}</h3>
-            <Region>
-              {region.regions.map(r => {
-                return (
-                  <li key={r}>
-                    <a href="">{r}</a>{" "}
-                  </li>
-                );
-              })}
-            </Region>
-          </RegionSegment>
-        );
-      })}
-    </RegionsList>
-  );
-};
-
 const RegionsDescription = () => {
   return (
     <IntroBlock>
@@ -266,32 +223,38 @@ const RegionsDescription = () => {
   );
 };
 
-const ToggleDisplay = ({ hide, text, onClick }) => {
-  return (
-    <Button type="button" displayed={hide} onClick={onClick}>
-      <span>{text}</span>
-    </Button>
-  );
-};
-
 const RegionsContainer = () => {
-  const [state, changeState] = useState({ hide: true });
+  const [showAll, setShowAll] = useState(true);
 
   return (
     <Wrap>
-      <RegionsBlock regions={regions} displayed={state.hide} />
+      <RegionsList>
+        {regions.map(region => {
+          return (
+            <RegionSegment displayed={showAll} key={region.letter}>
+              <h3>{region.letter}</h3>
+              <Region>
+                {region.regions.map(r => {
+                  return (
+                    <li key={r}>
+                      <a href="#">{r}</a>
+                    </li>
+                  );
+                })}
+              </Region>
+            </RegionSegment>
+          );
+        })}
+      </RegionsList>
 
-      <ToggleDisplay
-        hide={state.hide}
-        text={"Показать все отделения"}
-        onClick={() => changeState(s => ({ hide: !s.hide }))}
-      />
-
-      <ToggleDisplay
-        hide={state.hide}
-        text={"Скрыть"}
-        onClick={() => changeState(s => ({ hide: !s.hide }))}
-      />
+      <Button type="button" onClick={() => setShowAll(s => !s)}>
+        <Icon
+          name={showAll ? "arrow-up" : "arrow-down"}
+          height="16"
+          width="16"
+        />
+        {showAll ? "Показать все отделения" : " Скрыть"}
+      </Button>
     </Wrap>
   );
 };

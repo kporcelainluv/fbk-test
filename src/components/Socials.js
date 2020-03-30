@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Icon } from "./Icon";
+import { breakpoint } from "../core/sc";
 
 const SocialList = styled.ul`
   display: flex;
@@ -16,10 +17,9 @@ const SocialList = styled.ul`
     height: 32px;
     width: 32px;
     line-height: 0;
-}
   }
 
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
+  @media (min-width: ${breakpoint.tablet}) {
     li {
       margin-right: 16px;
     }

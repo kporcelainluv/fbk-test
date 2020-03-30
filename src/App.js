@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import { Theme } from "./Theme";
 import GlobalStyle from "./GlobalStyle";
@@ -12,37 +11,21 @@ import { Contacts } from "./components/Contacts";
 import { Regions } from "./components/Regions";
 import { Footer } from "./components/Footer";
 
-const Container = styled.div`
-  box-sizing: border-box;
-  font-family: "Cofo Sans";
-  background-color: #fff;
-
-  @media (min-width: ${props => props.theme.breakPoints.tablet}) {
-    margin: auto;
-  }
-`;
-
 export const App = () => {
   return (
     <Theme>
       <GlobalStyle />
-
-      <Container>
-        <header>
-          <Header />
-        </header>
-        <main>
-          <h1 className="visually-hidden">Альянс врачей</h1>
-          <Hero />
-          <Reasons />
-          <Form />
-          <FAQ />
-          <Contacts />
-          <Regions />
-        </main>
-
-        <Footer />
-      </Container>
+      <Header />
+      <main>
+        <h1 className="visually-hidden">Альянс врачей</h1>
+        <Hero />
+        <Reasons />
+        <Form />
+        <FAQ />
+        <Contacts />
+        <Regions />
+      </main>
+      <Footer />
     </Theme>
   );
 };

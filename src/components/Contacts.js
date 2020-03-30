@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Socials } from "./Socials";
@@ -9,32 +9,35 @@ const contacts = [
   {
     name: "Анастасия Васильева",
     title: "Председатель профсоюза",
-    additionalTitle: ", врач-офтальмолог",
+    fullTitle: "Председатель профсоюза, врач офтальмолог",
     img: "./imgs/anastasia1.png",
-    email: "help@alyansvrachey.org",
-    fullTitle: "Председатель профсоюза, врач-офтальмолог"
+    webp: "./imgs/webp/anastasia1.webp",
+    email: "help@alyansvrachey.org"
   },
   {
     name: "Анастасия Тарабрина",
     title: "Заместитель председателя",
-    additionalTitle: " профсоюза",
+    fullTitle: "Заместитель председателя профсоюза",
     img: "./imgs/anastasia2.png",
+    webp: "./imgs/webp/anastasia2.webp",
     tel: "+7 (919) 464-11-56",
-    email: "tarabrina@alyansvrachey.org",
-    fullTitle: "Заместитель \n председателя профсоюза"
+    email: "tarabrina@alyansvrachey.org"
   },
   {
     name: "Иван Коновалов",
     title: "Пресс-секретарь",
-    additionalTitle: " профсоюза",
+    fullTitle: "Пресс-секретарь профсоюза",
     img: "./imgs/ivan.png",
+    webp: "./imgs/webp/ivan.webp",
     tel: "+7 (929) 673-00-31",
     email: "press@alyansvrachey.org"
   },
   {
     name: "Ирина Кваско",
     title: "Руководитель пациентского проекта",
+    fullTitle: "Руководитель пациентского проекта",
     img: "./imgs/irina.png",
+    webp: "./imgs/webp/irina.webp",
     tel: "+7 (909) 342-54-53",
     email: "patients@alyansvrachey.org"
   }
@@ -54,7 +57,7 @@ const Container = styled.section`
 `;
 const Heading = styled.h2`
   font-family: ${fontFamily.bold};
-  font-size: ${props => props.theme.fontSizes.heading};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
   max-width: 200px;
   margin: 0 0 10px;
@@ -67,32 +70,44 @@ const Heading = styled.h2`
   }
 `;
 
-const Image = styled.img`
-  height: 76px;
-  width: 76px;
-  margin-right: 16px;
+const Image = styled.picture`
+  img {
+    height: 76px;
+    width: 76px;
+    margin-right: 16px;
+  }
+
   @media (min-width: ${breakpoint.tablet}) {
-    height: 142px;
-    width: 142px;
+    img {
+      height: 142px;
+      width: 142px;
+    }
   }
   @media (min-width: ${breakpoint.desktop}) {
-    height: 100px;
-    width: 100px;
+    img {
+      height: 100px;
+      width: 100px;
+    }
   }
 `;
 
 const JobTitle = styled.span`
-  font-size: ${props => props.theme.fontSizes.small};
-  color: ${props => props.theme.colors.lightGrey};
+  font-size: ${props => props.theme.fontSizes.small1};
+  color: ${props => props.theme.colors.grey};
   line-height: 20px;
 
-  span {
+  span:first-child {
+    display: block;
+  }
+  span:last-child {
     display: none;
   }
   @media (min-width: ${breakpoint.tablet}) {
-    span {
-      display: inline-block;
-      padding-left: 3px;
+    span:first-child {
+      display: none;
+    }
+    span:last-child {
+      display: block;
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -100,12 +115,6 @@ const JobTitle = styled.span`
     display: flex;
     flex-direction: column;
     max-width: 187px;
-    white-space: pre-line;
-
-    span {
-      display: inline-block;
-      padding-left: 0;
-    }
   }
 `;
 
@@ -122,13 +131,13 @@ const List = styled.ul`
 `;
 
 const Name = styled.h3`
-  font-size: ${props => props.theme.fontSizes.medium};
+  font-size: ${props => props.theme.fontSizes.small3};
   line-height: 22px;
   margin: 0 0 6px;
   @media (min-width: ${breakpoint.tablet}) {
     margin: 4px 0 18px;
     font-family: ${fontFamily.regular};
-    font-size: ${props => props.theme.fontSizes.subheading};
+    font-size: ${props => props.theme.fontSizes.medium};
   }
   @media (min-width: ${breakpoint.desktop}) {
     font-size: 20px;
@@ -141,7 +150,7 @@ const ContactContainer = styled.li`
   padding: 23px 0;
 
   &:not(:last-of-type) {
-    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+    border-bottom: 2px dashed ${props => props.theme.colors.grey};
   }
   &:last-of-type {
     padding-bottom: 0;
@@ -152,6 +161,9 @@ const ContactContainer = styled.li`
   }
   a span:nth-child(2) {
     display: none;
+  }
+  span {
+    display: block;
   }
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
@@ -170,19 +182,16 @@ const ContactContainer = styled.li`
     a span:nth-child(2) {
       display: block;
     }
-
     div {
       margin: 8px 0 0 10px;
     }
-    &:first-of-type{
-      div{
+    &:first-of-type {
+      div {
         margin: 25px 0 0 10px;
       }
-  
-  }
-    
     }
   }
+
   @media (min-width: ${breakpoint.desktop}) {
     display: flex;
     flex-direction: column;
@@ -190,14 +199,15 @@ const ContactContainer = styled.li`
     &:not(:last-of-type) {
       border-bottom: none;
     }
-    div{
-    margin: 0;
+    div {
+      margin: 0;
     }
-    &:nth-of-type(2){
-    margin-left: 10px;
+    &:first-of-type {
+      div {
+        margin: 0;
+      }
     }
-    
- 
+  }
 `;
 
 const ContactsBlock = styled.div`
@@ -214,7 +224,7 @@ const ContactsBlock = styled.div`
 `;
 
 const Paragraph = styled.p`
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   line-height: 24px;
   max-width: 100%;
   padding: 0;
@@ -253,26 +263,19 @@ const ActionWrap = styled.div`
 const AboutWrap = styled.div``;
 
 const Contact = ({ contact }) => {
-  const { img, title, name, tel, email, additionalTitle, fullTitle } = contact;
-  const jobTitle = (title, additionalTitle, fullTitle) => {
-    if (fullTitle && window.innerWidth >= 1200) {
-      return fullTitle;
-    } else if (additionalTitle) {
-      return (
-        <Fragment>
-          {title}
-          <span>{additionalTitle}</span>
-        </Fragment>
-      );
-    }
-    return title;
-  };
+  const { img, webp, title, fullTitle, name, tel, email } = contact;
 
   return (
     <ContactContainer>
-      <Image src={img} alt="" />
+      <Image>
+        <source srcSet={webp} type="image/webp" />
+        <img src={img} alt={"Фото " + name} />
+      </Image>
       <AboutWrap>
-        <JobTitle>{jobTitle(title, additionalTitle, fullTitle)}</JobTitle>
+        <JobTitle>
+          <span>{title}</span>
+          <span>{fullTitle}</span>
+        </JobTitle>
         <Name>{name}</Name>
         <a href={"mailto: " + email}>
           <span className="visually-hidden">Написать письмо</span>

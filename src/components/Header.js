@@ -7,7 +7,7 @@ import { breakpoint } from "../core/sc";
 
 const ESC_KEY_CODE = 27;
 
-const Container = styled.section`
+const Container = styled.header`
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -30,8 +30,8 @@ const Menu = styled.button`
   border: none;
   background-color: transparent;
   margin-left: 36px;
-  color: ${props => props.theme.colors.main};
-  font-size: ${props => props.theme.fontSizes.nav};
+  color: ${props => props.theme.colors.black};
+  font-size: ${props => props.theme.fontSizes.small2};
   line-height: 32px;
   position: relative;
   height: 57px;
@@ -85,7 +85,7 @@ const CTAContainer = styled.ul`
 const Description = styled.span`
   display: none;
   color: ${props => props.theme.colors.red};
-  font-size: ${props => props.theme.fontSizes.nav};
+  font-size: ${props => props.theme.fontSizes.small2};
   line-height: 32px;
   @media (min-width: ${breakpoint.tablet}) {
     display: inline-block;

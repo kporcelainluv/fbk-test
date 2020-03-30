@@ -16,7 +16,6 @@ const documents = [
 const Container = styled.footer`
   background-color: ${props => props.theme.colors.background2};
   padding: 30px 0;
-
   display: flex;
   flex-direction: column;
   margin-top: 50px;
@@ -24,19 +23,6 @@ const Container = styled.footer`
     padding: 5%;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-`;
-
-const Organization = styled.span`
-  opacity: 0.4;
-  line-height: 26px;
-  @media (min-width: ${breakpoint.tablet}) {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  @media (min-width: ${breakpoint.tablet}) {
-    margin-top: 0;
   }
 `;
 
@@ -60,111 +46,145 @@ const Wrap = styled.div`
   }
 `;
 
-const BlockWrap = styled.div`
-  &:first-of-type {
+const Subheading = styled.span`
+  line-height: 24px;
+  margin-bottom: 10px;
+`;
+
+const AboutBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+
+  a {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 22px;
-
-    span:first-child {
-      line-height: 24px;
-      margin-bottom: 10px;
-    }
-    a {
-      display: flex;
-      width: 177px;
-      max-width: 100%;
-      height: 60px;
-      background-color: ${props => props.theme.colors.red};
-      color: ${props => props.theme.colors.background};
-      font-size: ${props => props.theme.fontSizes.small};
-      line-height: 24px;
-      align-items: center;
-      text-decoration: none;
-      font-family: ${fontFamily.bold};
-      justify-content: center;
-    }
-    div {
-      display: flex;
-      align-items: center;
-    }
-    div > span {
-      padding-left: 10px;
-    }
-
-    @media (min-width: ${breakpoint.tablet}) {
-      margin-bottom: 28px;
-    }
-    @media (min-width: ${breakpoint.tablet}) {
-      margin-bottom: 34px;
-      a {
-        width: 188px;
-      }
+    width: 177px;
+    max-width: 100%;
+    height: 60px;
+    background-color: ${props => props.theme.colors.red};
+    color: ${props => props.theme.colors.background};
+    font-size: ${props => props.theme.fontSizes.small1};
+    line-height: 24px;
+    align-items: center;
+    text-decoration: none;
+    font-family: ${fontFamily.bold};
+    justify-content: center;
+    span {
+      margin-left: 10px;
     }
   }
-
-  &:nth-of-type(2) {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 22px;
-
-    span {
-      line-height: 24px;
-      margin-bottom: 10px;
-    }
-    @media (min-width: ${breakpoint.tablet}) {
-      margin-left: 66px;
-    }
+  @media (min-width: ${breakpoint.tablet}) {
+    margin-bottom: 28px;
   }
-  &:last-of-type {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 25px;
-
-    span {
-      line-height: 24px;
-      font-size: ${props => props.theme.fontSizes.small};
-      margin: 0 0 10px 0;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-      margin: 0;
-    }
-    li {
-      margin-bottom: 7px;
-    }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin-bottom: 34px;
     a {
-      color: ${props => props.theme.colors.red};
-      font-size: ${props => props.theme.fontSizes.small};
-      line-height: 24px;
-    }
-    @media (min-width: ${breakpoint.tablet}) {
-      width: 530px;
-      ul {
-        display: flex;
-        flex-direction: column;
-        height: 80px;
-        flex-wrap: wrap;
-      }
-    }
-    @media (min-width: ${breakpoint.desktop}) {
-      margin-bottom: 0;
-      li:nth-of-type(3),
-      li:nth-of-type(4) {
-        padding-left: 66px;
-      }
-      margin-left: 24px;
+      width: 188px;
     }
   }
 `;
 
-const Block = ({ heading, children }) => {
+const SubscribeBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+
+  @media (min-width: ${breakpoint.tablet}) {
+    margin-left: 66px;
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin-left: 0;
+  }
+`;
+
+const secondColumn = "li:nth-of-type(3),li:nth-of-type(4)";
+
+const DocumentsBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+
+  span {
+    margin: 0 0 10px 0;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  li {
+    margin-bottom: 7px;
+  }
+  a {
+    color: ${props => props.theme.colors.red};
+    font-size: ${props => props.theme.fontSizes.small1};
+    line-height: 24px;
+  }
+  @media (min-width: ${breakpoint.tablet}) {
+    width: 530px;
+    ul {
+      display: flex;
+      flex-direction: column;
+      height: 80px;
+      flex-wrap: wrap;
+    }
+  }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin: 0 0 0 24px;
+    ${secondColumn} {
+      padding-left: 66px;
+    }
+  }
+`;
+
+const Organization = styled.span`
+  opacity: 0.4;
+  line-height: 26px;
+  @media (min-width: ${breakpoint.tablet}) {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  @media (min-width: ${breakpoint.tablet}) {
+    margin-top: 0;
+  }
+`;
+
+const About = () => {
   return (
-    <BlockWrap>
-      <span>{heading}</span>
-      {children}
-    </BlockWrap>
+    <AboutBlock>
+      <Subheading>Расскажите о нас:</Subheading>
+      <a href="#">
+        <Icon name="link-white" height="23" width="24" />
+        <span>Поделиться</span>
+      </a>
+    </AboutBlock>
+  );
+};
+
+const Subscribe = () => {
+  return (
+    <SubscribeBlock>
+      <Subheading>Подписывайтесь:</Subheading>
+      <Socials />
+    </SubscribeBlock>
+  );
+};
+
+const Documents = () => {
+  return (
+    <DocumentsBlock>
+      <Subheading>Документы:</Subheading>
+      <ul>
+        {documents.map(document => {
+          return (
+            <li key={document}>
+              <a href="#">{document}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </DocumentsBlock>
   );
 };
 
@@ -172,29 +192,9 @@ export const Footer = () => {
   return (
     <Container>
       <Wrap>
-        <Block heading="Расскажите о нас:">
-          <a href="#">
-            <div>
-              <Icon name="link-white" height="23" width="24" />
-              <span>Поделиться</span>
-            </div>
-          </a>
-        </Block>
-        <Block heading="Подписывайтесь:">
-          <Socials />
-        </Block>
-        <Block heading="Документы:">
-          <ul>
-            {documents.map(document => {
-              return (
-                <li key={document}>
-                  <a href="#">{document}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </Block>
-
+        <About />
+        <Subscribe />
+        <Documents />
         <Organization>Альянс Врачей, 2020</Organization>
       </Wrap>
     </Container>

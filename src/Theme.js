@@ -4,31 +4,21 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     background: "#FFFFFF",
-    main: "#000B42",
+    black: "#000B42",
     red: "#FF384B",
     background2: "#F5F6FF",
-    active: "#DAE0FC",
-    lightGrey: "#A6ACCC"
+    formBorder: "#DAE0FC",
+    grey: "#A6ACCC"
   },
   fontSizes: {
-    small: "15px",
-    nav: "16px",
-    heading: "28px",
-    subheading: "24px",
-    form: "13px",
-    medium: "17px",
+    small: "13px",
+    small1: "15px",
+    small2: "16px",
+    small3: "17px",
+    medium: "24px",
+    medium1: "28px",
     large: "42px",
-    large2: "44px"
-  },
-  visuallyHidden: {
-    position: "absolute",
-    overflow: "hidden",
-    clip: "rect(0 0 0 0)",
-    height: "1px",
-    width: "1px",
-    margin: "-1px",
-    padding: "0",
-    border: "0"
+    large1: "44px"
   },
   breakPoints: {
     mobile: "320px",

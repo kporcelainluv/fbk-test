@@ -76,7 +76,7 @@ const Heading = styled.h2`
   display: flex;
   flex-direction: column;
   font-family: ${fontFamily.bold};
-  font-size: ${props => props.theme.fontSizes.heading};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
@@ -97,7 +97,7 @@ const Heading = styled.h2`
 `;
 
 const Paragraph = styled.p`
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   line-height: 24px;
   max-width: 100%;
   margin-bottom: 5px;
@@ -110,7 +110,7 @@ const Paragraph = styled.p`
 `;
 
 const Link = styled.a`
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   color: ${props => props.theme.colors.red};
   display: block;
   margin-bottom: 16px;
@@ -136,6 +136,9 @@ const FormBlock = styled.form`
   }
 `;
 
+const fullInitials = "&:nth-child(n + 2):nth-child(-n + 5)";
+const nameAndSecondName = "&:nth-child(3),&:nth-child(5)";
+
 const Label = styled.label`
   position: relative;
   width: 100%;
@@ -143,7 +146,7 @@ const Label = styled.label`
   &:last-of-type {
     margin-bottom: 30px;
   }
-  &:nth-child(n + 2):nth-child(-n + 5) {
+  ${fullInitials} {
     display: none;
   }
   @media (min-width: ${breakpoint.tablet}) {
@@ -157,12 +160,10 @@ const Label = styled.label`
       display: none;
     }
 
-    &:nth-child(n + 2):nth-child(-n + 5) {
+    ${fullInitials} {
       display: flex;
       max-width: 258px;
-      input {
-        max-width: 258px;
-      }
+
       div {
         &:before {
           flex: 1 0 0;
@@ -173,22 +174,10 @@ const Label = styled.label`
       }
     }
 
-    &:nth-child(3),
-    &:nth-child(5) {
+    ${nameAndSecondName} {
       margin-left: 20px;
     }
 
-    &:nth-child(5) {
-      div {
-        max-width: 258px;
-        top: 22px;
-        left: 26px;
-        &:before,
-        &:after {
-          display: none;
-        }
-      }
-    }
     margin: 0 0 40px 0;
     padding: 0;
   }
@@ -198,17 +187,17 @@ const Input = styled.input`
   outline: none;
   width: 100%;
   height: 48px;
-  color: ${props => props.theme.colors.active};
+  color: ${props => props.theme.colors.formBorder};
   padding-left: 15px;
   border: none;
-  border-right: 3px solid ${props => props.theme.colors.active};
-  border-bottom: 3px solid ${props => props.theme.colors.active};
-  border-left: 3px solid ${props => props.theme.colors.active};
+  border-right: 3px solid ${props => props.theme.colors.formBorder};
+  border-bottom: 3px solid ${props => props.theme.colors.formBorder};
+  border-left: 3px solid ${props => props.theme.colors.formBorder};
   &:focus {
-    border-right: 3px solid ${props => props.theme.colors.main};
-    border-bottom: 3px solid ${props => props.theme.colors.main};
-    border-left: 3px solid ${props => props.theme.colors.main};
-    color: ${props => props.theme.colors.main};
+    border-right: 3px solid ${props => props.theme.colors.black};
+    border-bottom: 3px solid ${props => props.theme.colors.black};
+    border-left: 3px solid ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.black};
   }
   &:disabled {
     background-color: ${props => props.theme.colors.background2};
@@ -221,7 +210,8 @@ const Input = styled.input`
     max-width: 539px;
   }
 `;
-
+const borderFocus = "input:focus + &";
+const borderDisabled = "input:disabled + &";
 const FieldBorder = styled.div`
   display: flex;
   flex-direction: row;
@@ -229,14 +219,14 @@ const FieldBorder = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  color: ${props => props.theme.colors.active};
+  color: ${props => props.theme.colors.formBorder};
 
   &:before {
     display: block;
     content: "";
     flex: 1 0 0;
     height: 3px;
-    border-top: 3px solid ${props => props.theme.colors.active};
+    border-top: 3px solid ${props => props.theme.colors.formBorder};
     border-color: inherit;
   }
   &:after {
@@ -244,15 +234,15 @@ const FieldBorder = styled.div`
     content: "";
     flex: 15 0 0;
     height: 1px;
-    border-top: 3px solid ${props => props.theme.colors.active};
+    border-top: 3px solid ${props => props.theme.colors.formBorder};
     border-color: inherit;
   }
-  input:focus + & {
-    color: ${props => props.theme.colors.main};
+  ${borderFocus} {
+    color: ${props => props.theme.colors.black};
   }
-  input:disabled + & {
+  ${borderDisabled} {
     span {
-      color: ${props => props.theme.colors.lightGrey};
+      color: ${props => props.theme.colors.grey};
     }
   }
   @media (min-width: ${breakpoint.tablet}) {
@@ -269,10 +259,11 @@ const Field = styled.span`
   font-family: ${fontFamily.bold};
   line-height: 18px;
   margin-top: -6px;
-  font-size: ${props => props.theme.fontSizes.form};
-  color: ${props => props.theme.colors.main};
+  font-size: ${props => props.theme.fontSizes.small};
+  color: ${props => props.theme.colors.black};
   letter-spacing: 0.02em;
   text-align: center;
+  padding: 0 2px;
 `;
 
 const PersonalData = styled.div`
@@ -282,9 +273,9 @@ const PersonalData = styled.div`
   margin-bottom: 20px;
 
   label {
-    font-size: ${props => props.theme.fontSizes.small};
+    font-size: ${props => props.theme.fontSizes.small1};
     line-height: 24px;
-    color: ${props => props.theme.colors.lightGrey};
+    color: ${props => props.theme.colors.grey};
     max-width: 78%;
     position: relative;
     margin-left: 19px;
@@ -305,7 +296,7 @@ const PersonalData = styled.div`
   input:focus + label:before,
   input:focus + label:after {
     outline-offset: -2px;
-    outline: #4d90fe auto 3px;
+    outline: ${props => props.theme.colors.black} auto 3px;
   }
 
   input:checked + label {
@@ -350,7 +341,7 @@ const Button = styled.input`
   @media (min-width: ${breakpoint.desktop}) {
     margin: 17px 0;
     width: 244px;
-    font-size: ${props => props.theme.fontSizes.medium};
+    font-size: ${props => props.theme.fontSizes.small3};
   }
 `;
 
@@ -363,28 +354,7 @@ const PersonalWrap = styled.div`
   }
 `;
 
-const SplitText = styled.br`
-  &:last-of-type {
-    display: none;
-  }
-  &:nth-of-type(2) {
-    display: none;
-  }
-  @media (min-width: ${breakpoint.tablet}) {
-    &:first-of-type {
-      display: none;
-    }
-
-    &:last-of-type {
-      display: block;
-    }
-  }
-  @media (min-width: ${breakpoint.desktop}) {
-    &:nth-of-type(2) {
-      display: block;
-    }
-  }
-`;
+const SplitText = styled.br``;
 
 const JoinCTA = () => {
   return (
@@ -393,14 +363,13 @@ const JoinCTA = () => {
         <span>Вступайте</span> <span>в Альянс врачей</span>
       </Heading>
       <Paragraph>
-        По закону мы можем принять вас <SplitText /> в профсоюз, только если{" "}
-        <SplitText /> у нас есть отделение в вашем регионе. Если его нет, мы
-        поможем его создать.
+        По закону мы можем принять вас в профсоюз, только если у нас есть
+        отделение в вашем регионе. Если его нет, мы поможем его создать.
         <SplitText /> Если в профсоюз вступит более половины сотрудников
         учреждения, вы сможете менять условия коллективного договора, а также
-        участвовать в распределении оплаты труда <SplitText /> и премий.
+        участвовать в распределении оплаты труда и премий.
       </Paragraph>
-      <Link href="">Как устроен профсоюз?</Link>
+      <Link href="#">Как устроен профсоюз?</Link>
     </Block>
   );
 };
@@ -445,7 +414,7 @@ const FormComponent = () => {
         <Checkbox name="personal-data">
           Я даю согласие МПРЗ «Альянс врачей» на обработку моих персональных
           данных в объёме и на условиях, определенных{" "}
-          <Link href="">офертой</Link>
+          <Link href="#">офертой</Link>
         </Checkbox>
         <Button type="submit" value="Отправить контакты" />
       </PersonalWrap>

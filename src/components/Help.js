@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { breakpoint, fontFamily } from "../core/sc";
 
 const problems = [
-  "— по несколько недель ждать записи к нужному специалисту;",
-  "— стоять в многочасовых очередях;",
-  "— покупать лекарства за свой счёт;",
-  " — страдать от непрофессионального поведения некоторых специалистов;",
-  "— становиться жертвами врачебных ошибок."
+  "по несколько недель ждать записи к нужному специалисту;",
+  "стоять в многочасовых очередях;",
+  "покупать лекарства за свой счёт;",
+  "страдать от непрофессионального поведения некоторых специалистов;",
+  "становиться жертвами врачебных ошибок."
 ];
 
 const Container = styled.div`
@@ -16,10 +16,12 @@ const Container = styled.div`
   padding: 6px 15px;
   max-width: 90%;
   margin: 0 auto 33px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   @media (min-width: ${breakpoint.tablet}) {
     padding: 14px 32px;
     max-width: 688px;
-    margin: 0 auto;
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
@@ -30,8 +32,7 @@ const Container = styled.div`
 const Heading = styled.h2`
   margin: 0 0 15px 0;
   font-family: ${fontFamily.bold};
-  font-weight: bold;
-  font-size: ${props => props.theme.fontSizes.heading};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
   max-width: 200px;
   padding-top: 10px;
@@ -42,14 +43,16 @@ const Heading = styled.h2`
     margin-bottom: 15px;
   }
   @media (min-width: ${breakpoint.tablet}) {
-    font-size: ${props => props.theme.fontSizes.large2};
+    font-size: ${props => props.theme.fontSizes.large1};
   }
 `;
+
+const rightColumn = "li:nth-child(n + 4):nth-child(-n + 6)";
 
 const Problems = styled.ul`
   padding-left: 0;
   list-style-type: none;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small1};
   line-height: 24px;
   margin: 0;
 
@@ -60,7 +63,7 @@ const Problems = styled.ul`
   }
 
   li:last-child {
-    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+    border-bottom: 2px dashed ${props => props.theme.colors.grey};
     padding-bottom: 20px;
   }
 
@@ -89,7 +92,7 @@ const Problems = styled.ul`
       padding-bottom: 10px;
     }
 
-    li:nth-child(n + 4):nth-child(-n + 6) {
+    ${rightColumn} {
       margin-left: 110px;
     }
     li:last-child {
@@ -101,7 +104,7 @@ const Problems = styled.ul`
 const Subheading = styled.h3`
   line-height: 22px;
   font-family: ${fontFamily.bold};
-  font-size: ${props => props.theme.fontSizes.medium};
+  font-size: ${props => props.theme.fontSizes.small3};
   max-width: 98%;
   margin-bottom: 13px;
 
@@ -111,7 +114,7 @@ const Subheading = styled.h3`
   }
 
   @media (min-width: ${breakpoint.tablet}) {
-    font-size: ${props => props.theme.fontSizes.subheading};
+    font-size: ${props => props.theme.fontSizes.medium};
     max-width: 624px;
     line-height: 26px;
     margin: 16px 0 18px;
@@ -126,7 +129,7 @@ const Subheading = styled.h3`
 
 const DottedLine = styled.div`
   @media (min-width: ${breakpoint.desktop}) {
-    border-bottom: 2px dashed ${props => props.theme.colors.lightGrey};
+    border-bottom: 2px dashed ${props => props.theme.colors.grey};
   }
 `;
 export const Help = () => {
@@ -139,7 +142,7 @@ export const Help = () => {
           но и пациенты. Многим из них приходится:
         </li>
         {problems.map(problem => {
-          return <li key={problem}>{problem}</li>;
+          return <li key={problem}>— {problem}</li>;
         })}
       </Problems>
       <DottedLine />
