@@ -401,7 +401,7 @@ const FormComponent = () => {
               type={field.type}
               id={field.id}
               name={field.id}
-              value={field.value}
+              defaultValue={field.value}
               disabled={field.disabled}
             />
             <FieldBorder>
