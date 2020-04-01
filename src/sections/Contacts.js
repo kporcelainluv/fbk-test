@@ -45,9 +45,9 @@ const contacts = [
 
 const Container = styled.section`
   max-width: 90%;
-  margin: 0 auto 28px;
+  margin: 0 auto 35px;
   @media (min-width: ${breakpoint.tablet}) {
-    margin: 30px auto 40px;
+    margin: 40px auto 35px;
     max-width: 688px;
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -111,7 +111,7 @@ const JobTitle = styled.span`
     }
   }
   @media (min-width: ${breakpoint.desktop}) {
-    margin: -160px 0 135px 0;
+    margin: -163px 0 135px 0;
     display: flex;
     flex-direction: column;
     max-width: 187px;
@@ -147,7 +147,7 @@ const Name = styled.h3`
 
 const ContactContainer = styled.li`
   display: flex;
-  padding: 23px 0;
+  padding: 22px 0 20px;
 
   &:not(:last-of-type) {
     border-bottom: 2px dashed ${props => props.theme.colors.grey};
@@ -167,7 +167,7 @@ const ContactContainer = styled.li`
   }
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
-    padding: 32px 0 30px;
+    padding: 30px 0 29px;
     svg {
       display: none;
     }

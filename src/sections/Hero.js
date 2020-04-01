@@ -6,6 +6,7 @@ import { breakpoint, fontFamily } from "../core/sc";
 
 const Container = styled.section`
   max-width: 100%;
+  margin-bottom: 30px;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
     margin: 0 auto 30px;

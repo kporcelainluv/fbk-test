@@ -122,7 +122,7 @@ const Link = styled.a`
   @media (min-width: ${breakpoint.desktop}) {
     font-family: ${fontFamily.bold};
     padding: 0;
-    margin-right: 20px;
+    margin-right: 32px;
 
     &:hover {
       color: ${props => props.theme.colors.red};

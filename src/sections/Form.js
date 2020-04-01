@@ -39,7 +39,7 @@ const fields = [
 
 const Container = styled.section`
   background-color: ${props => props.theme.colors.background};
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
@@ -48,7 +48,7 @@ const Container = styled.section`
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
     display: flex;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
   }
 `;
 const Block = styled.div`
@@ -59,7 +59,7 @@ const Block = styled.div`
   @media (min-width: ${breakpoint.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
     padding: 11px 28px 17px;
-    margin: 0 auto 45px;
+    margin: 0 auto 50px;
     max-width: 100%;
   }
   @media (min-width: ${breakpoint.desktop}) {
@@ -100,7 +100,7 @@ const Paragraph = styled.p`
   font-size: ${props => props.theme.fontSizes.small1};
   line-height: 24px;
   max-width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 0;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 98%;
   }
@@ -328,7 +328,7 @@ const PersonalData = styled.div`
 `;
 
 const Button = styled.input`
-  width: 210px;
+  width: 205px;
   max-width: 100%;
   height: 60px;
   color: ${props => props.theme.colors.background};

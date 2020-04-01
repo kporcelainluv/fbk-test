@@ -91,6 +91,9 @@ const Description = styled.span`
     display: inline-block;
     margin-left: 10px;
   }
+  @media (min-width: ${breakpoint.desktop}) {
+    margin-left: 5px;
+  }
 `;
 
 const EmptyDiv = styled.div`

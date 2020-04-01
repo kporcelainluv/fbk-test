@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { breakpoint, fontFamily } from "../core/sc";
 import { Icon } from "./Icon";
+import { Container } from "./Container";
 
 const regions = [
   { letter: " ", regions: ["Москва", "Московская область", "Санкт-Петербург"] },
@@ -40,19 +41,12 @@ const regions = [
   { letter: "Я", regions: ["Ярославская область"] }
 ];
 
-const Container = styled.section`
-  padding: 30px 0;
-  background-color: ${props => props.theme.colors.background2};
-  @media (min-width: ${breakpoint.tablet}) {
-    padding: 40px 0;
-  }
-`;
 
 const IntroBlock = styled.div`
   max-width: 90%;
   margin: 0 auto;
   border: 3px solid ${props => props.theme.colors.red};
-  padding: 0 14px;
+  padding: 3px 14px 0;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
     margin: 0 auto 0;
@@ -60,8 +54,8 @@ const IntroBlock = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 507px;
-    margin: 20px 0 0;
-    padding: 26px 33px;
+    margin: 0;
+    padding: 23px 33px;
   }
 `;
 

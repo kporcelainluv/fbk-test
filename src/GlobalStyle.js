@@ -8,7 +8,7 @@ export default createGlobalStyle`
   font-family: CoFo Sans, Arial, sans-serif;
   background-color: #fff;
   
-  a:focus, button:focus, input[type='submit'] {
+  a:focus, button:focus, input[type='submit']:focus {
      outline: ${props => props.theme.colors.black} auto 3px;
   }
 
