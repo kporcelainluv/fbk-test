@@ -41,7 +41,6 @@ const regions = [
   { letter: "Я", regions: ["Ярославская область"] }
 ];
 
-
 const IntroBlock = styled.div`
   max-width: 90%;
   margin: 0 auto;
@@ -211,7 +210,8 @@ const RegionsDescription = () => {
       <Paragraph>
         Сейчас у нас 28 отделений по всей стране. Если в вашем регионе ещё нет
         отделения «Альянса врачей», мы поможем его создать. <SplitText />
-        <a href="#">Заполните анкету</a>, и мы с вами свяжемся
+        <a href="https://alyansvrachey.ru/">Заполните анкету</a>, и мы с вами
+        свяжемся
       </Paragraph>
     </IntroBlock>
   );
@@ -231,7 +231,7 @@ const RegionsContainer = () => {
                 {region.regions.map(r => {
                   return (
                     <li key={r}>
-                      <a href="#">{r}</a>
+                      <a href="https://alyansvrachey.ru/">{r}</a>
                     </li>
                   );
                 })}

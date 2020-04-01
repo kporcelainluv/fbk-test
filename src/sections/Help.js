@@ -33,6 +33,7 @@ const Heading = styled.h2`
   margin: 0 0 15px 0;
   font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.medium1};
+  font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
   max-width: 200px;
   padding-top: 10px;

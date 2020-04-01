@@ -369,7 +369,7 @@ const JoinCTA = () => {
         учреждения, вы сможете менять условия коллективного договора, а также
         участвовать в распределении оплаты труда и премий.
       </Paragraph>
-      <Link href="#">Как устроен профсоюз?</Link>
+      <Link href="https://alyansvrachey.ru/">Как устроен профсоюз?</Link>
     </Block>
   );
 };
@@ -414,7 +414,7 @@ const FormComponent = () => {
         <Checkbox name="personal-data">
           Я даю согласие МПРЗ «Альянс врачей» на обработку моих персональных
           данных в объёме и на условиях, определенных{" "}
-          <Link href="#">офертой</Link>
+          <Link href="https://alyansvrachey.ru/">офертой</Link>
         </Checkbox>
         <Button type="submit" value="Отправить контакты" />
       </PersonalWrap>

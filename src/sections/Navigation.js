@@ -6,23 +6,23 @@ import { breakpoint, fontFamily } from "../core/sc";
 const navigation = [
   {
     name: "Новости",
-    link: "#"
+    link: "https://alyansvrachey.ru/"
   },
   {
     name: "Вступить в Альянс",
-    link: "#"
+    link: "https://alyansvrachey.ru/"
   },
   {
     name: "Частые вопросы",
-    link: "#"
+    link: "https://alyansvrachey.ru/"
   },
   {
     name: "Помощь пациетам",
-    link: "#"
+    link: "https://alyansvrachey.ru/"
   },
   {
     name: "Контакты",
-    link: "#"
+    link: "https://alyansvrachey.ru/"
   }
 ];
 

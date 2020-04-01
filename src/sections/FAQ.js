@@ -140,7 +140,7 @@ export const FAQ = () => {
           {questions.map(question => {
             return (
               <Question key={question}>
-                <a href="#">{question}</a>
+                <a href="https://alyansvrachey.ru/">{question}</a>
               </Question>
             );
           })}

@@ -34,7 +34,7 @@ export const Socials = () => {
       {socials.map(social => {
         return (
           <li key={social}>
-            <a href="#">
+            <a href="https://alyansvrachey.ru/">
               <Icon name={social} width="32" height="32" viewBox="0 0 32 32" />
               <span className="visually-hidden">{social}</span>
             </a>

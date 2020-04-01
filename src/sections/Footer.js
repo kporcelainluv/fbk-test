@@ -145,7 +145,7 @@ const About = () => {
   return (
     <AboutBlock>
       <Subheading>Расскажите о нас:</Subheading>
-      <a href="#">
+      <a href="https://alyansvrachey.ru/">
         <Icon name="link-white" height="23" width="24" />
         <span>Поделиться</span>
       </a>
@@ -170,7 +170,7 @@ const Documents = () => {
         {documents.map(document => {
           return (
             <li key={document}>
-              <a href="#">{document}</a>
+              <a href="https://alyansvrachey.ru/">{document}</a>
             </li>
           );
         })}

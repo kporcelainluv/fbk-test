@@ -110,13 +110,13 @@ const CTABlock = () => {
   return (
     <CTAContainer>
       <li>
-        <a href="#">
+        <a href="https://alyansvrachey.ru/">
           <Icon name="link" height="23" width="22" />
           <Description>Поделиться</Description>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="https://alyansvrachey.ru/">
           <Icon name="rouble" height="24" width="24" />
           <Description>Поддержать</Description>
         </a>
