@@ -122,7 +122,7 @@ export const Hero = () => {
   return (
     <Container>
       <ContainerWrap>
-        <a>
+        <a href="https://alyansvrachey.ru/">
           <img
             src="/icons/label.svg"
             height="60"
