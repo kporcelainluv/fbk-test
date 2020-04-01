@@ -141,7 +141,9 @@ export const Hero = () => {
             достойные условия труда, высокие надбавки и оплачиваемые переработки
             для всех медиков России.
           </Paragraph>
-          <Link href="https://alyansvrachey.ru/">Узнать больше о нас и о профсоюзах</Link>
+          <Link href="https://alyansvrachey.ru/">
+            Узнать больше о нас и о профсоюзах
+          </Link>
           <Socials />
         </Wrap>
         <Button>Вступить в Альянс врачей</Button>
