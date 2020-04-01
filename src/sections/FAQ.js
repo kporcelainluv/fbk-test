@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Help } from "./Help";
 import { breakpoint, fontFamily } from "../core/sc";
+import { Container } from "./Container";
 
 const questions = [
   "Почему нельзя просто вступить в профсоюз, а важно создать ППО?",
@@ -15,18 +16,6 @@ const questions = [
   "Как устроен профсоюз?"
 ];
 
-const Container = styled.section`
-  background-color: ${props => props.theme.colors.background2};
-  padding: 33px 0 25px;
-
-  @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px 40px 40px;
-    margin-bottom: 42px;
-  }
-  @media (min-width: ${breakpoint.desktop}) {
-    padding: 60px 0;
-  }
-`;
 const Block = styled.div`
   border: 3px solid ${props => props.theme.colors.red};
   padding: 0 0 15px 15px;
@@ -36,8 +25,8 @@ const Block = styled.div`
   @media (min-width: ${breakpoint.tablet}) {
     border: 4px solid ${props => props.theme.colors.red};
     max-width: 688px;
-    padding: 18px 28px 0;
-    margin: 10px auto 28px;
+    padding: 14px 28px 0;
+    margin: 0 auto 30px;
   }
   @media (min-width: ${breakpoint.desktop}) {
     width: 507px;
@@ -92,15 +81,14 @@ const List = styled.ul`
   }
 `;
 
-const secondColumn = "&:nth-of-type(n + 5):nth-of-type(-n + 8) ";
-const dotElement = "\\25AA";
+const secondColumn = "&:nth-of-type(n + 5):nth-of-type(-n + 8)";
 const Question = styled.li`
   line-height: 24px;
   font-size: ${props => props.theme.fontSizes.small1};
   margin-bottom: 24px;
 
   &:before {
-    content: ${dotElement};
+    content: "\\25AA";
     color: ${props => props.theme.colors.red};
     display: inline-block;
     width: 15px;
@@ -125,9 +113,13 @@ const Question = styled.li`
 `;
 
 const Wrap = styled.div`
+  @media (min-width: ${breakpoint.tablet}) {
+    padding-bottom: 10px;
+  }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
     margin: 0 auto;
+    padding-bottom: 28px;
   }
 `;
 

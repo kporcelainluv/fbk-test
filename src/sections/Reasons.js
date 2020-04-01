@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { breakpoint, fontFamily } from "../core/sc";
+import { Container } from "./Container";
 
 const reasons = [
   "Ни одного сотрудника, состоящего в профессиональном союзе, нельзя уволить, сократить или лишить заработной платы без ведома профсоюза.",
@@ -9,21 +10,6 @@ const reasons = [
   "Профсоюз может вносить изменения в коллективный договор, инициировать коллективные переговоры, изменять порядок начисления зарплаты, размер отпусков, условия труда."
 ];
 
-const Container = styled.section`
-  background-color: ${props => props.theme.colors.background2};
-  padding: 30px 0 12px;
-  margin-bottom: 51px;
-  @media (min-width: ${breakpoint.tablet}) {
-    padding: 30px 0 40px;
-    margin-bottom: 43px;
-  }
-  @media (min-width: ${breakpoint.desktop}) {
-    display: flex;
-    justify-content: space-around;
-    padding: 30px 0 60px;
-    margin-bottom: 60px;
-  }
-`;
 const Block = styled.div`
   max-width: 90%;
   margin: 0 auto 20px;
@@ -49,7 +35,7 @@ const Heading = styled.h2`
   font-family: ${fontFamily.bold};
   font-size: ${props => props.theme.fontSizes.medium1};
   line-height: 28px;
-  margin: 18px auto 0;
+  margin: 10px auto 0;
   @media (min-width: ${breakpoint.tablet}) {
     font-size: ${props => props.theme.fontSizes.large};
     font-family: ${fontFamily.regular};
@@ -146,18 +132,16 @@ const JoinBlock = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 540px;
-    margin: 40px 0 0 75px;
+    margin: 40px 0 0 40px;
+    padding-left: 20px;
     &:after {
       top: 200px;
     }
   }
 `;
 const SplitText = styled.br`
-
   @media (min-width: ${breakpoint.tablet}) {
     display: none;
-  }
-
   }
 `;
 const Slogan = styled.h3`
@@ -204,9 +188,15 @@ const Button = styled.button`
 `;
 
 const Wrap = styled.div`
+  margin-bottom: 35px;
+  @media (min-width: ${breakpoint.tablet}) {
+    margin-bottom: 45px;
+    padding-bottom: 40px;
+  }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
-    margin: 0 auto;
+    padding-bottom: 60px;
+    margin: 0 0 60px;
     display: flex;
   }
 `;

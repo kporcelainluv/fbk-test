@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Socials } from "./Socials";
 import { Icon } from "./Icon";
+import { Container } from "./Container";
 
 import { breakpoint, fontFamily } from "../core/sc";
 
@@ -13,22 +14,11 @@ const documents = [
   "Федеральный закон о профсоюзах"
 ];
 
-const Container = styled.footer`
-  background-color: ${props => props.theme.colors.background2};
-  padding: 30px 0;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  @media (min-width: ${breakpoint.tablet}) {
-    padding: 5%;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-`;
-
-const Wrap = styled.div`
+const Wrap = styled.footer`
   max-width: 90%;
   margin: 0 0 0 5%;
+  display: flex;
+  flex-direction: column;
   @media (min-width: ${breakpoint.tablet}) {
     max-width: 688px;
     margin: 0 auto;
@@ -38,7 +28,8 @@ const Wrap = styled.div`
   }
   @media (min-width: ${breakpoint.desktop}) {
     max-width: 1120px;
-    margin: 10px auto;
+    margin: 10px auto 0;
+    padding-bottom: 5%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -93,7 +84,7 @@ const SubscribeBlock = styled.div`
     margin-left: 66px;
   }
   @media (min-width: ${breakpoint.desktop}) {
-    margin-left: 0;
+    margin-left: 70px;
   }
 `;
 
@@ -143,9 +134,9 @@ const Organization = styled.span`
   @media (min-width: ${breakpoint.tablet}) {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 15px;
   }
-  @media (min-width: ${breakpoint.tablet}) {
+  @media (min-width: ${breakpoint.desktop}) {
     margin-top: 0;
   }
 `;
